@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OKHOSTING.Core", "OKHOSTING.Core\OKHOSTING.Core.csproj", "{5F753619-FD61-4E33-B1D4-3E3E34879A0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OKHOSTING.Core.Cryptography", "OKHOSTING.Core.Cryptography\OKHOSTING.Core.Cryptography.csproj", "{88FA702F-1354-4ABC-ABC3-540CD659BD57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OKHOSTING.Core.Net", "OKHOSTING.Core.Net\OKHOSTING.Core.Net.csproj", "{4A75C2D6-0FBF-42BC-9A70-A52F6ECE4797}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5F753619-FD61-4E33-B1D4-3E3E34879A0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F753619-FD61-4E33-B1D4-3E3E34879A0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F753619-FD61-4E33-B1D4-3E3E34879A0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F753619-FD61-4E33-B1D4-3E3E34879A0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88FA702F-1354-4ABC-ABC3-540CD659BD57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88FA702F-1354-4ABC-ABC3-540CD659BD57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88FA702F-1354-4ABC-ABC3-540CD659BD57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88FA702F-1354-4ABC-ABC3-540CD659BD57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A75C2D6-0FBF-42BC-9A70-A52F6ECE4797}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A75C2D6-0FBF-42BC-9A70-A52F6ECE4797}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A75C2D6-0FBF-42BC-9A70-A52F6ECE4797}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A75C2D6-0FBF-42BC-9A70-A52F6ECE4797}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
