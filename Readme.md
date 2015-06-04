@@ -1,1 +1,1 @@
-Contains a recommended directory structure for new open source projects
+ Common functionality for any project you biuld, logs, mails, encryption and the like
