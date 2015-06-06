@@ -5,7 +5,7 @@ using System.Security;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace OKHOSTING.Core
+namespace OKHOSTING.Core.Cryptography
 {
 	/// <summary>
 	/// Allows very simple encription of string values using Rijndael mechanism

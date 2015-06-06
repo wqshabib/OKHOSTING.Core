@@ -14,7 +14,7 @@ using System.Collections;
 using System.Reflection;
 using System.Diagnostics;
 
-namespace OKHOSTING.Core
+namespace OKHOSTING.Core.Net
 {
 	/// <summary>
 	/// Allows read/write configuration in App.config files for Windows and Web.config for web

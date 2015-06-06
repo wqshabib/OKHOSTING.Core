@@ -30,9 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="edtFTPnet">
-      <HintPath>References\edtFTPnet.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -46,9 +43,6 @@
   <ItemGroup>
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="WebConfig.cs" />
-    <Compile Include="FtpConnection.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="GeoIp\Country.cs" />
     <Compile Include="GeoIp\DatabaseInfo.cs" />
     <Compile Include="GeoIp\Location.cs" />

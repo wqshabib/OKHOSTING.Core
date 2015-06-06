@@ -4,7 +4,7 @@ using System.Web;
 using System.Diagnostics;
 using System.Threading;
 
-namespace OKHOSTING.Core
+namespace OKHOSTING.Core.Net
 {
 	/// <summary>
 	/// Represents a user session in an application, that can be used in web and windows environments
