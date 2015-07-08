@@ -13,7 +13,7 @@ namespace OKHOSTING.Core.Extensions
 		/// </summary>
 		public static TKey Reverse<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TValue value)
 		{
-			return dictionary.FirstOrDefault(x => x.Value.Equals(value)).Key;
+			return dictionary.First(x => x.Value.Equals(value)).Key;
 		}
 	}
 }
