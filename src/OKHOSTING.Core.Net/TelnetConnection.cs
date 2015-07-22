@@ -36,7 +36,6 @@ namespace OKHOSTING.Core.Net
 	/// </summary>
 	public class TelnetConnection
 	{
-
 		#region Fields
 
 		/// <summary>
@@ -308,6 +307,5 @@ namespace OKHOSTING.Core.Net
 		}
 
 		#endregion
-
 	}
 }

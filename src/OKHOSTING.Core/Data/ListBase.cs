@@ -29,7 +29,9 @@ namespace OKHOSTING.Core.Data
 		#endregion
 
 		#region Virtual
-		
+
+		public virtual int Id { get; set; }
+
 		public virtual int IndexOf(T item)
 		{
 			return this.ToList().IndexOf(item);

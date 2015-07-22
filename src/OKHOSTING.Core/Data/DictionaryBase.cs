@@ -35,6 +35,8 @@ namespace OKHOSTING.Core.Data
 
 		#region Virtual
 
+		public virtual int Id { get; set; }
+
 		public virtual int Count
 		{
 			get
