@@ -9,12 +9,7 @@ namespace OKHOSTING.Core.Data
 	/// </summary>
 	public abstract class ProxyDictionary<TKey, TValue>: IDictionary<TKey, TValue>
 	{
-		protected readonly IDictionary<TKey, TValue> Source;
-
-		public ProxyDictionary(IDictionary<TKey, TValue> source)
-		{
-			Source = source;
-		}
+		protected IDictionary<TKey, TValue> Source { get; set; }
 
 		public virtual void Add(KeyValuePair<TKey, TValue> item)
 		{

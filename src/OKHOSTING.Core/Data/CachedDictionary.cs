@@ -13,15 +13,6 @@ namespace OKHOSTING.Core.Data
 	{
 		protected readonly IDictionary<TKey, TValue> Cache = new Dictionary<TKey, TValue>();
 
-		public CachedDictionary(IDictionary<TKey, TValue> source): base(source)
-		{
-			//load cache o constructor
-			foreach (var item in source)
-			{
-				Cache.Add(item.Key, item.Value);
-			}
-		}
-
 		public override void Add(TKey key, TValue value)
 		{
 			Source.Add(key, value);
