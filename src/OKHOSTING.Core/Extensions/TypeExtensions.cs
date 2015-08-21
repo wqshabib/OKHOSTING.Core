@@ -145,6 +145,12 @@ namespace OKHOSTING.Core.Extensions
 			return false;
 		}
 
+		public static bool IsCollection(this Type type)
+		{
+			return type.GetInterface("IEnumerable") != null && !type.Equals(typeof(string));
+		}
+
+
 		public static PropertyInfo GetKey(this System.Type type)
 		{
 			var memberFilters = System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance;

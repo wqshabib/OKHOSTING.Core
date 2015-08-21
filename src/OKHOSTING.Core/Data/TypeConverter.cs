@@ -29,34 +29,34 @@ namespace OKHOSTING.Core.Data
 		/// <param name="sourceValue">
 		/// Value that you desire to convert
 		/// </param>
-		/// <param name="conversiontype">
+		/// <param name="conversionType">
 		/// Destiny type
 		/// </param>
 		/// <returns>
 		/// The reference to the converted object
 		/// </returns>
-		public static object ChangeType(object value, Type conversiontype)
+		public static object ChangeType(object value, Type conversionType)
 		{
 			//null values
-			if (value == null) return null;
+			if (value == null || value == DBNull.Value) return null;
 
 			//no need for conversion
-			if (conversiontype.IsAssignableFrom(value.GetType())) return value;
+			if (conversionType.IsAssignableFrom(value.GetType())) return value;
 
 			//from string to object
-			if (value is string) return ToObject((string)value, conversiontype);
+			if (value is string) return ToObject((string)value, conversionType);
 
 			//from object to TimeSpan
-			if (conversiontype.Equals(typeof(TimeSpan))) return ToTimeSpan(value);
+			if (conversionType.Equals(typeof(TimeSpan))) return ToTimeSpan(value);
 
 			//from object to string
-			if (conversiontype.Equals(typeof(string))) return ToString(value);
+			if (conversionType.Equals(typeof(string))) return ToString(value);
 
 			//from object to enumeration
-			if (conversiontype.IsEnum) return ToEnum(value, conversiontype);
+			if (conversionType.IsEnum) return ToEnum(value, conversionType);
 
 			//Trying to convert throught IConvertible interface
-			return Convert.ChangeType(value, conversiontype);
+			return Convert.ChangeType(value, conversionType);
 		}
 
 		/// <summary>

@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Mono.Linq.Expressions, Version=1.2.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\..\..\OKHOSTING.Sql\src\packages\Mono.Linq.Expressions.1.2.0.0\lib\Mono.Linq.Expressions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -52,9 +56,52 @@
     <Compile Include="Data\ListBase.cs" />
     <Compile Include="Data\ListSynchronizer.cs" />
     <Compile Include="Data\LogicalOperators.cs" />
+    <Compile Include="Data\Validation\MemberExpression.cs" />
     <Compile Include="Data\ProxyDictionary.cs" />
     <Compile Include="Data\SortDirection.cs" />
     <Compile Include="Data\TypeConverter.cs" />
+    <Compile Include="Data\Validation\CompareValidator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\Validation\CustomValidator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\Validation\MemberCompareValidator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\Validation\MemberValidator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\Validation\RangeValidator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\Validation\RegexValidator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\Validation\RequiredValidator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\Validation\StringLenghtValidator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\Validation\TypeValidator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\Validation\ValidationError.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\Validation\ValidationEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\Validation\ValidationEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\Validation\ValidatorBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\Validation\ValueCompareValidator.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DefaultPaths.cs" />
     <Compile Include="Extensions\CharExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
@@ -69,7 +116,9 @@
     <Compile Include="Session.cs" />
     <Compile Include="ShellProxy.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
