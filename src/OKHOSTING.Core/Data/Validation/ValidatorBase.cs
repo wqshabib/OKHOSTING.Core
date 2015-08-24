@@ -5,7 +5,8 @@ namespace OKHOSTING.Core.Data.Validation
 	/// <summary>
 	/// Defines the behavior that must be have the validation classes
 	/// </summary>
-	public abstract class ValidatorBase
+	[AttributeUsage(AttributeTargets.All, AllowMultiple = true, Inherited = true)]
+	public abstract class ValidatorBase: Attribute
 	{
 		public int Id { get; set; }
 
@@ -17,22 +18,5 @@ namespace OKHOSTING.Core.Data.Validation
 		/// otherwise returns null
 		/// </returns>
 		public abstract ValidationError Validate(object obj);
-	}
-
-	public abstract class ValidatorBase<T> : ValidatorBase
-	{
-		/// <summary>
-		/// Performs the validation
-		/// </summary>
-		/// <returns>
-		/// ValidationError object with the error founded if the validation fails,
-		/// otherwise returns null
-		/// </returns>
-		public abstract ValidationError Validate(T obj);
-
-		public override ValidationError Validate(object obj)
-		{
-			return Validate((T) obj);
-		}
 	}
 }

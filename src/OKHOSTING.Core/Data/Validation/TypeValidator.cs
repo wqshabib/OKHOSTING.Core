@@ -23,15 +23,18 @@ namespace OKHOSTING.Core.Data.Validation
 		/// <summary>
 		/// Construct the validator
 		/// </summary>
-		/// <param name="parent">
-		/// TypeMap (or any subclass of it) that can be selected as the Value of the MemberMap
+		public TypeValidator()
+		{
+		}
+
+		/// <summary>
+		/// Construct the validator
+		/// </summary>
+		/// <param name="type">
+		/// Type (or any subclass of it) that can be selected as the Value of the MemberMap
 		/// </param>
 		public TypeValidator(Type type)
 		{
-			//Validating arguments
-			if (type == null) throw new ArgumentNullException("type");
-
-			//Initializing validator
 			Type = type;
 		}
 

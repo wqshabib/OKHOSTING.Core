@@ -7,6 +7,19 @@ namespace OKHOSTING.Core.Data.Validation
 	/// </summary>
 	public abstract class CompareValidator: MemberValidator
 	{
+		public CompareValidator()
+		{
+		}
+
+		public CompareValidator(MemberExpression member): base(member)
+		{
+		}
+
+		public CompareValidator(MemberExpression member, CompareOperator _operator): base(member)
+		{
+			Operator = _operator;
+		}
+
 		/// <summary>
 		/// Operator to use in the validation 
 		/// </summary>

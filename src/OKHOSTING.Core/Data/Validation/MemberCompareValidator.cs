@@ -9,6 +9,15 @@ namespace OKHOSTING.Core.Data.Validation
 	/// </summary>
 	public class MemberCompareValidator : CompareValidator
 	{
+		public MemberCompareValidator()
+		{
+		}
+
+		public MemberCompareValidator(MemberExpression member, MemberExpression memberToCompare): base(member)
+		{
+			MemberToCompare = memberToCompare;
+		}
+
 		/// <summary>
 		/// MemberMap to compare with the MemberMap of the validator
 		/// </summary>

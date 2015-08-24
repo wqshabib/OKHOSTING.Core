@@ -10,20 +10,30 @@ namespace OKHOSTING.Core.Data.Validation
 	/// <remarks>Applies only to string DataValues</remarks>
 	public class StringLengthValidator: MemberValidator
 	{
+		public StringLengthValidator()
+		{
+		}
+
+		public StringLengthValidator(uint maxLength)
+		{
+			MaxLength = maxLength;
+		}
+
+		public StringLengthValidator(uint minLength, uint maxLength)
+		{
+			MinLength = minLength;
+			MaxLength = maxLength;
+		}
+
 		/// <summary>
 		/// Specify the maximum length that a string can contain
 		/// </summary>
-		public int MaxLength { get; set; }
+		public uint MaxLength { get; set; }
 
 		/// <summary>
 		/// Specify the minimum length that a string can contain
 		/// </summary>
-		public int MinLength { get; set; }
-
-		/// <summary>
-		/// Defines if an string.Empty value is valid
-		/// </summary>
-		public bool AllowEmpty { get; set; }
+		public uint MinLength { get; set; }
 
 		/// <summary>
 		/// Performs the validation
@@ -40,8 +50,11 @@ namespace OKHOSTING.Core.Data.Validation
 			//Getting the value of the MemberMap
 			string currentValue = (string) Member.GetValue(obj);
 
-			//if it's null, omit validation
-			if (currentValue == null) return null;
+			//if it's null, and we dont have a MinLenght, omit validation
+			if (currentValue == null && MinLength > 0)
+			{
+				error = new ValidationError(this, "String can't be an empty string on field " + Member);
+			}
 
 			//Perform the applicable validation
 
@@ -50,14 +63,6 @@ namespace OKHOSTING.Core.Data.Validation
 				
 			if (MinLength != 0 && currentValue.Length < MinLength)
 				error = new ValidationError(this, "String length must be greater than " + MinLength + " on field " + Member);
-					
-
-			//Validating if the string.Empty value is a valid value (only if dont exists errors))
-			if (error == null && !this.AllowEmpty)
-			{
-				if (currentValue.Trim() == string.Empty)
-					error = new ValidationError(this, "String can't be an empty string on field " + Member);
-			}
 
 			//Returning the error or null
 			return error;
@@ -68,7 +73,7 @@ namespace OKHOSTING.Core.Data.Validation
 		/// </summary>
 		/// <param name="dmember">String DataValue that has a StringLengthValidator attribute</param>
 		/// <returns>Maximum lenght of the string DataValue. 0 if no max lenght is defined.</returns>
-		public static int	GetMaxLenght(System.Reflection.MemberInfo member)
+		public static uint	GetMaxLenght(System.Reflection.MemberInfo member)
 		{
 			//Validating if the MemberInfo is null
 			if (member == null) throw new ArgumentNullException("member");
@@ -86,7 +91,7 @@ namespace OKHOSTING.Core.Data.Validation
 
 			foreach (System.ComponentModel.DataAnnotations.StringLengthAttribute validator in attributes)
 			{
-				return validator.MaximumLength;
+				return (uint) validator.MaximumLength;
 			}
 
 			//if no attribute was found, return the default 255 lenght for varchar strings
@@ -98,7 +103,7 @@ namespace OKHOSTING.Core.Data.Validation
 		/// </summary>
 		/// <param name="dmember">String DataValue that has a StringLengthValidator attribute</param>
 		/// <returns>Maximum lenght of the string DataValue. Null if no max lenght is defined.</returns>
-		public static int GetMinLenght(System.Reflection.MemberInfo member)
+		public static uint GetMinLenght(System.Reflection.MemberInfo member)
 		{
 			//Validating if the MemberInfo is null
 			if (member == null) throw new ArgumentNullException("member");
@@ -116,11 +121,16 @@ namespace OKHOSTING.Core.Data.Validation
 
 			foreach (System.ComponentModel.DataAnnotations.StringLengthAttribute validator in attributes)
 			{
-				return validator.MinimumLength;
+				return (uint) validator.MinimumLength;
 			}
 
 			//if operator is not one of the previous, return null
 			return 0;
 		}
+
+		/// <summary>
+		/// Use this value (zero) to specify no lenght limit
+		/// </summary>
+		public const uint Unlimited = 0;
 	}
 }

@@ -8,6 +8,15 @@ namespace OKHOSTING.Core.Data.Validation
 	/// </summary>
 	public class ValueCompareValidator : CompareValidator
 	{
+		public ValueCompareValidator()
+		{
+		}
+
+		public ValueCompareValidator(MemberExpression member, IComparable valueToCompare): base(member)
+		{
+			ValueToCompare = valueToCompare;
+		}
+
 		/// <summary>
 		/// Value used on the comparison
 		/// </summary>

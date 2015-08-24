@@ -8,6 +8,16 @@ namespace OKHOSTING.Core.Data.Validation
 	/// </summary>
 	public class RangeValidator: MemberValidator
 	{
+		public RangeValidator()
+		{
+		}
+
+		public RangeValidator(IComparable minValue, IComparable maxValue)
+		{
+			MinValue = minValue;
+			MaxValue = maxValue;
+		}
+
 		/// <summary>
 		/// Minimum value of the allowed range
 		/// </summary>
