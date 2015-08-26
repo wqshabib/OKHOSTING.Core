@@ -168,7 +168,7 @@ namespace OKHOSTING.Core.Data.Validation
 		/// </param>
 		public static void SetValue(MemberInfo memberInfo, object obj, object value)
 		{
-			value = OKHOSTING.Core.Data.TypeConverter.ChangeType(value, GetReturnType(memberInfo));
+			value = OKHOSTING.Core.Data.Converter.ChangeType(value, GetReturnType(memberInfo));
 
 			if (memberInfo is FieldInfo)
 			{

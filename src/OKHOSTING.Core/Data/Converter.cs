@@ -15,7 +15,7 @@ namespace OKHOSTING.Core.Data
 	/// Defines methods for converting objects from one Type to another,
 	/// as well as serialization and deserialization methods
 	/// </summary>
-	public static class TypeConverter
+	public static class Converter
 	{
 		#region From object to object
 
@@ -215,13 +215,13 @@ namespace OKHOSTING.Core.Data
 		/// <returns>
 		/// A string representation of value
 		/// </returns>
-		/*public static string SerializeToString(IStringSerializable value)
+		public static string SerializeToString(IStringSerializable value)
 		{
 			//null values
 			if (value == null) return null;
 			
 			return value.SerializeToString();
-		}*/
+		}
 
 		/// <summary>
 		/// Converts a value to it's string representantion
@@ -392,27 +392,27 @@ namespace OKHOSTING.Core.Data
 			return (Enum) System.Enum.Parse(enumType, value);
 		}
 
-		///// <summary>
-		///// Converts a IStringSerializable string representantion into an actual IStringSerializable instance
-		///// </summary>
-		///// <param name="value">
-		///// Value to be converted to IStringSerializable
-		///// </param>
-		///// <returns>
-		///// A IStringSerializable object deserialized from the string
-		///// </returns>
-		//public static IStringSerializable ToIStringSerializable(string value, Type conversiontype)
-		//{
-		//	//validate arguments
-		//	if (string.IsNullOrWhiteSpace(value)) return null;
-		//	if (conversiontype == null) throw new ArgumentNullException("conversiontype");
+		/// <summary>
+		/// Converts a IStringSerializable string representantion into an actual IStringSerializable instance
+		/// </summary>
+		/// <param name="value">
+		/// Value to be converted to IStringSerializable
+		/// </param>
+		/// <returns>
+		/// A IStringSerializable object deserialized from the string
+		/// </returns>
+		public static IStringSerializable ToIStringSerializable(string value, Type conversiontype)
+		{
+			//validate arguments
+			if (string.IsNullOrWhiteSpace(value)) return null;
+			if (conversiontype == null) throw new ArgumentNullException("conversiontype");
 
-		//	//Deserializing the source value to destiny type
-		//	IStringSerializable result = (IStringSerializable) conversiontype.CreateInstance();
-		//	((IStringSerializable)result).DeserializeFromString(value);
+			//Deserializing the source value to destiny type
+			IStringSerializable result = (IStringSerializable)conversiontype.CreateInstance();
+			((IStringSerializable)result).DeserializeFromString(value);
 
-		//	return result;
-		//}
+			return result;
+		}
 
 		/// <summary>
 		/// Converts a IXmlSerializable string representantion into an actual IXmlSerializable instance

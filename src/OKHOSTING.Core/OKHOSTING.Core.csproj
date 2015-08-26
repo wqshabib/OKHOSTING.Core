@@ -59,7 +59,7 @@
     <Compile Include="Data\Validation\MemberExpression.cs" />
     <Compile Include="Data\ProxyDictionary.cs" />
     <Compile Include="Data\SortDirection.cs" />
-    <Compile Include="Data\TypeConverter.cs" />
+    <Compile Include="Data\Converter.cs" />
     <Compile Include="Data\Validation\CompareValidator.cs">
       <SubType>Code</SubType>
     </Compile>
