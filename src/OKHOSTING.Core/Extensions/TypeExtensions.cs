@@ -130,54 +130,9 @@ namespace OKHOSTING.Core.Extensions
 			return type.IsGenericType || type.IsConstructedGenericType || type.ContainsGenericParameters || type.IsGenericTypeDefinition;
 		}
 
-		public static bool IsPersistent(this System.Type type)
-		{
-			var memberFilters = System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance;
-
-			foreach (var prop in type.GetProperties(memberFilters))
-			{
-				if (prop.IsDefined(typeof(System.ComponentModel.DataAnnotations.KeyAttribute), false))
-				{
-					return true;
-				}
-			}
-
-			return false;
-		}
-
 		public static bool IsCollection(this Type type)
 		{
 			return type.GetInterface("IEnumerable") != null && !type.Equals(typeof(string));
-		}
-
-
-		public static PropertyInfo GetKey(this System.Type type)
-		{
-			var memberFilters = System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance;
-
-			foreach (var prop in type.GetProperties(memberFilters))
-			{
-				if (prop.IsDefined(typeof(System.ComponentModel.DataAnnotations.KeyAttribute), false))
-				{
-					return prop;
-				}
-			}
-
-			return null;
-		}
-
-		public static object GetKeyValue(this System.Object obj)
-		{
-			System.Type type = obj.GetType();
-
-			if (!type.IsPersistent())
-			{
-				return null;
-			}
-
-			var key = type.GetKey();
-
-			return key.GetValue(obj);
 		}
 
 		public static bool IsCompilerGenerated(this System.Reflection.MemberInfo memberinfo)

@@ -140,7 +140,7 @@ namespace OKHOSTING.Core.Data
 		#region From object to string, string serialization
 
 		/// <summary>
-		/// Converts a value to it's string representantion
+		/// Converts a value to it's string representantion, so it can be deserialized back in the future
 		/// </summary>
 		/// <param name="value">
 		/// Value to be serialized as string
@@ -150,21 +150,6 @@ namespace OKHOSTING.Core.Data
 		/// </returns>
 		public static string ToString(object value)
 		{
-			if (value == null) return null;
-			return value.ToString();
-		}
-
-		/// <summary>
-		/// Converts a value to it's string representantion, so it can be deserialized back in the future
-		/// </summary>
-		/// <param name="value">
-		/// Value to be serialized as string
-		/// </param>
-		/// <returns>
-		/// A string representation of value
-		/// </returns>
-		public static string SerializeToString(object value)
-		{
 			if (value == null) 
 				return null;
 
@@ -172,19 +157,16 @@ namespace OKHOSTING.Core.Data
 				return (string) value;
 
 			else if (value is System.Enum)
-				return SerializeToString((System.Enum)value);
-
-			//else if (value is IStringSerializable)
-				//return SerializeToString((IStringSerializable)value);
+				return ToString((System.Enum)value);
 
 			else if (value is IXmlSerializable)
-				return SerializeToString((IXmlSerializable)value);
+				return ToString((IXmlSerializable)value);
 
 			else if (value is IEnumerable)
-				return SerializeToString((IEnumerable)value);
+				return ToString((IEnumerable)value);
 
 			else if (value is DateTime)
-				return SerializeToString((DateTime)value);
+				return ToString((DateTime)value);
 
 			return value.ToString();
 		}
@@ -198,7 +180,7 @@ namespace OKHOSTING.Core.Data
 		/// <returns>
 		/// A database-specific string representation of value
 		/// </returns>
-		public static string SerializeToString(Enum value)
+		public static string ToString(Enum value)
 		{
 			//null values
 			if (value == null) return null;
@@ -215,7 +197,7 @@ namespace OKHOSTING.Core.Data
 		/// <returns>
 		/// A string representation of value
 		/// </returns>
-		public static string SerializeToString(IStringSerializable value)
+		public static string ToString(IStringSerializable value)
 		{
 			//null values
 			if (value == null) return null;
@@ -232,7 +214,7 @@ namespace OKHOSTING.Core.Data
 		/// <returns>
 		/// A string representation of value
 		/// </returns>
-		public static string SerializeToString(IXmlSerializable value)
+		public static string ToString(IXmlSerializable value)
 		{
 			//null values
 			if (value == null) return null;
@@ -255,7 +237,7 @@ namespace OKHOSTING.Core.Data
 		/// <returns>
 		/// A string representation of value
 		/// </returns>
-		public static string SerializeToString(IEnumerable value)
+		public static string ToString(IEnumerable value)
 		{
 			//null values
 			if (value == null) return null;
@@ -277,7 +259,7 @@ namespace OKHOSTING.Core.Data
 		/// The properties stored on values on the format
 		/// Property1=ValueOfProperty1&Property2=ValueOfProperty2...
 		/// </returns>
-		public static string SerializeToString(NameValueCollection value)
+		public static string ToString(NameValueCollection value)
 		{
 			//Local Vars
 			string nameValues = string.Empty;
@@ -304,7 +286,7 @@ namespace OKHOSTING.Core.Data
 		/// <returns>
 		/// A string representation of value
 		/// </returns>
-		public static string SerializeToString(Assembly value)
+		public static string ToString(Assembly value)
 		{
 			//null values
 			if (value == null) return null;
@@ -321,7 +303,7 @@ namespace OKHOSTING.Core.Data
 		/// <returns>
 		/// A string representation of value
 		/// </returns>
-		public static string SerializeToString(DateTime value)
+		public static string ToString(DateTime value)
 		{
 			//null values
 			if (value == null) return null;
