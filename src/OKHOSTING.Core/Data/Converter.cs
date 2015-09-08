@@ -60,6 +60,42 @@ namespace OKHOSTING.Core.Data
 		}
 
 		/// <summary>
+		/// This method try to convert the specified source value on the 
+		/// indicated Type. This class implements converting methods for internal use, 
+		/// use it to convert values from database to objetc instance and viceversa,
+		/// as well as creating URLs for datatypes, dataobjects or datamemebrers,
+		/// or string representations of objects
+		/// </summary>
+		/// <param name="sourceValue">
+		/// Value that you desire to convert
+		/// </param>
+		/// <returns>
+		/// The reference to the converted object
+		/// </returns>
+		public static TTo ChangeType<TFrom, TTo>(TFrom value)
+		{
+			return (TTo) ChangeType(value, typeof(TTo));
+		}
+
+		/// <summary>
+		/// This method try to convert the specified source value on the 
+		/// indicated Type. This class implements converting methods for internal use, 
+		/// use it to convert values from database to objetc instance and viceversa,
+		/// as well as creating URLs for datatypes, dataobjects or datamemebrers,
+		/// or string representations of objects
+		/// </summary>
+		/// <param name="sourceValue">
+		/// Value that you desire to convert
+		/// </param>
+		/// <returns>
+		/// The reference to the converted object
+		/// </returns>
+		public static TTo ChangeType<TTo>(object value)
+		{
+			return (TTo) ChangeType(value, typeof(TTo));
+		}
+
+		/// <summary>
 		/// Converts a Enum object representantion into an actual Enum instance
 		/// </summary>
 		/// <param name="value">
