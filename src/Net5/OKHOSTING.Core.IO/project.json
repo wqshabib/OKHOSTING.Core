@@ -1,0 +1,16 @@
+﻿{
+	"version": "1.0.0-*",
+	"description": "OKHOSTING.Core Class Library",
+	"authors": [ "David Muñoz" ],
+	"tags": [ "" ],
+	"projectUrl": "https://github.com/okhosting/OKHOSTING.Core",
+	"licenseUrl": "https://github.com/okhosting/OKHOSTING.Core/blob/master/License",
+
+  "dependencies": {
+    "System.IO.FileSystem": "4.0.0"
+  },
+
+  "frameworks": {
+    "dotnet": { }
+  }
+}

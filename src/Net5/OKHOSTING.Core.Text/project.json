@@ -1,0 +1,16 @@
+﻿{
+  "version": "1.0.0",
+  "description": "Help methods for strings, chars and regex",
+  "authors": [ "David Muñoz" ],
+  "tags": [ "String, char, regex, words" ],
+  "projectUrl": "https://github.com/okhosting/OKHOSTING.Core",
+  "licenseUrl": "https://github.com/okhosting/OKHOSTING.Core/blob/master/License",
+
+  "dependencies": {
+		"System.Text.RegularExpressions": "4.0.10"
+  },
+
+  "frameworks": {
+    "dotnet": { }
+  }
+}
