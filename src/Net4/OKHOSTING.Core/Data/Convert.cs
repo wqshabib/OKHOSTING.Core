@@ -15,7 +15,7 @@ namespace OKHOSTING.Core.Data
 	/// Defines methods for converting objects from one Type to another,
 	/// as well as serialization and deserialization methods
 	/// </summary>
-	public static class Converter
+	public static class Convert
 	{
 		#region From object to object
 
@@ -56,7 +56,7 @@ namespace OKHOSTING.Core.Data
 			if (conversionType.IsEnum) return ToEnum(value, conversionType);
 
 			//Trying to convert throught IConvertible interface
-			return Convert.ChangeType(value, conversionType);
+			return System.Convert.ChangeType(value, conversionType);
 		}
 
 		/// <summary>
@@ -150,7 +150,7 @@ namespace OKHOSTING.Core.Data
 			if (ticks == null) return TimeSpan.Zero;
 
 			//converto to TimeSpan from ticks
-			return ToTimeSpan((long)Convert.ChangeType(ticks, typeof(long)));
+			return ToTimeSpan((long)System.Convert.ChangeType(ticks, typeof(long)));
 		}
 
 		/// <summary>
@@ -193,16 +193,16 @@ namespace OKHOSTING.Core.Data
 				return (string) value;
 
 			else if (value is System.Enum)
-				return ToString((System.Enum)value);
+				return ToString((System.Enum) value);
 
 			else if (value is IXmlSerializable)
-				return ToString((IXmlSerializable)value);
+				return ToString((IXmlSerializable) value);
 
 			else if (value is IEnumerable)
-				return ToString((IEnumerable)value);
+				return ToString((IEnumerable) value);
 
 			else if (value is DateTime)
-				return ToString((DateTime)value);
+				return ToString((DateTime) value);
 
 			return value.ToString();
 		}
@@ -221,7 +221,7 @@ namespace OKHOSTING.Core.Data
 			//null values
 			if (value == null) return null;
 			
-			return Convert.ChangeType(value, value.GetTypeCode()).ToString();
+			return System.Convert.ChangeType(value, value.GetTypeCode()).ToString();
 		}
 
 		/// <summary>
@@ -388,7 +388,7 @@ namespace OKHOSTING.Core.Data
 			if (conversiontype.GetInterface(typeof(System.Collections.IEnumerable).FullName) != null) return ToIEnumerable(value, conversiontype);
 
 			//generic
-			return Convert.ChangeType(value, conversiontype);
+			return System.Convert.ChangeType(value, conversiontype);
 		}
 
 		/// <summary>

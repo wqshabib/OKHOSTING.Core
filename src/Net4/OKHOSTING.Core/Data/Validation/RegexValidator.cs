@@ -10,6 +10,20 @@ namespace OKHOSTING.Core.Data.Validation
 	/// <remarks>Applies only to string DataValues</remarks>
 	public class RegexValidator: MemberValidator
 	{
+		public RegexValidator()
+		{
+		}
+
+		public RegexValidator(string pattern)
+		{
+			if (string.IsNullOrWhiteSpace(pattern))
+			{
+				throw new ArgumentNullException(nameof(pattern));
+			}
+
+			Pattern = pattern;
+		}
+
 		/// <summary>
 		/// Regular expression used to validate
 		/// </summary>

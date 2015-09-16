@@ -37,7 +37,7 @@ namespace OKHOSTING.Core.Data.Validation
 			}
 			else if (OKHOSTING.Core.Extensions.TypeExtensions.IsNumeric(Member.ReturnType))
 			{
-				if (Convert.ToInt64(currentValue) == 0)
+				if (System.Convert.ToInt64(currentValue) == 0)
 				{
 					error = new ValidationError(this, Member + " cannot be zero");
 				}
