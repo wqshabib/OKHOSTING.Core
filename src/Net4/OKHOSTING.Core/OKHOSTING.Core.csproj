@@ -54,7 +54,6 @@
     <Compile Include="Data\EncryptedDictionary.cs" />
     <Compile Include="Data\IStringSerializable.cs" />
     <Compile Include="Data\ListBase.cs" />
-    <Compile Include="Data\ListSynchronizer.cs" />
     <Compile Include="Data\LogicalOperators.cs" />
     <Compile Include="Data\Validation\MemberExpression.cs" />
     <Compile Include="Data\ProxyDictionary.cs" />

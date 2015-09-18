@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Reflection;
 using System.Xml.Serialization;
 using OKHOSTING.Core.Extensions;
+using System.Linq;
 
 namespace OKHOSTING.Core.Data
 {
@@ -35,10 +37,10 @@ namespace OKHOSTING.Core.Data
 		public static object ChangeType(object value, Type conversionType)
 		{
 			//null values
-			if (value == null || value == DBNull.Value) return null;
+			if (value == null) return null;
 
 			//no need for conversion
-			if (conversionType.IsAssignableFrom(value.GetType())) return value;
+			if (conversionType.GetTypeInfo().IsAssignableFrom(value.GetType().GetTypeInfo())) return value;
 
 			//from string to object
 			if (value is string) return ToObject((string)value, conversionType);
@@ -50,7 +52,7 @@ namespace OKHOSTING.Core.Data
 			if (conversionType.Equals(typeof(string))) return ToString(value);
 
 			//from object to enumeration
-			if (conversionType.IsEnum) return ToEnum(value, conversionType);
+			if (conversionType.GetTypeInfo().IsEnum) return ToEnum(value, conversionType);
 
 			//Trying to convert throught IConvertible interface
 			return System.Convert.ChangeType(value, conversionType);
@@ -285,32 +287,6 @@ namespace OKHOSTING.Core.Data
 		}
 
 		/// <summary>
-		/// Returns the string representation of the specified NameValueCollection
-		/// </summary>
-		/// <param name="values">List that will be parsed as a string</param>
-		/// <returns>
-		/// The properties stored on values on the format
-		/// Property1=ValueOfProperty1&Property2=ValueOfProperty2...
-		/// </returns>
-		public static string ToString(NameValueCollection value)
-		{
-			//Local Vars
-			string nameValues = string.Empty;
-
-			//Crossing the name / value pairs 
-			foreach (string name in value.AllKeys)
-			{
-				nameValues += name + "=" + value[name] + "&";
-			}
-
-			//Remove last &
-			nameValues = nameValues.TrimEnd('&');
-
-			//Returning the string to the caller
-			return nameValues;
-		}
-
-		/// <summary>
 		/// Converts a value to it's string representantion
 		/// </summary>
 		/// <param name="value">
@@ -364,7 +340,7 @@ namespace OKHOSTING.Core.Data
 			if (conversiontype == null) throw new ArgumentNullException("conversiontype");
 
 			//no need for conversion
-			if (conversiontype.IsAssignableFrom(value.GetType())) return value;
+			if (conversiontype.GetTypeInfo().IsAssignableFrom(value.GetType().GetTypeInfo())) return value;
 
 			//TimeSpan
 			if (conversiontype.Equals(typeof(TimeSpan))) return ToTimeSpan(value);
@@ -373,16 +349,16 @@ namespace OKHOSTING.Core.Data
 			if (conversiontype.Equals(typeof(DateTime))) return ToDateTime(value); 
 			
 			//enum
-			if (conversiontype.IsEnum) return ToEnum(value, conversiontype);
+			if (conversiontype.GetTypeInfo().IsEnum) return ToEnum(value, conversiontype);
 
 			//IStringSerializable
 			//if (conversiontype.GetInterface(typeof(IStringSerializable).FullName) != null) return ToIStringSerializable(value, conversiontype);
 
 			//IXmlSerializable
-			if (conversiontype.GetInterface(typeof(IXmlSerializable).FullName) != null) return ToIXmlSerializable(value, conversiontype);
+			if (conversiontype.GetTypeInfo().ImplementedInterfaces.Where(i=> i == typeof(IXmlSerializable)).Count() > 0) return ToIXmlSerializable(value, conversiontype);
 
 			//IEnumerable
-			if (conversiontype.GetInterface(typeof(System.Collections.IEnumerable).FullName) != null) return ToIEnumerable(value, conversiontype);
+			if (conversiontype.GetTypeInfo().ImplementedInterfaces.Where(i => i == typeof(System.Collections.IEnumerable)).Count() > 0) return ToIEnumerable(value, conversiontype);
 
 			//generic
 			return System.Convert.ChangeType(value, conversiontype);
@@ -474,48 +450,6 @@ namespace OKHOSTING.Core.Data
 		}
 
 		/// <summary>
-		/// Creates a NameValueCollection filed with the values of the string
-		/// </summary>
-		/// <param name="value">
-		/// String which will be atomized and represented in the NameValueCollection.
-		/// Format must be Key1=Value1&Key2=Value2&Key3=Value3...
-		/// </param>
-		/// <returns>
-		/// NameValueCollection filed with the atomized values of the string
-		/// </returns>
-		public static NameValueCollection ToNameValues(string queryString)
-		{
-			//null or empty values
-			if (string.IsNullOrWhiteSpace(queryString)) return null;
-
-			//split value by & characters to get a string of Key=Valye pairs
-			//example: { "Key1=Value1", "Key2=Value2", "Key3=Value3" }
-			string[] pairs = queryString.Split('&');
-
-			//create collection
-			NameValueCollection result = new NameValueCollection();
-
-			//separate each key and value
-			foreach (string pair in pairs)
-			{
-				string key, val;
-				int equalSymbol = pair.IndexOf('=');
-
-				//separate key and value by the = character
-				//key = pair.Split('=')[0];
-				//val = pair.Split('=')[1];
-				key = pair.Substring(0, equalSymbol);
-				val = pair.Substring(equalSymbol + 1);
-
-				//add pair to collection
-				result.Add(key, val);
-			}
-
-			//return result
-			return result;
-		}
-
-		/// <summary>
 		/// Gets the value of a key inside a string
 		/// </summary>
 		/// <param name="values">String that contains key value pairs. Must be formatted as Key1=Value1&Key2=Value2&Key3=Value3...</param>
@@ -554,25 +488,6 @@ namespace OKHOSTING.Core.Data
 			{
 				return null;
 			}
-		}
-
-		/// <summary>
-		/// Converts a Assembly string representantion into an actual Assembly instance
-		/// </summary>
-		/// <param name="value">
-		/// Value to be converted to Assembly
-		/// </param>
-		/// <returns>
-		/// A Assembly object deserialized from the string
-		/// </returns>
-		public static Assembly ToAssembly(string value)
-		{
-			if (string.IsNullOrWhiteSpace(value)) return null;
-
-			return Assembly.LoadFrom
-			(
-				System.AppDomain.CurrentDomain.RelativeSearchPath + value
-			);
 		}
 
 		/// <summary>

@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3F4502FA-51EA-4CB9-8E50-46F828D240A1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OKHOSTING.Core</RootNamespace>
+    <AssemblyName>OKHOSTING.Core</AssemblyName>
+    <DefaultLanguage>es-ES</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\CachedDictionary.cs" />
+    <Compile Include="Data\CompareOperator.cs" />
+    <Compile Include="Data\Convert.cs" />
+    <Compile Include="Data\DictionaryBase.cs" />
+    <Compile Include="Data\IStringSerializable.cs" />
+    <Compile Include="Data\ListBase.cs" />
+    <Compile Include="Data\LogicalOperators.cs" />
+    <Compile Include="Data\ProxyDictionary.cs" />
+    <Compile Include="Data\SortDirection.cs" />
+    <Compile Include="Data\Validation\CompareValidator.cs" />
+    <Compile Include="Data\Validation\CustomValidator.cs" />
+    <Compile Include="Data\Validation\MemberCompareValidator.cs" />
+    <Compile Include="Data\Validation\MemberExpression.cs" />
+    <Compile Include="Data\Validation\MemberValidator.cs" />
+    <Compile Include="Data\Validation\RangeValidator.cs" />
+    <Compile Include="Data\Validation\RegexValidator.cs" />
+    <Compile Include="Data\Validation\RequiredValidator.cs" />
+    <Compile Include="Data\Validation\StringLenghtValidator.cs" />
+    <Compile Include="Data\Validation\TypeValidator.cs" />
+    <Compile Include="Data\Validation\ValidationError.cs" />
+    <Compile Include="Data\Validation\ValidationEventArgs.cs" />
+    <Compile Include="Data\Validation\ValidationEventHandler.cs" />
+    <Compile Include="Data\Validation\ValidationException.cs" />
+    <Compile Include="Data\Validation\ValidatorBase.cs" />
+    <Compile Include="Data\Validation\ValueCompareValidator.cs" />
+    <Compile Include="DefaultPaths.cs" />
+    <Compile Include="Extensions\CharExtensions.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\DiccionaryExtentions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\TypeExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegexPatterns.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
