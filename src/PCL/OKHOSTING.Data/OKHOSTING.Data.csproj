@@ -2,15 +2,15 @@
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3F4502FA-51EA-4CB9-8E50-46F828D240A1}</ProjectGuid>
+    <ProjectGuid>{5BA0CBAC-63E5-4E01-AECA-67AE3B63503B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OKHOSTING.Core</RootNamespace>
-    <AssemblyName>OKHOSTING.Core</AssemblyName>
-    <DefaultLanguage>es-ES</DefaultLanguage>
+    <RootNamespace>OKHOSTING.Data</RootNamespace>
+    <AssemblyName>OKHOSTING.Data</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
@@ -35,15 +35,38 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\OKHOSTING.Core\OKHOSTING.Core.csproj">
+      <Project>{3f4502fa-51ea-4cb9-8e50-46f828d240a1}</Project>
+      <Name>OKHOSTING.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CharExtensions.cs" />
-    <Compile Include="DateTimeExtensions.cs" />
-    <Compile Include="DiccionaryExtentions.cs" />
-    <Compile Include="StringExtensions.cs" />
-    <Compile Include="TypeExtensions.cs" />
+    <Compile Include="CachedDictionary.cs" />
+    <Compile Include="CompareOperator.cs" />
+    <Compile Include="Convert.cs" />
+    <Compile Include="DictionaryBase.cs" />
+    <Compile Include="IStringSerializable.cs" />
+    <Compile Include="ListBase.cs" />
+    <Compile Include="LogicalOperators.cs" />
+    <Compile Include="ProxyDictionary.cs" />
+    <Compile Include="SortDirection.cs" />
+    <Compile Include="Validation\CompareValidator.cs" />
+    <Compile Include="Validation\CustomValidator.cs" />
+    <Compile Include="Validation\MemberCompareValidator.cs" />
+    <Compile Include="Validation\MemberExpression.cs" />
+    <Compile Include="Validation\MemberValidator.cs" />
+    <Compile Include="Validation\RangeValidator.cs" />
+    <Compile Include="Validation\RegexValidator.cs" />
+    <Compile Include="Validation\RequiredValidator.cs" />
+    <Compile Include="Validation\StringLenghtValidator.cs" />
+    <Compile Include="Validation\TypeValidator.cs" />
+    <Compile Include="Validation\ValidationError.cs" />
+    <Compile Include="Validation\ValidationEventArgs.cs" />
+    <Compile Include="Validation\ValidationEventHandler.cs" />
+    <Compile Include="Validation\ValidationException.cs" />
+    <Compile Include="Validation\ValidatorBase.cs" />
+    <Compile Include="Validation\ValueCompareValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegexPatterns.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
