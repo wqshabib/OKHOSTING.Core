@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace OKHOSTING.Core.Data.Validation
 {
@@ -57,7 +58,7 @@ namespace OKHOSTING.Core.Data.Validation
 			if (val == null) return null;
 
 			//Verifying if the value is equal to the Parent TypeMap or is a subclass of it
-			if (!val.Equals(Type) || !val.IsSubclassOf(Type))
+			if (!val.Equals(Type) || !val.GetTypeInfo().IsSubclassOf(Type))
 			{
 				error = new ValidationError(this, "Type " + val + " is not equal or a subclass of " + Type);
 			}

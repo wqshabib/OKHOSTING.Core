@@ -290,16 +290,36 @@ namespace OKHOSTING.Core.Data.Validation
 
 		public static string GetMemberString(System.Linq.Expressions.Expression<Func<T, object>> member)
 		{
-			string code = Mono.Linq.Expressions.CSharp.ToCSharpCode(member);
+			if (member == null)
+			{
+				throw new ArgumentNullException(nameof(member));
+			}
 
-			//get the middle line only
-			code = code.Split('\n')[2];
+			var propertyRefExpr = member.Body;
+			var memberExpr = propertyRefExpr as System.Linq.Expressions.MemberExpression;
 
-			//remove the prefix, until the first dot
-			code = code.Substring(code.IndexOf('.') + 1);
-			code = code.Trim().TrimEnd(';');
+			if (memberExpr == null)
+			{
+				var unaryExpr = propertyRefExpr as System.Linq.Expressions.UnaryExpression;
 
-			return code;
+				if (unaryExpr != null && unaryExpr.NodeType == System.Linq.Expressions.ExpressionType.Convert)
+				{
+					memberExpr = unaryExpr.Operand as System.Linq.Expressions.MemberExpression;
+
+					if(memberExpr != null)
+					{
+						return memberExpr.Member.Name;
+					}
+				}
+			}
+			else
+			{
+				//gets something line "m.Field1.Field2.Field3", from here we just remove the prefix "m."
+				string body = member.Body.ToString();
+				return body.Substring(body.IndexOf('.') + 1);
+			}
+
+			throw new ArgumentException("No property reference expression was found.", nameof(member));
 		}
 
 		public static MemberExpression<T> ToGeneric(MemberExpression memberExpression)

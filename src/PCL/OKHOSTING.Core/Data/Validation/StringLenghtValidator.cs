@@ -105,16 +105,8 @@ namespace OKHOSTING.Core.Data.Validation
 				}
 			}
 
-			//try with StringLengthAttribute
-			attributes = member.GetCustomAttributes(typeof(System.ComponentModel.DataAnnotations.StringLengthAttribute), false);
-
-			foreach (System.ComponentModel.DataAnnotations.StringLengthAttribute validator in attributes)
-			{
-				return (uint) validator.MaximumLength;
-			}
-
-			//if no attribute was found, return the default 255 lenght for varchar strings
-			return null;
+			//if no attribute was found, return the default 0
+			return 0;
 		}
 
 		/// <summary>
@@ -122,29 +114,36 @@ namespace OKHOSTING.Core.Data.Validation
 		/// </summary>
 		/// <param name="dmember">String DataValue that has a StringLengthValidator attribute</param>
 		/// <returns>Maximum lenght of the string DataValue. Null if no max lenght is defined.</returns>
-		public static uint? GetMinLenght(System.Reflection.MemberInfo member)
+		public static uint GetMinLenght(System.Reflection.MemberInfo member)
 		{
 			//Validating if the MemberInfo is null
 			if (member == null) throw new ArgumentNullException("member");
 
 			//Recovering the attributes of type DataMemberAttribute declared in the MemberInfo
-			object[] attributes = member.GetCustomAttributes(typeof(StringLengthValidator), false);
+			var stringLengthValidator = member.CustomAttributes.Where(att => att.AttributeType == typeof(StringLengthValidator)).SingleOrDefault();
 
-			foreach (StringLengthValidator validator in attributes)
+			if (stringLengthValidator != null)
 			{
-				return validator.MinLength;
+				int argNumber = stringLengthValidator.ConstructorArguments.Count();
+
+				if (argNumber == 0)
+				{
+					//no constructor arguments where given so we look in namedarguments
+					var min = stringLengthValidator.NamedArguments.Where(na => na.MemberName == "minLength").SingleOrDefault();
+
+					if (min.MemberName == "minLength")
+					{
+						return (uint) min.TypedValue.Value;
+					}
+				}
+				else if (argNumber == 1 || argNumber == 2)
+				{
+					return (uint)stringLengthValidator.ConstructorArguments.First().Value;
+				}
 			}
 
-			//try with StringLengthAttribute
-			attributes = member.GetCustomAttributes(typeof(System.ComponentModel.DataAnnotations.StringLengthAttribute), false);
-
-			foreach (System.ComponentModel.DataAnnotations.StringLengthAttribute validator in attributes)
-			{
-				return (uint) validator.MinimumLength;
-			}
-
-			//if operator is not one of the previous, return null
-			return null;
+			//if no attribute was found, return the default 0
+			return 0;
 		}
 
 		/// <summary>

@@ -62,7 +62,6 @@
     <Compile Include="Data\Validation\ValidationException.cs" />
     <Compile Include="Data\Validation\ValidatorBase.cs" />
     <Compile Include="Data\Validation\ValueCompareValidator.cs" />
-    <Compile Include="DefaultPaths.cs" />
     <Compile Include="Extensions\CharExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\DiccionaryExtentions.cs" />

@@ -56,15 +56,5 @@ namespace OKHOSTING.Core.Extensions
 			truncatedString += suffix;
 			return truncatedString;
 		}
-
-		/// <summary>
-		/// Converts string to a title case.  
-		/// </summary>
-		public static string ToProperCase(this string text)
-		{
-			System.Globalization.CultureInfo cultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture;
-			System.Globalization.TextInfo textInfo = cultureInfo.TextInfo;
-			return textInfo.ToTitleCase(text);
-		}
 	}
 }

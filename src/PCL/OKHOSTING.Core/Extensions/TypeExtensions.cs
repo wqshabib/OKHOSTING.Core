@@ -58,9 +58,9 @@ namespace OKHOSTING.Core.Extensions
 		/// </returns>
 		public static bool IsIntegral(this Type type)
 		{
-            Type[] integralTypes = new Type[] { typeof(Byte), typeof(SByte), typeof(Char), typeof(Int16), typeof(Int32), typeof(Int64), typeof(UInt16), typeof(UInt32), typeof(UInt64) };
+			Type[] integralTypes = new Type[] { typeof(Byte), typeof(SByte), typeof(Char), typeof(Int16), typeof(Int32), typeof(Int64), typeof(UInt16), typeof(UInt32), typeof(UInt64) };
 
-            return !type.GetTypeInfo().IsEnum && integralTypes.Contains(type);
+			return !type.GetTypeInfo().IsEnum && integralTypes.Contains(type);
 		}
 
 		/// <summary>
@@ -74,12 +74,12 @@ namespace OKHOSTING.Core.Extensions
 		/// </returns>
 		public static bool IsNumeric(this Type type)
 		{
-            Type[] numericTypes = new Type[] { typeof(Byte), typeof(SByte), typeof(Char), typeof(Int16), typeof(Int32), typeof(Int64), typeof(UInt16), typeof(UInt32), typeof(UInt64), typeof(Single), typeof(Double), typeof(Decimal) };
+			Type[] numericTypes = new Type[] { typeof(Byte), typeof(SByte), typeof(Char), typeof(Int16), typeof(Int32), typeof(Int64), typeof(UInt16), typeof(UInt32), typeof(UInt64), typeof(Single), typeof(Double), typeof(Decimal) };
 
-            return !type.GetTypeInfo().IsEnum && numericTypes.Contains(type);
-        }
+			return !type.GetTypeInfo().IsEnum && numericTypes.Contains(type);
+		}
 
-        public static bool IsGeneric(this System.Type type)
+		public static bool IsGeneric(this System.Type type)
 		{
 			return type.GetTypeInfo().IsGenericType || type.IsConstructedGenericType || type.GetTypeInfo().ContainsGenericParameters || type.GetTypeInfo().IsGenericTypeDefinition;
 		}
@@ -122,34 +122,34 @@ namespace OKHOSTING.Core.Extensions
 				}
 			}
 
-            //find method by comparing method name and parameter types
-            var methods = type.GetTypeInfo().GetDeclaredMethods(methodSignature).ToArray();
+			//find method by comparing method name and parameter types
+			var methods = type.GetTypeInfo().GetDeclaredMethods(methodSignature).ToArray();
 
-            for (int i = 0; i < methods.Length; i++)
-            {
-                MethodInfo method = methods[i];
-                bool isMatch = true;
+			for (int i = 0; i < methods.Length; i++)
+			{
+				MethodInfo method = methods[i];
+				bool isMatch = true;
 
-                foreach (var paramInfo in method.GetParameters())
-                {
-                    if (paramInfo.ParameterType != parameterTypes[i])
-                    {
-                        isMatch = false;
-                        break;
-                    }
-                }
+				foreach (var paramInfo in method.GetParameters())
+				{
+					if (paramInfo.ParameterType != parameterTypes[i])
+					{
+						isMatch = false;
+						break;
+					}
+				}
 
-                if (isMatch)
-                {
-                    return method;
-                }
-            }
+				if (isMatch)
+				{
+					return method;
+				}
+			}
 
-            //return null if no match was found
-            return null;
-        }
+			//return null if no match was found
+			return null;
+		}
 
-        public static bool IsStruct(this Type type)
+		public static bool IsStruct(this Type type)
 		{
 			return type.GetTypeInfo().IsValueType && !type.GetTypeInfo().IsEnum;
 		}

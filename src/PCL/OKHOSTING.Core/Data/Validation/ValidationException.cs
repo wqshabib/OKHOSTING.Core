@@ -12,7 +12,7 @@ namespace OKHOSTING.Core.Data.Validation
 		/// <summary>
 		/// Array of errors that causes the exception throw
 		/// </summary>
-		public readonly List<ValidationError> ValidationErrors;
+		public readonly IEnumerable<ValidationError> ValidationErrors;
 
 		/// <summary>
 		/// Referece to Object that fails on it validation
@@ -58,7 +58,7 @@ namespace OKHOSTING.Core.Data.Validation
 		/// <param name="validatedDataObject">
 		/// Referece to object that fails on it validation
 		/// </param>
-		public ValidationException(List<ValidationError> validationErrors, object validatedDataObject) : this(validationErrors, validatedDataObject, string.Empty) 
+		public ValidationException(IEnumerable<ValidationError> validationErrors, object validatedDataObject) : this(validationErrors, validatedDataObject, string.Empty) 
 		{ 
 		}
 	
@@ -74,7 +74,7 @@ namespace OKHOSTING.Core.Data.Validation
 		/// <param name="message">
 		/// Custom Error message
 		/// </param>
-		public ValidationException(List<ValidationError> validationErrors, object validatedDataObject, string message): base(message)
+		public ValidationException(IEnumerable<ValidationError> validationErrors, object validatedDataObject, string message): base(message)
 		{
 			this.ValidationErrors = validationErrors;
 			this.ValidatedObject = validatedDataObject;
@@ -113,7 +113,7 @@ namespace OKHOSTING.Core.Data.Validation
 					msg += error.Description + "\n";
 				}
 				
-				msg += "\n object:\n" + OKHOSTING.Core.Data.TypeConverter.SerializeToString((IXmlSerializable) this.ValidatedObject);
+				msg += "\n object:\n" + Convert.ToString((IXmlSerializable) this.ValidatedObject);
 
 				//Returning the message
 				return msg;
