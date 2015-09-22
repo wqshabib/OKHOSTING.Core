@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OKHOSTING.Core.Data
+namespace OKHOSTING.Data
 {
 	/// <summary>
 	/// Directions or sorts

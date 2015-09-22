@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OKHOSTING.Core.Data
+namespace OKHOSTING.Data
 {
 	/// <summary>
 	/// Provides base methods for generic custom dictionaries.

@@ -1,4 +1,4 @@
-﻿namespace OKHOSTING.Core.Data
+﻿namespace OKHOSTING.Data
 {
 	/// <summary>
 	/// Defines the method that a class must implement to be serialized and deserialized as a simple string

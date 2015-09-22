@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace OKHOSTING.Core.Data.Validation
+namespace OKHOSTING.Data.Validation
 {
 	/// <summary>
 	/// Indicates if a Property of Field of type string, must have 

@@ -1,6 +1,6 @@
 using System;
 
-namespace OKHOSTING.Core.Data.Validation
+namespace OKHOSTING.Data.Validation
 {
 	/// <summary>
 	/// Validate that the specified MemberMap be between 

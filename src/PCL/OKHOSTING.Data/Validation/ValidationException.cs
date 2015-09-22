@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace OKHOSTING.Core.Data.Validation
+namespace OKHOSTING.Data.Validation
 {
 	/// <summary>
 	/// Defines an exception caused by a validator

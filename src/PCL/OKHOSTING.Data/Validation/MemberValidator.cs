@@ -1,9 +1,6 @@
 using System;
-using System.Collections;
-using System.Reflection;
-using System.Collections.Generic;
 
-namespace OKHOSTING.Core.Data.Validation
+namespace OKHOSTING.Data.Validation
 {
 	/// <summary>
 	/// Validates a specific MemberMap. CHild classes will be able to perform a validation on a specific MemberMap

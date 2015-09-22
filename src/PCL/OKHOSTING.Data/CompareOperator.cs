@@ -1,4 +1,4 @@
-﻿namespace OKHOSTING.Core.Data
+﻿namespace OKHOSTING.Data
 {
 	/// <summary>
 	/// Defines a comparing method, used for filters and validators

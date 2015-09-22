@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OKHOSTING.Core.Data
+namespace OKHOSTING.Data
 {
 	/// <summary>
 	/// Provides a base for custom lists that allow you to transform the values when reading/writing. Usefull for data manipulation and synchronization among diverse datasources

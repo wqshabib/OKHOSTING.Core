@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace OKHOSTING.Core.Data
+namespace OKHOSTING.Data
 {
 	/// <summary>
 	/// A dictionary that just wraps another dictionary. Child classes can overwrite any method to customize behaviour over another dictionary.

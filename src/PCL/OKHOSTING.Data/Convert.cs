@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Xml.Serialization;
 using System.Linq;
 
-namespace OKHOSTING.Core.Data
+namespace OKHOSTING.Data
 {
 	/// <summary>
 	/// Defines methods for converting objects from one Type to another,
@@ -396,7 +396,7 @@ namespace OKHOSTING.Core.Data
 			if (conversiontype == null) throw new ArgumentNullException("conversiontype");
 
 			//Deserializing the source value to destiny type
-			IStringSerializable result = (IStringSerializable)conversiontype.CreateInstance();
+			IStringSerializable result = (IStringSerializable) Activator.CreateInstance(conversiontype);
 			((IStringSerializable)result).DeserializeFromString(value);
 
 			return result;

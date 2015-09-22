@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace OKHOSTING.Core.Data.Validation
+namespace OKHOSTING.Data.Validation
 {
 	/// <summary>
 	/// Represents a member of aclass, but that can also spport nested members, pe: "Address" or "Address.Country.Name".
@@ -168,7 +168,7 @@ namespace OKHOSTING.Core.Data.Validation
 		/// </param>
 		public static void SetValue(MemberInfo memberInfo, object obj, object value)
 		{
-			value = OKHOSTING.Core.Data.Convert.ChangeType(value, GetReturnType(memberInfo));
+			value = OKHOSTING.Data.Convert.ChangeType(value, GetReturnType(memberInfo));
 
 			if (memberInfo is FieldInfo)
 			{

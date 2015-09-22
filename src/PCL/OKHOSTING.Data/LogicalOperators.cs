@@ -1,4 +1,4 @@
-﻿namespace OKHOSTING.Core.Data
+﻿namespace OKHOSTING.Data
 {
 	/// <summary>
 	/// Logical operators that can be used in LogicalOperatorFilter class

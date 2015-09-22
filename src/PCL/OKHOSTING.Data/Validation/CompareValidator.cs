@@ -1,6 +1,6 @@
 using System;
 
-namespace OKHOSTING.Core.Data.Validation
+namespace OKHOSTING.Data.Validation
 {
 	/// <summary>
 	/// Base class for comparison validators

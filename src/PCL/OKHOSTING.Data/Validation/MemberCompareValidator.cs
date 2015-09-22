@@ -1,7 +1,6 @@
 using System;
-using OKHOSTING.Core.Data;
 
-namespace OKHOSTING.Core.Data.Validation
+namespace OKHOSTING.Data.Validation
 {
 	/// <summary>
 	/// Defines a validation based on the comparison between

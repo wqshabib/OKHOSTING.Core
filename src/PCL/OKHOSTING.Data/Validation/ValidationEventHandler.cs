@@ -1,4 +1,4 @@
-namespace OKHOSTING.Core.Data.Validation
+namespace OKHOSTING.Data.Validation
 {
 	/// <summary>
 	/// Defines the structure for custom validation events

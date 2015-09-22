@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace OKHOSTING.Core.Data.Validation
+namespace OKHOSTING.Data.Validation
 {
 	/// <summary>
 	/// Validates that a MemberMap of type TypeMap contains a TypeMap 
