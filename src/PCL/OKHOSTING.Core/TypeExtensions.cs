@@ -81,7 +81,12 @@ namespace OKHOSTING.Core
 
 		public static bool IsGeneric(this System.Type type)
 		{
-			return type.GetTypeInfo().IsGenericType || type.IsConstructedGenericType || type.GetTypeInfo().ContainsGenericParameters || type.GetTypeInfo().IsGenericTypeDefinition;
+			return type.GetTypeInfo().IsGeneric();
+		}
+
+		public static bool IsGeneric(this System.Reflection.TypeInfo type)
+		{
+			return type.IsGenericType || type.AsType().IsConstructedGenericType || type.ContainsGenericParameters || type.IsGenericTypeDefinition;
 		}
 
 		public static bool IsCollection(this Type type)
