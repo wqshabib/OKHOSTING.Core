@@ -18,7 +18,7 @@ namespace OKHOSTING.Data.Validation
 		{
 			if (string.IsNullOrWhiteSpace(pattern))
 			{
-				throw new ArgumentNullException(nameof(pattern));
+				throw new ArgumentNullException("pattern");
 			}
 
 			Pattern = pattern;

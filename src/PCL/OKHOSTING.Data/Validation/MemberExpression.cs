@@ -292,7 +292,7 @@ namespace OKHOSTING.Data.Validation
 		{
 			if (member == null)
 			{
-				throw new ArgumentNullException(nameof(member));
+				throw new ArgumentNullException("member");
 			}
 
 			var propertyRefExpr = member.Body;
@@ -319,7 +319,7 @@ namespace OKHOSTING.Data.Validation
 				return body.Substring(body.IndexOf('.') + 1);
 			}
 
-			throw new ArgumentException("No property reference expression was found.", nameof(member));
+			throw new ArgumentException("No property reference expression was found.", "member");
 		}
 
 		public static MemberExpression<T> ToGeneric(MemberExpression memberExpression)
