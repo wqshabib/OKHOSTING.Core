@@ -77,7 +77,7 @@ namespace OKHOSTING.Cryptography
 		public byte[] CreateRandomKey(uint length)
 		{
 			return WinRTCrypto.CryptographicBuffer.GenerateRandom(length);
-        }
+		}
 
 		public string BytesToString(byte[] data)
 		{
