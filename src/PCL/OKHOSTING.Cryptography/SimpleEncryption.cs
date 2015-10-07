@@ -7,7 +7,7 @@ namespace OKHOSTING.Cryptography
 	/// <summary>
 	/// Allows very simple encription of string values using Rijndael mechanism
 	/// </summary>
-	public class SimpleEncryption
+	public static class SimpleEncryption
 	{
 		/// <summary>
 		/// Encrypts a string a returns the result
@@ -15,7 +15,7 @@ namespace OKHOSTING.Cryptography
 		/// <param name="unencrypted">Value that will be encrypted</param>
 		/// <param name="password">Password used to encrypt the value</param>
 		/// <returns>A encrypted string</returns>
-		public byte[] Encrypt(byte[] unencrypted, string password)
+		public static byte[] Encrypt(byte[] unencrypted, string password)
 		{
 			byte[] keyMaterial = WinRTCrypto.CryptographicBuffer.ConvertStringToBinary(password, Encoding.Unicode);
 			var provider = WinRTCrypto.SymmetricKeyAlgorithmProvider.OpenAlgorithm(SymmetricAlgorithm.AesCbcPkcs7);
@@ -30,7 +30,7 @@ namespace OKHOSTING.Cryptography
 		/// <param name="encrypted">Encrypted value that will be decrypted</param>
 		/// <param name="password">Password used to decrypt the value</param>
 		/// <returns>A decrypted string</returns>
-		public byte[] Decrypt(byte[] encrypted, string password)
+		public static byte[] Decrypt(byte[] encrypted, string password)
 		{
 			byte[] keyMaterial = WinRTCrypto.CryptographicBuffer.ConvertStringToBinary(password, Encoding.Unicode);
 			var provider = WinRTCrypto.SymmetricKeyAlgorithmProvider.OpenAlgorithm(SymmetricAlgorithm.AesCbcPkcs7);
@@ -47,7 +47,7 @@ namespace OKHOSTING.Cryptography
 		/// <param name="strToEncrypt">Value that will be encrypted</param>
 		/// <param name="password">Password used to encrypt the value</param>
 		/// <returns>A encrypted string</returns>
-		public string Encrypt(string strToEncrypt, string password)
+		public static string Encrypt(string strToEncrypt, string password)
 		{
 			return BytesToString(Encrypt(StringToBytes(strToEncrypt), password));
 		}
@@ -58,7 +58,7 @@ namespace OKHOSTING.Cryptography
 		/// <param name="strEncrypted">Encrypted value that will be decrypted</param>
 		/// <param name="password">Password used to decrypt the value</param>
 		/// <returns>A decrypted string</returns>
-		public string Decrypt(string strEncrypted, string password)
+		public static string Decrypt(string strEncrypted, string password)
 		{
 			return BytesToString(Decrypt(StringToBytes(strEncrypted), password));
 		}
@@ -66,7 +66,7 @@ namespace OKHOSTING.Cryptography
 		/// <summary>
 		/// Creates a random number
 		/// </summary>
-		public uint CreateRandomKey()
+		public static uint CreateRandomKey()
 		{
 			return WinRTCrypto.CryptographicBuffer.GenerateRandomNumber();
 		}
@@ -74,17 +74,17 @@ namespace OKHOSTING.Cryptography
 		/// <summary>
 		/// Creates an array of bytes with random numbers
 		/// </summary>
-		public byte[] CreateRandomKey(uint length)
+		public static byte[] CreateRandomKey(uint length)
 		{
 			return WinRTCrypto.CryptographicBuffer.GenerateRandom(length);
 		}
 
-		public string BytesToString(byte[] data)
+		public static string BytesToString(byte[] data)
 		{
 			return WinRTCrypto.CryptographicBuffer.EncodeToBase64String(data);
 		}
 
-		public byte[] StringToBytes(string data)
+		public static byte[] StringToBytes(string data)
 		{
 			return WinRTCrypto.CryptographicBuffer.DecodeFromBase64String(data);
 		}
