@@ -84,17 +84,72 @@ namespace OKHOSTING.Core
 			return type.GetTypeInfo().IsGeneric();
 		}
 
-		public static bool IsGeneric(this System.Reflection.TypeInfo type)
+		public static bool IsGeneric(this TypeInfo type)
 		{
 			return type.IsGenericType || type.AsType().IsConstructedGenericType || type.ContainsGenericParameters || type.IsGenericTypeDefinition;
 		}
 
-		public static bool IsCollection(this Type type)
+		/// <summary>
+		/// Returns all implemented interfaces on a type, including those inherited from parent types
+		/// </summary>
+		public static IEnumerable<Type> GetAllImplementedInterfaces(this Type type)
 		{
-			return type.GetTypeInfo().ImplementedInterfaces.Where(i => i.Equals(typeof(System.Collections.IEnumerable))).Count() > 0 && !type.Equals(typeof(System.String));
+			while (type != null)
+			{
+				foreach (Type i in type.GetTypeInfo().ImplementedInterfaces)
+				{
+					yield return i;
+				}
+
+				type = type.GetTypeInfo().BaseType;
+			}
 		}
 
-		public static bool IsCompilerGenerated(this System.Reflection.MemberInfo memberinfo)
+		/// <summary>
+		/// Returns a boolean indicating if a type (or any of it's parent types) implements IEnumerable
+		/// </summary>
+		public static bool IsCollection(this Type type)
+		{
+			return type.GetAllImplementedInterfaces().Where(i => i.Equals(typeof(System.Collections.IEnumerable))).Count() > 0;
+		}
+
+		/// <summary>
+		/// Returns the type of elements that a collection can contain
+		/// </summary>
+		/// <param name="type">Collection type, that implements IEnumerable</param>
+		/// <returns>The type of the elements that this collection contanis</returns>
+		/// <example>
+		/// If type is string[], will return string.
+		/// If type is IEnumerable<bool>, will return bool.
+		/// </example>
+		public static Type GetCollectionItemType(this Type type)
+		{
+			if (!type.IsCollection())
+			{
+				throw new ArgumentOutOfRangeException("type", "Type is not a collection");
+			}
+
+			if (type.IsArray)
+			{
+				return type.GetElementType();
+			}
+
+			if (type.IsGeneric())
+			{
+				if (!type.IsConstructedGenericType)
+				{
+					throw new ArgumentOutOfRangeException("type", "Type is not a constructed generic type");
+				}
+
+				return type.GetTypeInfo().GenericTypeParameters.First();
+			}
+			else
+			{
+				return typeof(object);
+			}
+		}
+
+		public static bool IsCompilerGenerated(this MemberInfo memberinfo)
 		{
 			return memberinfo.IsDefined(typeof(System.Runtime.CompilerServices.CompilerGeneratedAttribute), false);
 		}
@@ -159,18 +214,33 @@ namespace OKHOSTING.Core
 			return type.GetTypeInfo().IsValueType && !type.GetTypeInfo().IsEnum;
 		}
 
-		public static List<Type> GetAllParents(this Type type)
+		public static IEnumerable<Type> GetAllParents(this Type type)
 		{
 			Type parent = type;
-			List<Type> types = new List<Type>();
 
 			while (parent != null)
 			{
-				types.Add(parent);
+				yield return parent;
 				parent = parent.GetTypeInfo().BaseType;
 			}
+		}
 
-			return types;
+		/// <summary>
+		/// Returns a collection of all member infos, including those inherited by parent types
+		/// </summary>
+		public static IEnumerable<MemberInfo> GetAllMemberInfos(this Type type)
+		{
+			Type parent = type;
+
+			while (parent != null)
+			{
+				foreach (MemberInfo member in parent.GetTypeInfo().DeclaredMembers)
+				{
+					yield return member;
+				}
+
+				parent = parent.GetTypeInfo().BaseType;
+			}
 		}
 	}
 }
