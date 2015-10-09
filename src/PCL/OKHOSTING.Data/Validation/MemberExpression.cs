@@ -249,7 +249,7 @@ namespace OKHOSTING.Data.Validation
 
 		public static bool IsIndexer(PropertyInfo propertyInfo)
 		{
-			return propertyInfo.GetIndexParameters().Length == 0;
+			return propertyInfo.GetIndexParameters().Length > 0;
 		}
 
 		/// <summary>
