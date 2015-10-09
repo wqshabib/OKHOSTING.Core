@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using static OKHOSTING.Core.TypeExtensions;
 
 namespace OKHOSTING.Data.Validation
 {
@@ -21,7 +22,14 @@ namespace OKHOSTING.Data.Validation
 			Expression = expression;
 
 			//validate expression
-			var x = MemberInfos.ToList();
+			try
+			{
+				MemberInfos.ToList();
+			}
+			catch
+			{
+				throw new ArgumentOutOfRangeException("expression", "Member expression is not valid for " + type.FullName);
+			}
 		}
 
 		public int Id { get; set; }
@@ -217,16 +225,16 @@ namespace OKHOSTING.Data.Validation
 			SetValue(allMembers.Last(), finalContainer, value);
 		}
 
-		public static bool IsReadOnly(System.Reflection.MemberInfo memberInfo)
+		public static bool IsReadOnly(MemberInfo memberInfo)
 		{
 			//ignore readonly properties
-			if (memberInfo is System.Reflection.PropertyInfo && ((System.Reflection.PropertyInfo)memberInfo).SetMethod == null)
+			if (memberInfo is PropertyInfo && ((PropertyInfo)memberInfo).SetMethod == null)
 			{
 				return true;
 			}
 
 			//ignore readonly fields
-			if (memberInfo is System.Reflection.FieldInfo && ((System.Reflection.FieldInfo)memberInfo).IsInitOnly)
+			if (memberInfo is FieldInfo && ((FieldInfo)memberInfo).IsInitOnly)
 			{
 				return true;
 			}
@@ -234,9 +242,14 @@ namespace OKHOSTING.Data.Validation
 			return false;
 		}
 
-		public static bool IsCollection(System.Reflection.MemberInfo memberInfo)
+		public static bool IsCollection(MemberInfo memberInfo)
 		{
 			return OKHOSTING.Core.TypeExtensions.IsCollection(GetReturnType(memberInfo));
+		}
+
+		public static bool IsIndexer(PropertyInfo propertyInfo)
+		{
+			return propertyInfo.GetIndexParameters().Length == 0;
 		}
 
 		/// <summary>
@@ -244,7 +257,7 @@ namespace OKHOSTING.Data.Validation
 		/// </summary>
 		/// <param name="type">Type declaring the member expression</param>
 		/// <param name="memberExpression">A member expression, pe: Address.Country.Name</param>
-		public static IEnumerable<System.Reflection.MemberInfo> GetMemberInfos(Type type, string memberExpression)
+		public static IEnumerable<MemberInfo> GetMemberInfos(Type type, string memberExpression)
 		{
 			string[] splittedMembers = memberExpression.Split(new[] { '.' }, StringSplitOptions.None);
 
@@ -252,16 +265,11 @@ namespace OKHOSTING.Data.Validation
 
 			for (int x = 0; x < splittedMembers.Length; x++)
 			{
-				MemberInfo memberInfo = memberType.GetTypeInfo().GetDeclaredProperty(splittedMembers[x].Trim());
+				MemberInfo memberInfo = memberType.GetAllMemberInfos().Where(m => m.Name == splittedMembers[x].Trim() && (m is PropertyInfo || m is FieldInfo)).SingleOrDefault();
 
 				if (memberInfo == null)
 				{
-					memberInfo = memberType.GetTypeInfo().GetDeclaredField(splittedMembers[x].Trim());
-
-					if (memberInfo == null)
-					{
-						throw new ArgumentOutOfRangeException("Members", splittedMembers[x], "Type " + memberType + " does not contain a member with that name");
-					}
+					throw new ArgumentOutOfRangeException("Members", splittedMembers[x], "Type " + memberType + " does not contain a member with that name");
 				}
 
 				memberType = GetReturnType(memberInfo);

@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net45+dnxcore50+win+wpa81+wp80+MonoAndroid10+Xamarin.iOS10+MonoTouch10": {
+      "wrappedProject": "../../PCL/OKHOSTING.Core/OKHOSTING.Core.csproj",
+      "bin": {
+        "assembly": "../../PCL/OKHOSTING.Core/obj/{configuration}/OKHOSTING.Core.dll",
+        "pdb": "../../PCL/OKHOSTING.Core/obj/{configuration}/OKHOSTING.Core.pdb"
+      }
+    }
+  }
+}
