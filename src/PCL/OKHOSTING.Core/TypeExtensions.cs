@@ -242,5 +242,40 @@ namespace OKHOSTING.Core
 				parent = parent.GetTypeInfo().BaseType;
 			}
 		}
+
+		public static string GetFriendlyName(this Type type)
+		{
+			if (type.IsGenericParameter)
+			{
+				return type.Name;
+			}
+
+			if (!type.IsGeneric())
+			{
+				return type.Name;
+			}
+
+			var builder = new System.Text.StringBuilder();
+			var name = type.Name;
+			var index = name.IndexOf("`");
+			builder.AppendFormat("{0}.{1}", type.Namespace, name.Substring(0, index));
+			builder.Append('<');
+			var first = true;
+
+			foreach (Type arg in type.GetTypeInfo().GenericTypeArguments)
+			{
+				if (!first)
+				{
+					builder.Append(',');
+				}
+
+				builder.Append(arg.GetFriendlyName());
+				first = false;
+			}
+
+			builder.Append('>');
+
+			return builder.ToString();
+		}
 	}
 }
