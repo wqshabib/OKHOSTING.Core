@@ -277,5 +277,10 @@ namespace OKHOSTING.Core
 
 			return builder.ToString();
 		}
+
+		public static string GetFriendlyFullName(this Type type)
+		{
+			return type.Namespace + "." + type.GetFriendlyName();
+		}
 	}
 }
