@@ -141,7 +141,7 @@ namespace OKHOSTING.Core
 					throw new ArgumentOutOfRangeException("type", "Type is not a constructed generic type");
 				}
 
-				return type.GetTypeInfo().GenericTypeParameters.First();
+				return type.GetTypeInfo().GenericTypeArguments.First();
 			}
 			else
 			{

@@ -228,13 +228,13 @@ namespace OKHOSTING.Data.Validation
 		public static bool IsReadOnly(MemberInfo memberInfo)
 		{
 			//ignore readonly properties
-			if (memberInfo is PropertyInfo && ((PropertyInfo)memberInfo).SetMethod == null)
+			if (memberInfo is PropertyInfo && ((PropertyInfo) memberInfo).SetMethod == null)
 			{
 				return true;
 			}
 
 			//ignore readonly fields
-			if (memberInfo is FieldInfo && ((FieldInfo)memberInfo).IsInitOnly)
+			if (memberInfo is FieldInfo && (((FieldInfo) memberInfo).IsInitOnly || ((FieldInfo) memberInfo).IsLiteral))
 			{
 				return true;
 			}

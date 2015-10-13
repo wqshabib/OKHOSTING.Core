@@ -216,8 +216,9 @@ namespace OKHOSTING.Data
 		{
 			//null values
 			if (value == null) return null;
-			
-			return System.Convert.ChangeType(value, Enum.GetUnderlyingType(value.GetType())).ToString();
+
+			//return System.Convert.ChangeType(value, Enum.GetUnderlyingType(value.GetType())).ToString();
+			return value.ToString();
 		}
 
 		/// <summary>
