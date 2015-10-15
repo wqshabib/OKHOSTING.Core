@@ -10,10 +10,10 @@ namespace OKHOSTING.Cryptography.UWP
 	/// <summary>
 	/// Encrypts and decrypts strings, streams and files in a very simple, yet secure way
 	/// </summary>
-	public class SimpleEncryption: OKHOSTING.Cryptography.SimpleEncryption
+	public static class SimpleEncryption
 	{
-		protected const string LocalUser = "LOCAL=user";
-		protected const string LocalMachine = "LOCAL=machine";
+		private const string LocalUser = "LOCAL=user";
+		private const string LocalMachine = "LOCAL=machine";
 
 		/// <summary>
 		/// Encrypts data using local windows user security. 
@@ -23,7 +23,7 @@ namespace OKHOSTING.Cryptography.UWP
 		/// <remarks>
 		/// Pretty safe, but the encrypted data will only be possible to decrypt on this same windows machine because we are using the windows account
 		/// </remarks>
-		public byte[] Encrypt(byte[] unencrypted)
+		public static byte[] Encrypt(byte[] unencrypted)
 		{
 			DataProtectionProvider provider = new DataProtectionProvider(LocalUser);
 			IBuffer buffer = CryptographicBuffer.CreateFromByteArray(unencrypted);
@@ -43,7 +43,7 @@ namespace OKHOSTING.Cryptography.UWP
 		/// <remarks>
 		/// Pretty safe, but the encrypted data will only be possible to decrypt on this same windows machine because we are using the windows account
 		/// </remarks>
-		public byte[] Decrypt(byte[] encrypted)
+		public static byte[] Decrypt(byte[] encrypted)
 		{
 			DataProtectionProvider provider = new DataProtectionProvider(LocalUser);
 			IBuffer buffer = CryptographicBuffer.CreateFromByteArray(encrypted);
@@ -55,7 +55,7 @@ namespace OKHOSTING.Cryptography.UWP
 			return decrypted;
         }
 
-		public async void Encrypt(Stream input, Stream output)
+		public static async void Encrypt(Stream input, Stream output)
 		{
 			var outputStream = output.AsOutputStream();
 			DataProtectionProvider provider = new DataProtectionProvider(LocalUser);
@@ -63,7 +63,7 @@ namespace OKHOSTING.Cryptography.UWP
 			await provider.ProtectStreamAsync(input.AsInputStream(), outputStream);
 		}
 
-		public async void Decrypt(Stream input, Stream output)
+		public static async void Decrypt(Stream input, Stream output)
 		{
 			var outputStream = output.AsOutputStream();
 			DataProtectionProvider provider = new DataProtectionProvider(LocalUser);
@@ -76,7 +76,7 @@ namespace OKHOSTING.Cryptography.UWP
 		/// <summary>
 		/// Encrypts a file
 		/// </summary>
-		public void EncryptFile(string inputFilePath, string outputFilePath)
+		public static void EncryptFile(string inputFilePath, string outputFilePath)
 		{
 			Encrypt(File.OpenRead(inputFilePath), File.OpenWrite(outputFilePath));
 		}
@@ -84,7 +84,7 @@ namespace OKHOSTING.Cryptography.UWP
 		/// <summary>
 		/// Decrypts a file
 		/// </summary>
-		public void DecryptFile(string inputFilePath, string outputFilePath)
+		public static void DecryptFile(string inputFilePath, string outputFilePath)
 		{
 			Decrypt(File.OpenRead(inputFilePath), File.OpenWrite(outputFilePath));
 		}
