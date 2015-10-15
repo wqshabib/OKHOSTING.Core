@@ -96,11 +96,11 @@ namespace OKHOSTING.Cryptography
 				};
 
 			char[] total = (new char[0])
-							.Concat(useLowerCase ? upperCase : new char[0])
-							.Concat(useUpperCase ? lowerCase : new char[0])
-							.Concat(useNumbers ? numerals : new char[0])
-							.Concat(useSymbols ? symbols : new char[0])
-							.ToArray();
+				.Concat(useLowerCase ? upperCase : new char[0])
+				.Concat(useUpperCase ? lowerCase : new char[0])
+				.Concat(useNumbers ? numerals : new char[0])
+				.Concat(useSymbols ? symbols : new char[0])
+				.ToArray();
 
 			var rnd = new Random();
 
