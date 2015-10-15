@@ -26,7 +26,7 @@ namespace OKHOSTING.Data.Validation
 			{
 				MemberInfos.ToList();
 			}
-			catch
+			catch(Exception e)
 			{
 				throw new ArgumentOutOfRangeException("expression", "Member expression is not valid for " + type.FullName);
 			}
@@ -265,7 +265,7 @@ namespace OKHOSTING.Data.Validation
 
 			for (int x = 0; x < splittedMembers.Length; x++)
 			{
-				MemberInfo memberInfo = memberType.GetAllMemberInfos().Where(m => m.Name == splittedMembers[x].Trim() && (m is PropertyInfo || m is FieldInfo)).SingleOrDefault();
+				MemberInfo memberInfo = memberType.GetAllMemberInfos().Where(m => m.Name == splittedMembers[x].Trim() && (m is PropertyInfo || m is FieldInfo)).FirstOrDefault();
 
 				if (memberInfo == null)
 				{

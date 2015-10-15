@@ -258,7 +258,7 @@ namespace OKHOSTING.Core
 			var builder = new System.Text.StringBuilder();
 			var name = type.Name;
 			var index = name.IndexOf("`");
-			builder.AppendFormat("{0}.{1}", type.Namespace, name.Substring(0, index));
+			builder.Append(name.Substring(0, index));
 			builder.Append('<');
 			var first = true;
 
