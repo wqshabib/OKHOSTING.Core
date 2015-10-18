@@ -8,11 +8,11 @@ namespace OKHOSTING.Data.Validation
 	/// that is a specific TypeMap or a subclass of it.
 	/// </summary>
 	/// <example>
-	/// Use this attribute on a DataValues od type TypeMap where you want the TypeMap to be a subclass of a specific TypeMap only.
+	/// Use this attribute on a DataMembers od type TypeMap where you want the TypeMap to be a subclass of a specific TypeMap only.
 	/// PE: you have a MemberMap Product.ProductInstanceType where you want the selected TypeMap to be ProductInstance or a subclass of ProductInstance only
 	/// </example>
 	/// <remarks>
-	/// Applies only DataValues of type TypeMap
+	/// Applies only DataMembers of type TypeMap
 	/// </remarks>
 	public class TypeValidator : MemberValidator
 	{

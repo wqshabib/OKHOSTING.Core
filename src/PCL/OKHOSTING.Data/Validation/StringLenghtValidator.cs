@@ -7,7 +7,7 @@ namespace OKHOSTING.Data.Validation
 	/// Indicates if a Property of Field of type string, must have 
 	/// an specific length
 	/// </summary>
-	/// <remarks>Applies only to string DataValues</remarks>
+	/// <remarks>Applies only to string DataMembers</remarks>
 	public class StringLengthValidator: MemberValidator
 	{
 		public StringLengthValidator()
@@ -69,10 +69,10 @@ namespace OKHOSTING.Data.Validation
 		}
 
 		/// <summary>
-		/// Gets the max lenght of a string DataValue
+		/// Gets the max lenght of a string DataMember
 		/// </summary>
-		/// <param name="dmember">String DataValue that has a StringLengthValidator attribute</param>
-		/// <returns>Maximum lenght of the string DataValue. 0 if no max lenght is defined.</returns>
+		/// <param name="dmember">String DataMember that has a StringLengthValidator attribute</param>
+		/// <returns>Maximum lenght of the string DataMember. 0 if no max lenght is defined.</returns>
 		public static uint GetMaxLenght(System.Reflection.MemberInfo member)
 		{
 			//Validating if the MemberInfo is null
@@ -110,10 +110,10 @@ namespace OKHOSTING.Data.Validation
 		}
 
 		/// <summary>
-		/// Gets the min lenght of a string DataValue
+		/// Gets the min lenght of a string DataMember
 		/// </summary>
-		/// <param name="dmember">String DataValue that has a StringLengthValidator attribute</param>
-		/// <returns>Maximum lenght of the string DataValue. Null if no max lenght is defined.</returns>
+		/// <param name="dmember">String DataMember that has a StringLengthValidator attribute</param>
+		/// <returns>Maximum lenght of the string DataMember. Null if no max lenght is defined.</returns>
 		public static uint GetMinLenght(System.Reflection.MemberInfo member)
 		{
 			//Validating if the MemberInfo is null

@@ -151,7 +151,7 @@ namespace OKHOSTING.Data.Validation
 		/// Object that will be examined
 		/// </param>
 		/// <returns>
-		/// The value of the current DataMember in the specified DataObject
+		/// The value of the current DataMember in the specified Object
 		/// </returns>
 		public static object GetValue(MemberInfo memberInfo, object obj)
 		{
@@ -166,7 +166,7 @@ namespace OKHOSTING.Data.Validation
 		}
 
 		/// <summary>
-		/// Sets the value for this DataValue
+		/// Sets the value for this DataMember
 		/// </summary>
 		/// <param name="obj">
 		/// Object that will be changed

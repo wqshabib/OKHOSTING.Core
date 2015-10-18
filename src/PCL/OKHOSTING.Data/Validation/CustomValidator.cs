@@ -3,7 +3,7 @@ using System;
 namespace OKHOSTING.Data.Validation
 {
 	/// <summary>
-	/// Allows to perform custom validations over DataObjects data
+	/// Allows to perform custom validations over Objects data
 	/// </summary>
 	public class CustomValidator: MemberValidator
 	{

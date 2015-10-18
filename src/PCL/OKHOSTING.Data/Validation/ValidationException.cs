@@ -26,10 +26,10 @@ namespace OKHOSTING.Data.Validation
 		/// <param name="validationError">
 		/// Error that causes the exception throw
 		/// </param>
-		/// <param name="validatedDataObject">
+		/// <param name="validatedObject">
 		/// Referece to object that fails on it validation
 		/// </param>
-		public ValidationException(ValidationError validationError, object validatedDataObject): this(new List<ValidationError> { validationError }, validatedDataObject, string.Empty)
+		public ValidationException(ValidationError validationError, object validatedObject): this(new List<ValidationError> { validationError }, validatedObject, string.Empty)
 		{ 
 		}
 
@@ -39,13 +39,13 @@ namespace OKHOSTING.Data.Validation
 		/// <param name="validationError">
 		/// Error that causes the exception throw
 		/// </param>
-		/// <param name="validatedDataObject">
+		/// <param name="validatedObject">
 		/// Referece to object that fails on it validation
 		/// </param>
 		/// <param name="message">
 		/// Custom Error message
 		/// </param>
-		public ValidationException(ValidationError validationError, object validatedDataObject, string message): this(new List<ValidationError> { validationError }, validatedDataObject, message) 
+		public ValidationException(ValidationError validationError, object validatedObject, string message): this(new List<ValidationError> { validationError }, validatedObject, message) 
 		{ 
 		}
 
@@ -55,10 +55,10 @@ namespace OKHOSTING.Data.Validation
 		/// <param name="validationErrors">
 		/// Array of errors that causes the exception throw
 		/// </param>
-		/// <param name="validatedDataObject">
+		/// <param name="validatedObject">
 		/// Referece to object that fails on it validation
 		/// </param>
-		public ValidationException(IEnumerable<ValidationError> validationErrors, object validatedDataObject) : this(validationErrors, validatedDataObject, string.Empty) 
+		public ValidationException(IEnumerable<ValidationError> validationErrors, object validatedObject) : this(validationErrors, validatedObject, string.Empty) 
 		{ 
 		}
 	
@@ -68,16 +68,16 @@ namespace OKHOSTING.Data.Validation
 		/// <param name="validationErrors">
 		/// Array of errors that causes the exception throw
 		/// </param>
-		/// <param name="validatedDataObject">
+		/// <param name="validatedObject">
 		/// Referece to object that fails on it validation
 		/// </param>
 		/// <param name="message">
 		/// Custom Error message
 		/// </param>
-		public ValidationException(IEnumerable<ValidationError> validationErrors, object validatedDataObject, string message): base(message)
+		public ValidationException(IEnumerable<ValidationError> validationErrors, object validatedObject, string message): base(message)
 		{
 			this.ValidationErrors = validationErrors;
-			this.ValidatedObject = validatedDataObject;
+			this.ValidatedObject = validatedObject;
 		}
 
 		#region Exception Overrides

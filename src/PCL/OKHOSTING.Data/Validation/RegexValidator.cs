@@ -7,7 +7,7 @@ namespace OKHOSTING.Data.Validation
 	/// <summary>
 	/// Implements a validation of regular expressions
 	/// </summary>
-	/// <remarks>Applies only to string DataValues</remarks>
+	/// <remarks>Applies only to string DataMembers</remarks>
 	public class RegexValidator: MemberValidator
 	{
 		public RegexValidator()
