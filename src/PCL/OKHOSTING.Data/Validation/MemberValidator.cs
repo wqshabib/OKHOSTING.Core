@@ -18,7 +18,7 @@ namespace OKHOSTING.Data.Validation
 		}
 
 		/// <summary>
-		/// MemberMap that implements the DataMemberValidator
+		/// Member expression to which the validations will be applied
 		/// </summary>
 		public MemberExpression Member { get; set; }
 	}
