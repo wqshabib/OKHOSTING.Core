@@ -73,7 +73,7 @@ namespace OKHOSTING.Cryptography
 			return WinRTCrypto.CryptographicBuffer.GenerateRandomNumber();
 		}
 
-        public static string CreateRandomPassword(int lenght, bool useNumbers, bool useUpperCase, bool useLowerCase, bool useSymbols)
+		public static string CreateRandomPassword(int lenght, bool useNumbers, bool useUpperCase, bool useLowerCase, bool useSymbols)
 		{
 			var upperCase = new char[]
 				{
