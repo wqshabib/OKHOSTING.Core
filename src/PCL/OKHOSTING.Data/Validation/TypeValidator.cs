@@ -4,20 +4,20 @@ using System.Reflection;
 namespace OKHOSTING.Data.Validation
 {
 	/// <summary>
-	/// Validates that a MemberMap of type TypeMap contains a TypeMap 
+	/// Validates that a MemberExpression of type TypeMap contains a TypeMap 
 	/// that is a specific TypeMap or a subclass of it.
 	/// </summary>
 	/// <example>
 	/// Use this attribute on a DataMembers od type TypeMap where you want the TypeMap to be a subclass of a specific TypeMap only.
-	/// PE: you have a MemberMap Product.ProductInstanceType where you want the selected TypeMap to be ProductInstance or a subclass of ProductInstance only
+	/// PE: you have a MemberExpression Product.ProductInstanceType where you want the selected TypeMap to be ProductInstance or a subclass of ProductInstance only
 	/// </example>
 	/// <remarks>
 	/// Applies only DataMembers of type TypeMap
 	/// </remarks>
-	public class TypeValidator : MemberValidator
+	public class TypeValidator : ValidatorBase
 	{
 		/// <summary>
-		/// The TypeMap (or a subclass of it) that must be selected as a value of the MemberMap
+		/// The TypeMap (or a subclass of it) that must be selected as a value of the MemberExpression
 		/// </summary>
 		public readonly Type Type;
 
@@ -32,7 +32,7 @@ namespace OKHOSTING.Data.Validation
 		/// Construct the validator
 		/// </summary>
 		/// <param name="type">
-		/// Type (or any subclass of it) that can be selected as the Value of the MemberMap
+		/// Type (or any subclass of it) that can be selected as the Value of the MemberExpression
 		/// </param>
 		public TypeValidator(Type type)
 		{
@@ -51,8 +51,8 @@ namespace OKHOSTING.Data.Validation
 			//Local Vars
 			ValidationError error = null;
 
-			//Getting the current value of the associated MemberMap
-			Type val = (Type) Member.GetValue(obj);
+			//Getting the current value of the associated MemberExpression
+			Type val = (Type) obj;
 
 			//Do not validate null values
 			if (val == null) return null;

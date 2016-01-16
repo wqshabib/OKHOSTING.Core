@@ -3,10 +3,10 @@ using System;
 namespace OKHOSTING.Data.Validation
 {
 	/// <summary>
-	/// Validate that the specified MemberMap be between 
+	/// Validate that the specified MemberExpression be between 
 	/// a Minimum and Maximum values
 	/// </summary>
-	public class RangeValidator: MemberValidator
+	public class RangeValidator: ValidatorBase
 	{
 		public RangeValidator()
 		{
@@ -40,8 +40,8 @@ namespace OKHOSTING.Data.Validation
 			//Local Vars
 			ValidationError error = null;
 
-			//Getting the current value of the associated MemberMap
-			IComparable val = (IComparable) Member.GetValue(obj);
+			//Getting the current value of the associated MemberExpression
+			IComparable val = (IComparable) obj;
 
 			//Comparing the value with the minimum and maximum value
 			int resultMin = val.CompareTo(MinValue);

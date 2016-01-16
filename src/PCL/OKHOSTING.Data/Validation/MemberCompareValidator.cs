@@ -4,7 +4,7 @@ namespace OKHOSTING.Data.Validation
 {
 	/// <summary>
 	/// Defines a validation based on the comparison between
-	/// two MemberMap's
+	/// two MemberExpression's
 	/// </summary>
 	public class MemberCompareValidator : CompareValidator
 	{
@@ -12,13 +12,19 @@ namespace OKHOSTING.Data.Validation
 		{
 		}
 
-		public MemberCompareValidator(MemberExpression member, MemberExpression memberToCompare): base(member)
+		public MemberCompareValidator(MemberExpression member, MemberExpression memberToCompare)
 		{
+			Member = member;
 			MemberToCompare = memberToCompare;
 		}
 
 		/// <summary>
-		/// MemberMap to compare with the MemberMap of the validator
+		/// MemberExpression to compare with the MemberToCompare
+		/// </summary>
+		public MemberExpression Member { get; set; }
+
+		/// <summary>
+		/// MemberExpression to compare with the MemberExpression of the validator
 		/// </summary>
 		public MemberExpression MemberToCompare { get; set; }
 
@@ -36,9 +42,10 @@ namespace OKHOSTING.Data.Validation
 
 			//Converting the value to an IComparable interface
 			IComparable memberValue = (IComparable) Member.GetValue(obj);
+			IComparable memberToCompareValue = (IComparable) MemberToCompare.GetValue(obj);
 
 			//Validating
-			error = base.Validate(obj, memberValue);
+			error = base.Validate(memberValue, memberToCompareValue);
 			
 			//Returning the applicable error or null...
 			return error;

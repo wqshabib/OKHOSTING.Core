@@ -26,7 +26,7 @@ namespace OKHOSTING.Data.Validation
 			{
 				MemberInfos.ToList();
 			}
-			catch(Exception e)
+			catch
 			{
 				throw new ArgumentOutOfRangeException("expression", "Member expression is not valid for " + type.FullName);
 			}

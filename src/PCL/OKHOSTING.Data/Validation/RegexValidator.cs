@@ -41,8 +41,8 @@ namespace OKHOSTING.Data.Validation
 			//Local Vars
 			ValidationError error = null;
 
-			//Recover the value of MemberMap associated
-			string currentValue = (string) Member.GetValue(obj);
+			//Recover the value of MemberExpression associated
+			string currentValue = (string) obj;
 
 			//if null, exit
 			if (string.IsNullOrWhiteSpace(currentValue)) return null;
@@ -52,7 +52,7 @@ namespace OKHOSTING.Data.Validation
 			
 			//if doesnt match..
 			if (!regEx.IsMatch(currentValue)) 
-				error = new ValidationError(this, "The MemberMap " + Member + " doesn't match with the regular expression " + Pattern);
+				error = new ValidationError(this, "The MemberExpression " + Member + " doesn't match with the regular expression " + Pattern);
 
 			//Returning the error or null
 			return error;

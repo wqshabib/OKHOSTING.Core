@@ -12,7 +12,7 @@ namespace OKHOSTING.Data.Validation
 		{
 		}
 
-		public ValueCompareValidator(MemberExpression member, IComparable valueToCompare): base(member)
+		public ValueCompareValidator(IComparable valueToCompare)
 		{
 			ValueToCompare = valueToCompare;
 		}
@@ -32,7 +32,7 @@ namespace OKHOSTING.Data.Validation
 		public override ValidationError Validate(object obj)
 		{
 			//Validating
-			return base.Validate(obj, ValueToCompare);
+			return base.Validate((IComparable) obj, ValueToCompare);
 		}
 	}
 }

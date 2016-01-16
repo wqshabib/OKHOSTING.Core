@@ -6,7 +6,7 @@ namespace OKHOSTING.Data.Validation
 	/// <summary>
 	/// Validate if a Property of Field on a Class can be null
 	/// </summary>
-	public class RequiredValidator : MemberValidator
+	public class RequiredValidator : ValidatorBase
 	{
 		/// <summary>
 		/// Constructs the attribute
@@ -27,27 +27,27 @@ namespace OKHOSTING.Data.Validation
 			//Local Vars
 			ValidationError error = null;
 
-			//Recover the value of MemberMap associated
-			object currentValue = Member.GetValue(obj);
+			//Recover the value of MemberExpression associated
+			object currentValue = obj;
 
 			//Validating if the value is null
 			if (currentValue == null)
 			{
-				error = new ValidationError(this, Member + " cannot be null");
+				error = new ValidationError(this, "Object cannot be null");
 			}
-			else if (OKHOSTING.Core.TypeExtensions.IsNumeric(Member.ReturnType))
+			else if (OKHOSTING.Core.TypeExtensions.IsNumeric(obj.GetType()))
 			{
 				if (System.Convert.ToInt64(currentValue) == 0)
 				{
-					error = new ValidationError(this, Member + " cannot be zero");
+					error = new ValidationError(this, "Object cannot be zero");
 				}
 			}
 			//if this is a string, do not allow null nor empty values
-			else if (Member.ReturnType.Equals(typeof(string)))
+			else if (obj is string)
 			{
-				if (string.IsNullOrWhiteSpace((string)currentValue))
+				if (string.IsNullOrWhiteSpace((string) currentValue))
 				{
-					error = new ValidationError(this, Member + " cannot be empty");
+					error = new ValidationError(this, "String cannot be empty");
 				}
 			}
 

@@ -47,8 +47,8 @@ namespace OKHOSTING.Data.Validation
 			//Local Vars
 			ValidationError error = null;
 
-			//Getting the value of the MemberMap
-			string currentValue = (string) Member.GetValue(obj);
+			//Getting the value of the MemberExpression
+			string currentValue = (string) obj;
 
 			//if it's null, and we dont have a MinLenght, omit validation
 			if (currentValue == null && MinLength > 0)

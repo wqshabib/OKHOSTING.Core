@@ -18,7 +18,7 @@ namespace OKHOSTING.Data.Validation
 		public string ErrorMessage { get; set; }
 
 		/// <summary>
-		/// Stores the value of the MemberMap to validate
+		/// Stores the value of the MemberExpression to validate
 		/// </summary>
 		public object Value { get; set; }
 
@@ -29,7 +29,7 @@ namespace OKHOSTING.Data.Validation
 		/// Error message to show if the validation fails
 		/// </param>
 		/// <param name="value">
-		/// Stores the value of the MemberMap to validate
+		/// Stores the value of the MemberExpression to validate
 		/// </param>
 		public ValidationEventArgs(string errorMessage, object value)
 		{
