@@ -33,13 +33,13 @@ namespace OKHOSTING.Data.Validation
 			//Validating if the value is null
 			if (currentValue == null)
 			{
-				error = new ValidationError(this, "Object cannot be null");
+				error = new ValidationError(this, Resources.Strings.OKHOSTING_Data_Validation_RequiredValidator_Errors_Object);
 			}
 			else if (OKHOSTING.Core.TypeExtensions.IsNumeric(obj.GetType()))
 			{
 				if (System.Convert.ToInt64(currentValue) == 0)
 				{
-					error = new ValidationError(this, "Object cannot be zero");
+					error = new ValidationError(this, Resources.Strings.OKHOSTING_Data_Validation_RequiredValidator_Errors_Numeric);
 				}
 			}
 			//if this is a string, do not allow null nor empty values
@@ -47,7 +47,7 @@ namespace OKHOSTING.Data.Validation
 			{
 				if (string.IsNullOrWhiteSpace((string) currentValue))
 				{
-					error = new ValidationError(this, "String cannot be empty");
+					error = new ValidationError(this, Resources.Strings.OKHOSTING_Data_Validation_RequiredValidator_Errors_String);
 				}
 			}
 
@@ -71,14 +71,14 @@ namespace OKHOSTING.Data.Validation
 			{
 				return false;
 			}
-			
-			//else if (OKHOSTING.Core.Extensions.TypeExtensions.IsNumeric(value.GetType()))
-			//{
-			//	if (Convert.ToInt64(value) == 0)
-			//	{
-			//		return false;
-			//	}
-			//}
+
+			else if (OKHOSTING.Core.TypeExtensions.IsNumeric(value.GetType()))
+			{
+				if (System.Convert.ToInt64(value) == 0)
+				{
+					return false;
+				}
+			}
 
 			//if this is a string, do not allow null nor empty values
 			else if (value.GetType().Equals(typeof(string)))

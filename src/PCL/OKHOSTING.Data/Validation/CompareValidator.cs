@@ -48,32 +48,32 @@ namespace OKHOSTING.Data.Validation
 			{
 				case CompareOperator.Equal:
 					if(compareResult != 0)
-						error = new ValidationError(this, "Value must be equal than " + valueToCompare);
+						error = new ValidationError(this, string.Format(Resources.Strings.OKHOSTING_Data_Validation_CompareValidator_Errors_Equal, valueToCompare));
 					break;
 				
 				case CompareOperator.NotEqual:
 					if(compareResult == 0)
-						error = new ValidationError(this, "Value must be different than " + valueToCompare);
+						error = new ValidationError(this, string.Format(Resources.Strings.OKHOSTING_Data_Validation_CompareValidator_Errors_NotEqual, valueToCompare));
 					break;
 
 				case CompareOperator.GreaterThan:
 					if(compareResult <= 0)
-						error = new ValidationError(this, "Value must be greater than than " + valueToCompare);
+						error = new ValidationError(this, string.Format(Resources.Strings.OKHOSTING_Data_Validation_CompareValidator_Errors_GreaterThan, valueToCompare));
 					break;
 
 				case CompareOperator.GreaterThanEqual:
 					if(compareResult < 0)
-						error = new ValidationError(this, "Value must be greater or equal than " + valueToCompare);
+						error = new ValidationError(this, string.Format(Resources.Strings.OKHOSTING_Data_Validation_CompareValidator_Errors_GreaterThanEqual, valueToCompare));
 					break;
 
 				case CompareOperator.LessThan:
 					if(compareResult >= 0)
-						error = new ValidationError(this, "Value must be less than " + valueToCompare);
+						error = new ValidationError(this, string.Format(Resources.Strings.OKHOSTING_Data_Validation_CompareValidator_Errors_LessThan, valueToCompare));
 					break;
 
 				case CompareOperator.LessThanEqual:
 					if(compareResult > 0)
-						error = new ValidationError(this, "Value must be less or equal than " + valueToCompare);
+						error = new ValidationError(this, string.Format(Resources.Strings.OKHOSTING_Data_Validation_CompareValidator_Errors_LessThanEqual, valueToCompare));
 					break;
 			}
 			

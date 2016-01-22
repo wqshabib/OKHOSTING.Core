@@ -60,7 +60,7 @@ namespace OKHOSTING.Data.Validation
 			//Verifying if the value is equal to the Parent TypeMap or is a subclass of it
 			if (!val.Equals(Type) || !val.GetTypeInfo().IsSubclassOf(Type))
 			{
-				error = new ValidationError(this, "Type " + val + " is not equal or a subclass of " + Type);
+				error = new ValidationError(this, string.Format(Resources.Strings.OKHOSTING_Data_Validation_TypeValidator_Error, val, Type));
 			}
 
 			//Returning the applicable error or null

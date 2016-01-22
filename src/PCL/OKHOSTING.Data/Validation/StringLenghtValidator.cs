@@ -8,7 +8,7 @@ namespace OKHOSTING.Data.Validation
 	/// an specific length
 	/// </summary>
 	/// <remarks>Applies only to string DataMembers</remarks>
-	public class StringLengthValidator: MemberValidator
+	public class StringLengthValidator: ValidatorBase
 	{
 		public StringLengthValidator()
 		{
@@ -53,27 +53,27 @@ namespace OKHOSTING.Data.Validation
 			//if it's null, and we dont have a MinLenght, omit validation
 			if (currentValue == null && MinLength > 0)
 			{
-				error = new ValidationError(this, "String can't be an empty string on field " + Member);
+				error = new ValidationError(this, string.Format(Resources.Strings.OKHOSTING_Data_Validation_StringLengthValidator_Errors_Empty));
 			}
 
 			//Perform the applicable validation
 
 			if (MaxLength != 0 && currentValue.Length > MaxLength)
-				error = new ValidationError(this, "String length must not be greater than " + MaxLength + " on field " + Member);
+				error = new ValidationError(this, string.Format(Resources.Strings.OKHOSTING_Data_Validation_StringLengthValidator_Errors_MaxLength, MaxLength));
 				
 			if (MinLength != 0 && currentValue.Length < MinLength)
-				error = new ValidationError(this, "String length must be greater than " + MinLength + " on field " + Member);
+				error = new ValidationError(this, string.Format(Resources.Strings.OKHOSTING_Data_Validation_StringLengthValidator_Errors_MinLength, MinLength));
 
 			//Returning the error or null
 			return error;
 		}
 
 		/// <summary>
-		/// Gets the max lenght of a string DataMember
+		/// Gets the max length of a string DataMember
 		/// </summary>
 		/// <param name="dmember">String DataMember that has a StringLengthValidator attribute</param>
-		/// <returns>Maximum lenght of the string DataMember. 0 if no max lenght is defined.</returns>
-		public static uint GetMaxLenght(System.Reflection.MemberInfo member)
+		/// <returns>Maximum length of the string DataMember. 0 if no max lenght is defined.</returns>
+		public static uint GetMaxLength(System.Reflection.MemberInfo member)
 		{
 			//Validating if the MemberInfo is null
 			if (member == null) throw new ArgumentNullException("member");
@@ -114,7 +114,7 @@ namespace OKHOSTING.Data.Validation
 		/// </summary>
 		/// <param name="dmember">String DataMember that has a StringLengthValidator attribute</param>
 		/// <returns>Maximum lenght of the string DataMember. Null if no max lenght is defined.</returns>
-		public static uint GetMinLenght(System.Reflection.MemberInfo member)
+		public static uint GetMinLength(System.Reflection.MemberInfo member)
 		{
 			//Validating if the MemberInfo is null
 			if (member == null) throw new ArgumentNullException("member");

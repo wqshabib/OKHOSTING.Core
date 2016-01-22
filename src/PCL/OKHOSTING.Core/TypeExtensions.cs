@@ -282,5 +282,63 @@ namespace OKHOSTING.Core
 		{
 			return type.Namespace + "." + type.GetFriendlyName();
 		}
+
+		public static string GetFriendlyName(this MemberInfo member)
+		{
+			if (member == null)
+			{
+				throw new ArgumentNullException(nameof(member));
+			}
+
+			if (member is MethodInfo)
+			{
+				return GetFriendlyName((MethodInfo) member);
+			}
+			else
+			{
+				return member.Name;
+			}
+		}
+
+		public static string GetFriendlyFullName(this MemberInfo member)
+		{
+			if (member == null)
+			{
+				throw new ArgumentNullException(nameof(member));
+			}
+
+			if (member is MethodInfo)
+			{
+				return GetFriendlyFullName((MethodInfo) member);
+			}
+			else
+			{
+				return member.Name;
+			}
+		}
+
+		public static string GetFriendlyName(this MethodInfo method)
+		{
+			if (method == null)
+			{
+				throw new ArgumentNullException("method");
+			}
+
+			//get full method signature
+			string signature = method.ToString();
+
+			//remove return type
+			signature = signature.Substring(signature.IndexOf(' '));
+
+			//remove blank spaces
+			signature = signature.Replace(" ", "");
+
+			return signature;
+		}
+
+		public static string GetFriendlyFullName(this MethodInfo method)
+		{
+			return method.DeclaringType.GetFriendlyFullName() + "." + method.GetFriendlyName();
+		}
 	}
 }

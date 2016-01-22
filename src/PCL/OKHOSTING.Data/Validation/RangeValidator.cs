@@ -50,7 +50,7 @@ namespace OKHOSTING.Data.Validation
 			//Verifying if the range is fulfilled
 			if (resultMin < 0 || resultMax > 0)
 			{
-				error = new ValidationError(this, "DataProperty value must be between " + MinValue + " and " + MaxValue + " (inclusive)");
+				error = new ValidationError(this, string.Format(Resources.Strings.OKHOSTING_Data_Validation_RangeValidator_Error, MinValue, MaxValue));
 			}
 
 			//Returning the applicable error or null

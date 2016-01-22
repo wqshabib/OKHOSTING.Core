@@ -8,12 +8,8 @@ namespace OKHOSTING.Data.Validation
 	/// Implements a validation of regular expressions
 	/// </summary>
 	/// <remarks>Applies only to string DataMembers</remarks>
-	public class RegexValidator: MemberValidator
+	public class RegexValidator: ValidatorBase
 	{
-		public RegexValidator()
-		{
-		}
-
 		public RegexValidator(string pattern)
 		{
 			if (string.IsNullOrWhiteSpace(pattern))
@@ -49,10 +45,12 @@ namespace OKHOSTING.Data.Validation
 
 			//Performing the validation
 			Regex regEx = new Regex(Pattern);
-			
+
 			//if doesnt match..
-			if (!regEx.IsMatch(currentValue)) 
-				error = new ValidationError(this, "The MemberExpression " + Member + " doesn't match with the regular expression " + Pattern);
+			if (!regEx.IsMatch(currentValue))
+			{
+				error = new ValidationError(this, string.Format(Resources.Strings.OKHOSTING_Data_Validation_RegexValidator_Error, Pattern));
+			}
 
 			//Returning the error or null
 			return error;
