@@ -1,72 +1,72 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
   <file datatype="xml" source-language="en-US" target-language="pt" original="OKHOSTING.DATA/RESOURCES/STRINGS.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
-    <header>
-      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.1517.0" tool-company="Microsoft" />
-    </header>
-    <body>
-      <group id="OKHOSTING.DATA/RESOURCES/STRINGS.RESX" datatype="resx">
-        <trans-unit id="OKHOSTING_Data_Validation_CompareValidator_Errors_Equal" translate="yes" xml:space="preserve">
-          <source>Value must be equal than '{0}'</source>
-          <target state="new">Value must be equal than '{0}'</target>
-        </trans-unit>
-        <trans-unit id="OKHOSTING_Data_Validation_CompareValidator_Errors_GreaterThan" translate="yes" xml:space="preserve">
-          <source>Value must be greater than '{0}'</source>
-          <target state="new">Value must be greater than '{0}'</target>
-        </trans-unit>
-        <trans-unit id="OKHOSTING_Data_Validation_CompareValidator_Errors_GreaterThanEqual" translate="yes" xml:space="preserve">
-          <source>Value must be greater or equal than '{0}'</source>
-          <target state="new">Value must be greater or equal than '{0}'</target>
-        </trans-unit>
-        <trans-unit id="OKHOSTING_Data_Validation_CompareValidator_Errors_LessThan" translate="yes" xml:space="preserve">
-          <source>Value must be less than '{0}'</source>
-          <target state="new">Value must be less than '{0}'</target>
-        </trans-unit>
-        <trans-unit id="OKHOSTING_Data_Validation_CompareValidator_Errors_LessThanEqual" translate="yes" xml:space="preserve">
-          <source>Value must be less or equal than '{0}'</source>
-          <target state="new">Value must be less or equal than '{0}'</target>
-        </trans-unit>
-        <trans-unit id="OKHOSTING_Data_Validation_CompareValidator_Errors_NotEqual" translate="yes" xml:space="preserve">
-          <source>Value must be different than '{0}'</source>
-          <target state="new">Value must be different than '{0}'</target>
-        </trans-unit>
-        <trans-unit id="OKHOSTING_Data_Validation_RangeValidator_Error" translate="yes" xml:space="preserve">
-          <source>Value must be between {0} and {1} (inclusive)</source>
-          <target state="new">Value must be between {0} and {1} (inclusive)</target>
-        </trans-unit>
-        <trans-unit id="OKHOSTING_Data_Validation_RegexValidator_Error" translate="yes" xml:space="preserve">
-          <source>Value does not mactch regex pattern '{1}'</source>
-          <target state="new">Value does not mactch regex pattern '{1}'</target>
-        </trans-unit>
-        <trans-unit id="OKHOSTING_Data_Validation_RequiredValidator_Errors_Numeric" translate="yes" xml:space="preserve">
-          <source>Object cannot be zero</source>
-          <target state="new">Object cannot be zero</target>
-        </trans-unit>
-        <trans-unit id="OKHOSTING_Data_Validation_RequiredValidator_Errors_Object" translate="yes" xml:space="preserve">
-          <source>Object cannot be null</source>
-          <target state="new">Object cannot be null</target>
-        </trans-unit>
-        <trans-unit id="OKHOSTING_Data_Validation_RequiredValidator_Errors_String" translate="yes" xml:space="preserve">
-          <source>String cannot be empty</source>
-          <target state="new">String cannot be empty</target>
-        </trans-unit>
-        <trans-unit id="OKHOSTING_Data_Validation_StringLengthValidator_Errors_Empty" translate="yes" xml:space="preserve">
-          <source>String can't be an empty string</source>
-          <target state="new">String can't be an empty string</target>
-        </trans-unit>
-        <trans-unit id="OKHOSTING_Data_Validation_StringLengthValidator_Errors_MaxLength" translate="yes" xml:space="preserve">
-          <source>String length must not be greater than {0}</source>
-          <target state="new">String length must not be greater than {0}</target>
-        </trans-unit>
-        <trans-unit id="OKHOSTING_Data_Validation_StringLengthValidator_Errors_MinLength" translate="yes" xml:space="preserve">
-          <source>String length must be at least {0}</source>
-          <target state="new">String length must be at least {0}</target>
-        </trans-unit>
-        <trans-unit id="OKHOSTING_Data_Validation_TypeValidator_Error" translate="yes" xml:space="preserve">
-          <source>Type {0} is not equal or a subclass of {1}</source>
-          <target state="new">Type {0} is not equal or a subclass of {1}</target>
-        </trans-unit>
-      </group>
-    </body>
+	<header>
+	  <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.1517.0" tool-company="Microsoft" />
+	</header>
+	<body>
+	  <group id="OKHOSTING.DATA/RESOURCES/STRINGS.RESX" datatype="resx">
+		<trans-unit id="OKHOSTING_Data_Validation_CompareValidator_Errors_Equal" translate="yes" xml:space="preserve">
+		  <source>Value must be equal than '{0}'</source>
+		  <target state="new">Value must be equal than '{0}'</target>
+		</trans-unit>
+		<trans-unit id="OKHOSTING_Data_Validation_CompareValidator_Errors_GreaterThan" translate="yes" xml:space="preserve">
+		  <source>Value must be greater than '{0}'</source>
+		  <target state="new">Value must be greater than '{0}'</target>
+		</trans-unit>
+		<trans-unit id="OKHOSTING_Data_Validation_CompareValidator_Errors_GreaterThanEqual" translate="yes" xml:space="preserve">
+		  <source>Value must be greater or equal than '{0}'</source>
+		  <target state="new">Value must be greater or equal than '{0}'</target>
+		</trans-unit>
+		<trans-unit id="OKHOSTING_Data_Validation_CompareValidator_Errors_LessThan" translate="yes" xml:space="preserve">
+		  <source>Value must be less than '{0}'</source>
+		  <target state="new">Value must be less than '{0}'</target>
+		</trans-unit>
+		<trans-unit id="OKHOSTING_Data_Validation_CompareValidator_Errors_LessThanEqual" translate="yes" xml:space="preserve">
+		  <source>Value must be less or equal than '{0}'</source>
+		  <target state="new">Value must be less or equal than '{0}'</target>
+		</trans-unit>
+		<trans-unit id="OKHOSTING_Data_Validation_CompareValidator_Errors_NotEqual" translate="yes" xml:space="preserve">
+		  <source>Value must be different than '{0}'</source>
+		  <target state="new">Value must be different than '{0}'</target>
+		</trans-unit>
+		<trans-unit id="OKHOSTING_Data_Validation_RangeValidator_Error" translate="yes" xml:space="preserve">
+		  <source>Value must be between {0} and {1} (inclusive)</source>
+		  <target state="new">Value must be between {0} and {1} (inclusive)</target>
+		</trans-unit>
+		<trans-unit id="OKHOSTING_Data_Validation_RegexValidator_Error" translate="yes" xml:space="preserve">
+		  <source>Value does not mactch regex pattern '{1}'</source>
+		  <target state="new">Value does not mactch regex pattern '{1}'</target>
+		</trans-unit>
+		<trans-unit id="OKHOSTING_Data_Validation_RequiredValidator_Errors_Numeric" translate="yes" xml:space="preserve">
+		  <source>Object cannot be zero</source>
+		  <target state="new">Object cannot be zero</target>
+		</trans-unit>
+		<trans-unit id="OKHOSTING_Data_Validation_RequiredValidator_Errors_Object" translate="yes" xml:space="preserve">
+		  <source>Object cannot be null</source>
+		  <target state="new">Object cannot be null</target>
+		</trans-unit>
+		<trans-unit id="OKHOSTING_Data_Validation_RequiredValidator_Errors_String" translate="yes" xml:space="preserve">
+		  <source>String cannot be empty</source>
+		  <target state="new">String cannot be empty</target>
+		</trans-unit>
+		<trans-unit id="OKHOSTING_Data_Validation_StringLengthValidator_Errors_Empty" translate="yes" xml:space="preserve">
+		  <source>String can't be an empty string</source>
+		  <target state="new">String can't be an empty string</target>
+		</trans-unit>
+		<trans-unit id="OKHOSTING_Data_Validation_StringLengthValidator_Errors_MaxLength" translate="yes" xml:space="preserve">
+		  <source>String length must not be greater than {0}</source>
+		  <target state="new">String length must not be greater than {0}</target>
+		</trans-unit>
+		<trans-unit id="OKHOSTING_Data_Validation_StringLengthValidator_Errors_MinLength" translate="yes" xml:space="preserve">
+		  <source>String length must be at least {0}</source>
+		  <target state="new">String length must be at least {0}</target>
+		</trans-unit>
+		<trans-unit id="OKHOSTING_Data_Validation_TypeValidator_Error" translate="yes" xml:space="preserve">
+		  <source>Type {0} is not equal or a subclass of {1}</source>
+		  <target state="new">Type {0} is not equal or a subclass of {1}</target>
+		</trans-unit>
+	  </group>
+	</body>
   </file>
 </xliff>
