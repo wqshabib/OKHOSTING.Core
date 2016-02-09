@@ -53,7 +53,7 @@ namespace OKHOSTING.Cryptography.UWP
 			CryptographicBuffer.CopyToByteArray(decryptedBuffer, out decrypted);
 
 			return decrypted;
-        }
+		}
 
 		public static async void Encrypt(Stream input, Stream output)
 		{

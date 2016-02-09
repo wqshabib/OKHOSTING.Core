@@ -10,9 +10,9 @@ namespace OKHOSTING.Core.Test
 		public void CryptographyTest()
 		{
 			string unencrypted = "hola k ase";
-            string password = "mypassword";
+			string password = "mypassword";
 
-            string encrypted = Cryptography.SimpleEncryption.Encrypt(unencrypted, password);
+			string encrypted = Cryptography.SimpleEncryption.Encrypt(unencrypted, password);
 			string decrypted = Cryptography.SimpleEncryption.Decrypt(unencrypted, password);
 
 			Assert.AreEqual(unencrypted, decrypted);
