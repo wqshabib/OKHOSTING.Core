@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>OKHOSTING.Core.NuGet</id>
-    <version>1.0.0</version>
-    <title>OKHOSTING.Core.NuGet</title>
-    <authors>david</authors>
+    <id>OKHOSTING.Core</id>
+    <version>1.0.3</version>
+    <title>OKHOSTING.Core</title>
+    <authors>Edgard David Iván Muñoz Chávez</authors>
     <owners>OK HOSTING</owners>
     <description>
-      A long description of the package. This shows up in the right pane of the Add Package Dialog as well as in the Package Manager Console when listing packages using the Get-Package command.
-    </description>
+	  Common base functionality for all your projects. Extensions for String, DateTime, Chat, Type, Dictionary and some regex patterns
+	</description>
     <releaseNotes>
     </releaseNotes>
     <summary>
-      Contains OKHOSTING.Core library
-    </summary>
+	  Common base functionality for all your projects. Extensions for String, DateTime, Chat, Type, Dictionary and some regex patterns
+	</summary>
     <language>en-US</language>
-    <projectUrl>https://nuget.org/packages/OKHOSTING.Core</projectUrl>
+    <projectUrl>https://github.com/okhosting/OKHOSTING.Core</projectUrl>
     <iconUrl>https://secure.gravatar.com/userimage/8287993/d34695a3d6ba468b101932e8571bc5b5.jpg?size=50</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
@@ -25,7 +25,7 @@
         </group>
     </dependencies>
     <references></references>
-    <tags>OK HOSTING</tags>
+    <tags>okhosting, extensions</tags>
   </metadata>
   <files>
     <file src="lib\" target="lib" />

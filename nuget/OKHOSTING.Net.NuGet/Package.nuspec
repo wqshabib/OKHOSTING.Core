@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+	<id>OKHOSTING.Net</id>
+	<version>1.0.1</version>
+	<title>OKHOSTING.Net</title>
+	<authors>Edgard David Iván Muñoz Chávez</authors>
+	<owners>OK HOSTING</owners>
+	<description>
+	  Common base functionality for all your projects. Internet conection, telnet conections, http requests, sessions, sending mail with templates, and geo localization
+	</description>
+	<releaseNotes>
+	</releaseNotes>
+	<summary>
+	  Common base functionality for all your projects. Internet conection, telnet conections, http requests, sessions, sending mail with templates, and geo localization
+	</summary>
+	<language>en-US</language>
+	<projectUrl>https://github.com/okhosting/OKHOSTING.Core</projectUrl>
+	<iconUrl>https://secure.gravatar.com/userimage/8287993/d34695a3d6ba468b101932e8571bc5b5.jpg?size=50</iconUrl>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+	<copyright>Copyright OK HOSTING SC 2015</copyright>
+	<dependencies>
+	  <dependency id="OKHOSTING.Core" />
+	</dependencies>
+	<references></references>
+	<tags>okhosting, telnet, httml, mail, smtp, geoip</tags>
+  </metadata>
+  <files>
+	<file src="lib\" target="lib" />
+	<file src="tools\" target="tools" />
+	<file src="content\" target="content" />
+  </files>
+</package>

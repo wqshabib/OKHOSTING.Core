@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0451BAEF-DF2E-4B98-8644-94EE9415E389}</ProjectGuid>
+    <ProjectGuid>{30593182-16A4-4461-B5A8-46DA45999952}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OKHOSTING.Core.NuGet</RootNamespace>
-    <AssemblyName>OKHOSTING.Core.NuGet</AssemblyName>
+    <RootNamespace>OKHOSTING.Data.NuGet</RootNamespace>
+    <AssemblyName>OKHOSTING.Data.NuGet</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -60,14 +60,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="content\" />
+    <Folder Include="src\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="lib\net45\OKHOSTING.Core.dll" />
-    <Content Include="lib\net45\OKHOSTING.Core.Net4.dll" />
-    <Content Include="lib\net45\OKHOSTING.Core.Net4.pdb" />
-    <Content Include="lib\net45\OKHOSTING.Core.pdb" />
-    <Content Include="lib\OKHOSTING.Core.dll" />
-    <Content Include="lib\OKHOSTING.Core.pdb" />
+    <Content Include="lib\OKHOSTING.Data.dll" />
+    <Content Include="lib\OKHOSTING.Data.pdb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
