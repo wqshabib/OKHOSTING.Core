@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>OKHOSTING.Core</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <title>OKHOSTING.Core</title>
     <authors>Edgard David Iván Muñoz Chávez</authors>
     <owners>OK HOSTING</owners>
@@ -15,10 +15,10 @@
 	  Common base functionality for all your projects. Extensions for String, DateTime, Chat, Type, Dictionary and some regex patterns
 	</summary>
     <language>en-US</language>
-    <projectUrl>https://github.com/okhosting/OKHOSTING.Core</projectUrl>
-    <iconUrl>https://secure.gravatar.com/userimage/8287993/d34695a3d6ba468b101932e8571bc5b5.jpg?size=50</iconUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+	<projectUrl>http://okhosting.com/</projectUrl>
+	<iconUrl>http://okhosting.com/wp-content/uploads/2016/02/okhosting-150x150.png</iconUrl>
+	<requireLicenseAcceptance>true</requireLicenseAcceptance>
+	<licenseUrl>http://okhosting.com/open-source-license</licenseUrl>
     <copyright>Copyright OK HOSTING SC 2015</copyright>
     <dependencies>
         <group targetFramework="net40">
