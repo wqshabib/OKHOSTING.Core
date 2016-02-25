@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 
 [assembly: AssemblyTitle("OKHOSTING.Core")]
-[assembly: AssemblyDescription("Common base functionality for all your projects. Extensions for String, DateTime, Chat, Type, Dictionary and some regex patterns")]
+[assembly: AssemblyDescription("Common base functionality for all your projects. Extensions for String, DateTime, Chat, Type, Dictionary and some regex patterns. https://github.com/okhosting/OKHOSTING.Core")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("OK HOSTING")]
 [assembly: AssemblyProduct("OKHOSTING.Core")]

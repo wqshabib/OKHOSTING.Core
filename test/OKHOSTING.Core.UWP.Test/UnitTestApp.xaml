@@ -1,8 +1,0 @@
-﻿<Application
-    x:Class="OKHOSTING.Core.UWP.Test.App"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:OKHOSTING.Core.UWP.Test"
-    RequestedTheme="Light">
-
-</Application>

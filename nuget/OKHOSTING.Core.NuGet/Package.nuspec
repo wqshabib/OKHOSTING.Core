@@ -2,17 +2,20 @@
 <package >
   <metadata>
     <id>OKHOSTING.Core</id>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <title>OKHOSTING.Core</title>
     <authors>Edgard David Iván Muñoz Chávez</authors>
     <owners>OK HOSTING</owners>
     <description>
-	  Common base functionality for all your projects. Extensions for String, DateTime, Chat, Type, Dictionary and some regex patterns
+	  Common base functionality for all your projects. 
+	  On PCL  you get: Extensions for String, DateTime, Chat, Type, Dictionary and some regex patterns.
+	  On Net4 you get: Logs, session, configuration, autostart, config. 
+	  Please visit: https://github.com/okhosting/OKHOSTING.Core
 	</description>
     <releaseNotes>
     </releaseNotes>
     <summary>
-	  Common base functionality for all your projects. Extensions for String, DateTime, Chat, Type, Dictionary and some regex patterns
+	  Common base functionality for all your projects. 
 	</summary>
     <language>en-US</language>
 	<projectUrl>http://okhosting.com/</projectUrl>
@@ -25,7 +28,7 @@
         </group>
     </dependencies>
     <references></references>
-    <tags>okhosting, extensions</tags>
+    <tags>okhosting, extensions, logs, session, configuration, autostart</tags>
   </metadata>
   <files>
     <file src="lib\" target="lib" />

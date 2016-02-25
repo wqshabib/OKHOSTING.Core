@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 
 [assembly: AssemblyTitle("OKHOSTING.Core.Net4")]
-[assembly: AssemblyDescription("Common base functionality for all your projects on Net4. Logs, session, configuration, autostart, config.")]
+[assembly: AssemblyDescription("Common base functionality for all your projects on Net4. Logs, session, configuration, autostart, config. https://github.com/okhosting/OKHOSTING.Core")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("OK HOSTING")]
 [assembly: AssemblyProduct("OKHOSTING.Core.Net4")]
