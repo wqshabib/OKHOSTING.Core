@@ -18,6 +18,7 @@ PM> Install-Package OKHOSTING.Core
 
 * Base classes for extending Dictionary<,> and List<>
 * Extension methods for Type, String, Char, DateTime, XmlDocument and some others
+* Simplified cryptography, based on PCLCrypto
 
 ## Net4
 
@@ -31,6 +32,10 @@ PM> Install-Package OKHOSTING.Core
 * Geolocalize an IP address
 * Create a Telnet connection 
 * Reand / write your web.config settings
+
+## UWP
+
+* Simplified cryptography
 
 ## Samples
 

@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>OKHOSTING.Core</id>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <title>OKHOSTING.Core</title>
     <authors>Edgard David Iván Muñoz Chávez</authors>
     <owners>OK HOSTING</owners>
@@ -26,6 +26,10 @@
 	  * Geolocalize an IP address
 	  * Create a Telnet connection
 	  * Reand / write your web.config settings
+
+	  ## UWP
+
+	  * Simplified cryptography
 
 	  Please visit: https://github.com/okhosting/OKHOSTING.Core
 	</description>
