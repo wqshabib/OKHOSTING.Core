@@ -50,7 +50,7 @@
         </group>
     </dependencies>
     <references></references>
-    <tags>okhosting, extensions, logs, session, configuration, autostart</tags>
+    <tags>okhosting, extensions, logs, session, configuration, autostart, cryptograpy</tags>
   </metadata>
   <files>
     <file src="lib\" target="lib" />
