@@ -2,7 +2,7 @@
 
 Common basic functionality for any project.
 
-![Build status](https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva?svg=true)
+[![Build status](https://ci.appveyor.com/api/projects/status/b3ti92v0t8vvyobi?svg=true)](https://ci.appveyor.com/project/okhosting/okhosting-core)
 
 [![Join the chat at https://gitter.im/okhosting/OKHOSTING.Core](https://badges.gitter.im/okhosting/OKHOSTING.Core.svg)](https://gitter.im/okhosting/OKHOSTING.Core?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
