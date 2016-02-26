@@ -1,5 +1,7 @@
 # OKHOSTING.Core
 
+Common basic functionality for any project.
+
 ![Build status](https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva?svg=true)
 
 [![Join the chat at https://gitter.im/okhosting/OKHOSTING.Core](https://badges.gitter.im/okhosting/OKHOSTING.Core.svg)](https://gitter.im/okhosting/OKHOSTING.Core?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -11,10 +13,6 @@ PM> Install-Package OKHOSTING.Core
 ```
 
 [Download on NuGet](https://www.nuget.org/packages/OKHOSTING.Core/)
-
-## Overview
-
-Common basic functionality for any project, including:
 
 ## PCL, usable from any device
 
