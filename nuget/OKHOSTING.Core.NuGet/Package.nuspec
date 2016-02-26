@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>OKHOSTING.Core</id>
-    <version>1.0.8</version>
+    <version>1.0.9</version>
     <title>OKHOSTING.Core</title>
     <authors>Edgard David Iván Muñoz Chávez</authors>
     <owners>OK HOSTING</owners>
@@ -46,7 +46,7 @@
 	<licenseUrl>http://okhosting.com/open-source-license</licenseUrl>
     <copyright>Copyright OK HOSTING SC 2015</copyright>
     <dependencies>
-	  <dependency id="PCLCrypto" />
+	  <dependency id="PCLCrypto" version="1.0.86" />
 	</dependencies>
     <references></references>
     <tags>okhosting, extensions, logs, session, configuration, autostart, cryptograpy</tags>
