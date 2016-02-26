@@ -37,7 +37,7 @@ PM> Install-Package OKHOSTING.Core
 
 * Simplified cryptography
 
-## Samples
+## Examples
 
 On PCL you can use some simple but usefull extensions for String, DateTime, Type, Char, etc.
 
