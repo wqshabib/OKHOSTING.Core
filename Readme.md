@@ -1,7 +1,5 @@
 # OKHOSTING.Core
 
-Common basic functionality for any project, including:
-
 ![Build status](https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva?svg=true)
 
 [![Join the chat at https://gitter.im/okhosting/OKHOSTING.Core](https://badges.gitter.im/okhosting/OKHOSTING.Core.svg)](https://gitter.im/okhosting/OKHOSTING.Core?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -14,6 +12,9 @@ PM> Install-Package OKHOSTING.Core
 
 [Download on NuGet](https://www.nuget.org/packages/OKHOSTING.Core/)
 
+## Overview
+
+Common basic functionality for any project, including:
 
 ## PCL, usable from any device
 
@@ -22,14 +23,16 @@ PM> Install-Package OKHOSTING.Core
 
 ## Net4
 
-* Logging
-* Autostart
-* App config
-* Shell proxy
+* Write log files
+* Set any executable to Autostart on user login
+* Shell proxy you can use to execute sequential command line commands
 * Send email with templates
-* Geolocation
-* Telnet
-* Session
+* Handle desktop/web user session's with the same code
+* Send email templates
+* Chek if there's an internet connection
+* Geolocalize an IP address
+* Create a Telnet connection 
+* Reand / write your web.config settings
 
 ## Samples
 

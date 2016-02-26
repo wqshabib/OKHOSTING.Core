@@ -2,17 +2,35 @@
 <package >
   <metadata>
     <id>OKHOSTING.Core</id>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <title>OKHOSTING.Core</title>
     <authors>Edgard David Iván Muñoz Chávez</authors>
     <owners>OK HOSTING</owners>
     <description>
-	  Common base functionality for all your projects. 
-	  On PCL  you get: Extensions for String, DateTime, Chat, Type, Dictionary and some regex patterns.
-	  On Net4 you get: Logs, session, configuration, autostart, config. 
+	  Common base functionality for all your projects.
+	  
+	  ## PCL, usable from any device
+
+	  * Base classes for extending Dictionary&lt;,&gt; and List&lt;&gt;
+	  * Extension methods for Type, String, Char, DateTime, XmlDocument and some others
+
+	  ## Net4
+
+	  * Write log files
+	  * Set any executable to Autostart on user login
+	  * Shell proxy you can use to execute sequential command line commands
+	  * Send email with templates
+	  * Handle desktop/web user session's with the same code
+	  * Send email templates
+	  * Chek if there's an internet connection
+	  * Geolocalize an IP address
+	  * Create a Telnet connection
+	  * Reand / write your web.config settings
+
 	  Please visit: https://github.com/okhosting/OKHOSTING.Core
 	</description>
     <releaseNotes>
+		Added Net namespace
     </releaseNotes>
     <summary>
 	  Common base functionality for all your projects. 

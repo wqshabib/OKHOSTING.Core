@@ -50,8 +50,20 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="MyConfiguration.cs" />
+    <Compile Include="Net4Test.cs" />
+    <Compile Include="PCLTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Net4\OKHOSTING.Core.Net4\OKHOSTING.Core.Net4.csproj">
+      <Project>{46bdaec2-7677-4223-b009-940db478a220}</Project>
+      <Name>OKHOSTING.Core.Net4</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\PCL\OKHOSTING.Core\OKHOSTING.Core.csproj">
+      <Project>{3f4502fa-51ea-4cb9-8e50-46f828d240a1}</Project>
+      <Name>OKHOSTING.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
