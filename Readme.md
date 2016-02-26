@@ -12,7 +12,7 @@ Common basic functionality for any project, including:
 PM> Install-Package OKHOSTING.Core 
 ```
 
-[!Download on NuGet](https://www.nuget.org/packages/OKHOSTING.Core/)
+[Download on NuGet](https://www.nuget.org/packages/OKHOSTING.Core/)
 
 
 ## PCL, usable from any device
