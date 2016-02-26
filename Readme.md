@@ -1,5 +1,8 @@
 Common basic functionality for any project, including:
 
+(https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva?svg=true)
+
+
 # PCL, usable from any device
 
 * Base classes for extending Dictionary<,> and List<>
