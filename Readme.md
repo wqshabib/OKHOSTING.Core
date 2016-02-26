@@ -1,16 +1,18 @@
+# OKHOSTING.Core
+
 Common basic functionality for any project, including:
 
 ![Build status](https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva?svg=true)
 
-
-# PCL, usable from any device
-
 [![Join the chat at https://gitter.im/okhosting/OKHOSTING.Core](https://badges.gitter.im/okhosting/OKHOSTING.Core.svg)](https://gitter.im/okhosting/OKHOSTING.Core?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+
+## PCL, usable from any device
 
 * Base classes for extending Dictionary<,> and List<>
 * Extension methods for Type, String, Char, DateTime, XmlDocument and some others
 
-# Net4
+## Net4
 
 * Logging
 * Autostart
@@ -21,7 +23,7 @@ Common basic functionality for any project, including:
 * Telnet
 * Session
 
-# Samples
+## Samples
 
 On PCL you can use some simple but usefull extensions for String, DateTime, Type, Char, etc.
 
