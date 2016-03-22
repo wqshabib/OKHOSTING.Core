@@ -109,11 +109,11 @@ namespace OKHOSTING.Core
 
 				if (baseType.GetTypeInfo().IsInterface)
 				{
-					platformSpecificType = platformSpecificAssembly.DefinedTypes.Where(dt => dt.ImplementedInterfaces.Contains(baseType) && !dt.IsAbstract);
+					platformSpecificType = platformSpecificAssembly.DefinedTypes.Where(dt => dt.ImplementedInterfaces.Contains(baseType) && !dt.IsAbstract).OrderBy(dt => dt.ImplementedInterfaces.Count());
 				}
 				else
 				{
-					platformSpecificType = platformSpecificAssembly.DefinedTypes.Where(dt => dt.IsSubclassOf(baseType) && !dt.IsAbstract);
+					platformSpecificType = platformSpecificAssembly.DefinedTypes.Where(dt => dt.IsSubclassOf(baseType) && !dt.IsAbstract).OrderBy(dt => Core.TypeExtensions.GetAllParents(dt.AsType()).Count());
 				}
 
 				if (platformSpecificType.Count() == 0)
@@ -122,11 +122,11 @@ namespace OKHOSTING.Core
 				}
 				else if (platformSpecificType.Count() > 1)
 				{
-					throw new NotImplementedException("There is more than one platform-specific implementation for type " + baseType);
+					//throw new NotImplementedException("There is more than one platform-specific implementation for type " + baseType);
 				}
 
 				//get the one type that we must use
-				PlatformSpecificTypes[baseType] = platformSpecificType.Single().AsType();
+				PlatformSpecificTypes[baseType] = platformSpecificType.First().AsType();
 			}
 
 			//finally just create the instance
