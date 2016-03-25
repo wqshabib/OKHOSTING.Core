@@ -18,7 +18,7 @@ namespace OKHOSTING.Core
 	{
 		/// <summary>
 		/// Here we store the actual type (platform specific) that we must invoke when creating an object. You can just init this dictionary at app startup or use the Create
-        /// method that takes possible platforms to search for the right imeplementation of the type you need
+		/// method that takes possible platforms to search for the right imeplementation of the type you need
 		/// </summary>
 		public readonly static Dictionary<Type, Type> PlatformSpecificTypes = new Dictionary<Type, Type>();
 
@@ -37,7 +37,7 @@ namespace OKHOSTING.Core
 			return Create<T>(null, null);
 		}
 
-        /// <summary>
+		/// <summary>
 		/// Create a platform-specific object, for any feature you need to be platform-specific
 		/// </summary>
 		/// <typeparam name="T">Type of the object. Can be any type of object</typeparam>
@@ -48,30 +48,30 @@ namespace OKHOSTING.Core
 		/// Use this for platform specific features like storage, streaming, settings or whatever you need
 		/// </remarks>
 		public static T Create<T>(params object[] arguments)
-        {
-            return Create<T>(null, arguments);
-        }
+		{
+			return Create<T>(null, arguments);
+		}
 
-        /// <summary>
-        /// Create a platform-specific object, for any feature you need to be platform-specific
-        /// </summary>
-        /// <typeparam name="T">Type of the object. Can be any type of object</typeparam>
-        /// <param name="possiblePlatforms">
-        /// Names of the platforms that a PCL library has as platform-specifc implementations. We will look in assemblies that are named the same
-        /// as T's assembly with with a sufix for the platform name
-        /// </param>
-        /// <returns>
-        /// An instance of type T
-        /// </returns>
-        /// <remarks>
-        /// Use this for platform specific features like storage, streaming, settings or whatever you need
-        /// </remarks>
-        /// <example>
-        /// If you are looking for an implementation of type OKHOSTING.Files.ILocalFileSystem and you provide possible platforms "Xamarin.Android" and "UWP"
-        /// we will look into the assemblies named "OKHOSTING.Files.Xamarin.Android" and "OKHOSTING.Files.UWP" for one classes that imlements ILocalFileSystem and
-        /// create an instance of that found type
-        /// </example>
-        public static T Create<T>(IEnumerable<string> possiblePlatforms, params object[] arguments)
+		/// <summary>
+		/// Create a platform-specific object, for any feature you need to be platform-specific
+		/// </summary>
+		/// <typeparam name="T">Type of the object. Can be any type of object</typeparam>
+		/// <param name="possiblePlatforms">
+		/// Names of the platforms that a PCL library has as platform-specifc implementations. We will look in assemblies that are named the same
+		/// as T's assembly with with a sufix for the platform name
+		/// </param>
+		/// <returns>
+		/// An instance of type T
+		/// </returns>
+		/// <remarks>
+		/// Use this for platform specific features like storage, streaming, settings or whatever you need
+		/// </remarks>
+		/// <example>
+		/// If you are looking for an implementation of type OKHOSTING.Files.ILocalFileSystem and you provide possible platforms "Xamarin.Android" and "UWP"
+		/// we will look into the assemblies named "OKHOSTING.Files.Xamarin.Android" and "OKHOSTING.Files.UWP" for one classes that imlements ILocalFileSystem and
+		/// create an instance of that found type
+		/// </example>
+		public static T Create<T>(IEnumerable<string> possiblePlatforms, params object[] arguments)
 		{
 			Type baseType = typeof(T);
 
