@@ -2,9 +2,9 @@
 <package >
   <metadata>
     <id>OKHOSTING.Core</id>
-    <version>1.0.12</version>
+    <version>1.0.14</version>
     <title>OKHOSTING.Core</title>
-    <authors>Edgard David Iván Muñoz Chávez</authors>
+    <authors>OK HOSTING</authors>
     <owners>OK HOSTING</owners>
     <description>
 	  Common base functionality for all your projects.

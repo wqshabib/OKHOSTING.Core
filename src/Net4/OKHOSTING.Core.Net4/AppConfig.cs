@@ -22,9 +22,9 @@ namespace OKHOSTING.Core.Net4
 		/// <summary>
 		/// Creates a new instance and loads the current app configuration
 		/// </summary>
-		public AppConfig(): this(((Assembly.GetEntryAssembly()).GetName()).Name + ".exe.config")
+		public AppConfig(): this(System.Web.HttpContext.Current == null ? ((Assembly.GetEntryAssembly()).GetName()).Name + ".exe.config" : System.Web.HttpContext.Current.Server.MapPath("~/Web.config"))
 		{
-		}
+        }
 
 		protected AppConfig(string fileName)
 		{

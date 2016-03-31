@@ -41,21 +41,6 @@ namespace OKHOSTING.Core
 		/// Create a platform-specific object, for any feature you need to be platform-specific
 		/// </summary>
 		/// <typeparam name="T">Type of the object. Can be any type of object</typeparam>
-		/// <returns>
-		/// An instance of type T
-		/// </returns>
-		/// <remarks>
-		/// Use this for platform specific features like storage, streaming, settings or whatever you need
-		/// </remarks>
-		public static T Create<T>(params object[] arguments)
-		{
-			return Create<T>(null, arguments);
-		}
-
-		/// <summary>
-		/// Create a platform-specific object, for any feature you need to be platform-specific
-		/// </summary>
-		/// <typeparam name="T">Type of the object. Can be any type of object</typeparam>
 		/// <param name="possiblePlatforms">
 		/// Names of the platforms that a PCL library has as platform-specifc implementations. We will look in assemblies that are named the same
 		/// as T's assembly with with a sufix for the platform name
