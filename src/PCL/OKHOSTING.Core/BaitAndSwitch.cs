@@ -75,6 +75,19 @@ namespace OKHOSTING.Core
 					AssemblyName assemblyName = new AssemblyName(baseType.GetTypeInfo().Assembly.FullName);
 					assemblyName.Name += "." + platform;
 
+					//try using the patform as a sufix of the assembly name, using the base type T's assembly as name's prefix
+					try
+					{
+						platformSpecificAssembly = Assembly.Load(assemblyName);
+						break;
+					}
+					catch (System.IO.FileNotFoundException)
+					{
+					}
+
+					//try again using the platform as the complete assembly name
+					assemblyName = new AssemblyName(platform);
+
 					try
 					{
 						platformSpecificAssembly = Assembly.Load(assemblyName);

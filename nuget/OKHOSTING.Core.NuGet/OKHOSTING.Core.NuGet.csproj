@@ -60,18 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="content\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="lib\net45\OKHOSTING.Core.dll" />
-    <Content Include="lib\net45\OKHOSTING.Core.Net4.dll" />
-    <Content Include="lib\net45\OKHOSTING.Core.Net4.pdb" />
-    <Content Include="lib\net45\OKHOSTING.Core.pdb" />
-    <Content Include="lib\OKHOSTING.Core.dll" />
-    <Content Include="lib\OKHOSTING.Core.pdb" />
-    <Content Include="lib\win8\OKHOSTING.Core.dll" />
-    <Content Include="lib\win8\OKHOSTING.Core.pdb" />
-    <Content Include="lib\win8\OKHOSTING.Core.UWP.dll" />
-    <Content Include="lib\win8\OKHOSTING.Core.UWP.pdb" />
+    <Folder Include="lib\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

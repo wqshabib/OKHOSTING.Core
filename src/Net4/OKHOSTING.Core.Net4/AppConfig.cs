@@ -24,7 +24,7 @@ namespace OKHOSTING.Core.Net4
 		/// </summary>
 		public AppConfig(): this(System.Web.HttpContext.Current == null ? ((Assembly.GetEntryAssembly()).GetName()).Name + ".exe.config" : System.Web.HttpContext.Current.Server.MapPath("~/Web.config"))
 		{
-        }
+		}
 
 		protected AppConfig(string fileName)
 		{

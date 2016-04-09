@@ -110,43 +110,51 @@ namespace OKHOSTING.Core
 		/// </summary>
 		public static bool IsCollection(this Type type)
 		{
-			return type.GetAllImplementedInterfaces().Where(i => i.Equals(typeof(System.Collections.IEnumerable))).Count() > 0;
+			return type.GetAllImplementedInterfaces().Where(i => i.Equals(typeof(System.Collections.IEnumerable))).Any();
 		}
 
-		/// <summary>
-		/// Returns the type of elements that a collection can contain
-		/// </summary>
-		/// <param name="type">Collection type, that implements IEnumerable</param>
-		/// <returns>The type of the elements that this collection contanis</returns>
-		/// <example>
-		/// If type is string[], will return string.
-		/// If type is IEnumerable<bool>, will return bool.
-		/// </example>
-		public static Type GetCollectionItemType(this Type type)
+        /// <summary>
+        /// Returns the type of elements that a collection can contain
+        /// </summary>
+        /// <param name="type">Collection type, that implements IEnumerable</param>
+        /// <returns>The type of the elements that this collection contanis</returns>
+        /// <example>
+        /// If type is string[], will return string.
+        /// If type is IEnumerable<bool>, will return bool.
+        /// If type is KeyValuePair<int, bool>, will return bool.
+        /// </example>
+        public static Type GetCollectionItemType(this Type type)
 		{
 			if (!type.IsCollection())
 			{
 				throw new ArgumentOutOfRangeException("type", "Type is not a collection");
 			}
+            else if (type.IsArray)
+            {
+                return type.GetElementType();
+            }
+            else if (type.IsGeneric())
+            {
+                if (!type.IsConstructedGenericType)
+                {
+                    throw new ArgumentOutOfRangeException("type", "Type is not a constructed generic type");
+                }
 
-			if (type.IsArray)
-			{
-				return type.GetElementType();
-			}
+                Type itemType = type.GetTypeInfo().GenericTypeArguments.Single();
 
-			if (type.IsGeneric())
-			{
-				if (!type.IsConstructedGenericType)
-				{
-					throw new ArgumentOutOfRangeException("type", "Type is not a constructed generic type");
-				}
-
-				return type.GetTypeInfo().GenericTypeArguments.First();
-			}
-			else
-			{
-				return typeof(object);
-			}
+                if (itemType.GetTypeInfo().IsSubclassOf(typeof(KeyValuePair<,>)))
+                {
+                    return itemType.GetTypeInfo().GenericTypeArguments.Last();
+                }
+                else
+                {
+                    return itemType.GetTypeInfo().GenericTypeArguments.Single();
+                }
+            }
+            else
+            {
+                return typeof(object);
+            }
 		}
 
 		public static bool IsCompilerGenerated(this MemberInfo memberinfo)
