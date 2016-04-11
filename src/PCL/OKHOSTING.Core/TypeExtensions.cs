@@ -148,7 +148,7 @@ namespace OKHOSTING.Core
                 }
                 else
                 {
-                    return itemType.GetTypeInfo().GenericTypeArguments.Single();
+                    return itemType;
                 }
             }
             else
