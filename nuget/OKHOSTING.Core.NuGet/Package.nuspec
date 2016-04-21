@@ -1,65 +1,72 @@
 <?xml version="1.0"?>
 <package >
-  <metadata>
-    <id>OKHOSTING.Core</id>
-    <version>1.0.17</version>
-    <title>OKHOSTING.Core</title>
-    <authors>OK HOSTING</authors>
-    <owners>OK HOSTING</owners>
-    <description>
-	  Common base functionality for all your projects.
-	  
-	  ## PCL, usable from any device
+	<metadata>
+		<id>OKHOSTING.Core</id>
+		<version>1.0.20</version>
+		<title>OKHOSTING.Core</title>
+		<authors>OK HOSTING</authors>
+		<owners>OK HOSTING</owners>
+		<description>
+			Common base functionality for all your projects.
 
-	  * Base classes for extending Dictionary&lt;,&gt; and List&lt;&gt;
-	  * Extension methods for Type, String, Char, DateTime, XmlDocument and some others
+			## PCL, usable from any device
 
-	  ## Net4
+			* Base classes for extending Dictionary&lt;,&gt; and List&lt;&gt;
+			* Extension methods for Type, String, Char, DateTime, XmlDocument and some others
 
-	  * Write log files
-	  * Set any executable to Autostart on user login
-	  * Shell proxy you can use to execute sequential command line commands
-	  * Send email with templates
-	  * Handle desktop/web user session's with the same code
-	  * Send email templates
-	  * Chek if there's an internet connection
-	  * Geolocalize an IP address
-	  * Create a Telnet connection
-	  * Reand / write your web.config settings
+			## Net4
 
-	  ## UWP
+			* Write log files
+			* Set any executable to Autostart on user login
+			* Shell proxy you can use to execute sequential command line commands
+			* Send email with templates
+			* Handle desktop/web user session's with the same code
+			* Send email templates
+			* Chek if there's an internet connection
+			* Geolocalize an IP address
+			* Create a Telnet connection
+			* Reand / write your web.config settings
 
-	  * Simplified cryptography
+			## UWP
 
-	  Please visit: https://github.com/okhosting/OKHOSTING.Core
-	</description>
-    <releaseNotes>
-		Added Net namespace
-    </releaseNotes>
-    <summary>
-	  Common base functionality for all your projects. 
-	</summary>
-    <language>en-US</language>
-	<projectUrl>http://okhosting.com/</projectUrl>
-	<iconUrl>http://okhosting.com/resources/uploads/2016/02/okhosting-150x150.png</iconUrl>
-	<requireLicenseAcceptance>true</requireLicenseAcceptance>
-	<licenseUrl>http://okhosting.com/open-source-license</licenseUrl>
-    <copyright>Copyright OK HOSTING SC 2015</copyright>
-    <dependencies>
-	  <dependency id="PCLCrypto" version="1.0.86" />
-	</dependencies>
-    <references></references>
-    <tags>okhosting, extensions, logs, session, configuration, autostart, cryptograpy</tags>
-  </metadata>
-  <files>
-	<file src="..\..\src\PCL\OKHOSTING.Core\bin\Release\OKHOSTING.Core.dll" target="lib" />
-	<file src="..\..\src\PCL\OKHOSTING.Core\bin\Release\OKHOSTING.Core.pdb" target="lib" />
-	<file src="..\..\src\Net4\OKHOSTING.Core.Net4\bin\Release\OKHOSTING.Core.Net4.dll" target="lib\net45" />
-	<file src="..\..\src\Net4\OKHOSTING.Core.Net4\bin\Release\OKHOSTING.Core.Net4.pdb" target="lib\net45" />
-	<file src="..\..\src\UWP\OKHOSTING.Core.UWP\bin\Release\OKHOSTING.Core.UWP.dll" target="lib\win8" />
-	<file src="..\..\src\UWP\OKHOSTING.Core.UWP\bin\Release\OKHOSTING.Core.UWP.pdb" target="lib\win8" />
-	<file src="lib\" target="lib" />
-    <file src="tools\" target="tools" />
-    <file src="content\" target="content" />
-  </files>
+			* Simplified cryptography
+
+			Please visit: https://github.com/okhosting/OKHOSTING.Core
+		</description>
+		<releaseNotes>
+			Encription fixed
+		</releaseNotes>
+		<summary>
+			Common base functionality for all your projects.
+		</summary>
+		<language>en-US</language>
+		<projectUrl>http://okhosting.com/</projectUrl>
+		<iconUrl>http://okhosting.com/resources/uploads/2016/02/okhosting-150x150.png</iconUrl>
+		<requireLicenseAcceptance>true</requireLicenseAcceptance>
+		<licenseUrl>http://okhosting.com/open-source-license</licenseUrl>
+		<copyright>Copyright OK HOSTING SC 2015</copyright>
+		<dependencies>
+			<dependency id="PCLCrypto" version="2.0.14" />
+		</dependencies>
+		<references></references>
+		<tags>okhosting, extensions, logs, session, configuration, autostart, cryptograpy</tags>
+	</metadata>
+	<files>
+		<file src="..\..\src\PCL\OKHOSTING.Core\bin\Release\OKHOSTING.Core.dll" target="lib" />
+		<file src="..\..\src\PCL\OKHOSTING.Core\bin\Release\OKHOSTING.Core.pdb" target="lib" />
+		
+		<file src="..\..\src\PCL\OKHOSTING.Core\bin\Release\OKHOSTING.Core.dll" target="lib\net45" />
+		<file src="..\..\src\PCL\OKHOSTING.Core\bin\Release\OKHOSTING.Core.pdb" target="lib\net45" />
+		<file src="..\..\src\Net4\OKHOSTING.Core.Net4\bin\Release\OKHOSTING.Core.Net4.dll" target="lib\net45" />
+		<file src="..\..\src\Net4\OKHOSTING.Core.Net4\bin\Release\OKHOSTING.Core.Net4.pdb" target="lib\net45" />
+
+		<file src="..\..\src\PCL\OKHOSTING.Core\bin\Release\OKHOSTING.Core.dll" target="lib\win8" />
+		<file src="..\..\src\PCL\OKHOSTING.Core\bin\Release\OKHOSTING.Core.pdb" target="lib\win8" />
+		<file src="..\..\src\UWP\OKHOSTING.Core.UWP\bin\Release\OKHOSTING.Core.UWP.dll" target="lib\win8" />
+		<file src="..\..\src\UWP\OKHOSTING.Core.UWP\bin\Release\OKHOSTING.Core.UWP.pdb" target="lib\win8" />
+
+		<file src="lib\" target="lib" />
+		<file src="tools\" target="tools" />
+		<file src="content\" target="content" />
+	</files>
 </package>

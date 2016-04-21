@@ -25,5 +25,17 @@ namespace OKHOSTING.Core.Test
 			Assert.IsTrue(date.IsWeekend());
 			Assert.Equals(date.GetLastDayOfMonth(), new DateTime(2016, 2, 29));
 		}
+
+		[TestMethod]
+		public void Encrypt()
+		{
+			const string password = "your password goes here and you know it";
+			const string message = "super secret message quiet!!";
+
+			string encrypted = Cryptography.SimpleEncryption.Encrypt(message, password);
+			string decrypted = Cryptography.SimpleEncryption.Decrypt(encrypted, password);
+
+			Assert.AreEqual(message, decrypted);
+		}
 	}
 }

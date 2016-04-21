@@ -18,11 +18,20 @@ namespace OKHOSTING.Core.Cryptography
 		/// <returns>A encrypted string</returns>
 		public static byte[] Encrypt(byte[] unencrypted, string password)
 		{
-			byte[] keyMaterial = WinRTCrypto.CryptographicBuffer.ConvertStringToBinary(password, Encoding.Unicode);
-			var provider = WinRTCrypto.SymmetricKeyAlgorithmProvider.OpenAlgorithm(SymmetricAlgorithm.AesCbcPkcs7);
-			var key = provider.CreateSymmetricKey(keyMaterial);
+			// Get the MD5 key hash (you can as well use the binary of the key string)
+			var keyHash = GetMD5Hash(password);
 
-			return WinRTCrypto.CryptographicEngine.Encrypt(key, unencrypted);
+			// Open a symmetric algorithm provider for the specified algorithm.
+			var aes = WinRTCrypto.SymmetricKeyAlgorithmProvider.OpenAlgorithm(SymmetricAlgorithm.AesEcbPkcs7);
+
+			// Create a symmetric key.
+			var symetricKey = aes.CreateSymmetricKey(keyHash);
+
+			// The input key must be securely shared between the sender of the cryptic message
+			// and the recipient. The initialization vector must also be shared but does not
+			// need to be shared in a secure manner. If the sender encodes a message string
+			// to a buffer, the binary encoding method must also be shared with the recipient.
+			return WinRTCrypto.CryptographicEngine.Encrypt(symetricKey, unencrypted, null);
 		}
 
 		/// <summary>
@@ -33,11 +42,16 @@ namespace OKHOSTING.Core.Cryptography
 		/// <returns>A decrypted string</returns>
 		public static byte[] Decrypt(byte[] encrypted, string password)
 		{
-			byte[] keyMaterial = WinRTCrypto.CryptographicBuffer.ConvertStringToBinary(password, Encoding.Unicode);
-			var provider = WinRTCrypto.SymmetricKeyAlgorithmProvider.OpenAlgorithm(SymmetricAlgorithm.AesCbcPkcs7);
-			var key = provider.CreateSymmetricKey(keyMaterial);
+			// Get the MD5 key hash (you can as well use the binary of the key string)
+			var keyHash = GetMD5Hash(password);
 
-			return WinRTCrypto.CryptographicEngine.Decrypt(key, encrypted);
+			// Open a symmetric algorithm provider for the specified algorithm.
+			var aes = WinRTCrypto.SymmetricKeyAlgorithmProvider.OpenAlgorithm(SymmetricAlgorithm.AesEcbPkcs7);
+
+			// Create a symmetric key.
+			var symetricKey = aes.CreateSymmetricKey(keyHash);
+
+			return WinRTCrypto.CryptographicEngine.Decrypt(symetricKey, encrypted, null);
 		}
 
 		#region Support methods
@@ -50,7 +64,13 @@ namespace OKHOSTING.Core.Cryptography
 		/// <returns>A encrypted string</returns>
 		public static string Encrypt(string strToEncrypt, string password)
 		{
-			return BytesToString(Encrypt(StringToBytes(strToEncrypt), password));
+			byte[] buffer = WinRTCrypto.CryptographicBuffer.ConvertStringToBinary(strToEncrypt, Encoding.UTF8);
+			byte[] encrypted = Encrypt(buffer, password);
+			
+			// Convert the encrypted buffer to a string (for display).
+			// We are using Base64 to convert bytes to string since you might get unmatched characters
+			// in the encrypted buffer that we cannot convert to string with UTF8.
+			return WinRTCrypto.CryptographicBuffer.EncodeToBase64String(encrypted);
 		}
 
 		/// <summary>
@@ -61,7 +81,11 @@ namespace OKHOSTING.Core.Cryptography
 		/// <returns>A decrypted string</returns>
 		public static string Decrypt(string strEncrypted, string password)
 		{
-			return BytesToString(Decrypt(StringToBytes(strEncrypted), password));
+			// Create a buffer that contains the encoded message to be decrypted.
+			var toDecryptBuffer = WinRTCrypto.CryptographicBuffer.DecodeFromBase64String(strEncrypted);
+			var decryptedBuffer = Decrypt(toDecryptBuffer, password);
+			
+			return WinRTCrypto.CryptographicBuffer.ConvertBinaryToString(Encoding.UTF8, decryptedBuffer);
 		}
 
 		/// <summary>
@@ -116,17 +140,27 @@ namespace OKHOSTING.Core.Cryptography
 		/// </summary>
 		public static byte[] CreateRandomKey(uint length)
 		{
-			return WinRTCrypto.CryptographicBuffer.GenerateRandom(length);
+			return WinRTCrypto.CryptographicBuffer.GenerateRandom((int) length);
 		}
 
-		public static string BytesToString(byte[] data)
+		private static byte[] GetMD5Hash(string key)
 		{
-			return WinRTCrypto.CryptographicBuffer.EncodeToBase64String(data);
-		}
+			// Convert the message string to binary data.
+			var buffUtf8Msg = WinRTCrypto.CryptographicBuffer.ConvertStringToBinary(key, Encoding.UTF8);
 
-		public static byte[] StringToBytes(string data)
-		{
-			return WinRTCrypto.CryptographicBuffer.DecodeFromBase64String(data);
+			// Create a HashAlgorithmProvider object.
+			var objAlgProv = WinRTCrypto.HashAlgorithmProvider.OpenAlgorithm(HashAlgorithm.Md5);
+
+			// Hash the message.
+			var buffHash = objAlgProv.HashData(buffUtf8Msg);
+
+			// Verify that the hash length equals the length specified for the algorithm.
+			if (buffHash.Length != objAlgProv.HashLength)
+			{
+				throw new Exception("There was an error creating the hash");
+			}
+
+			return buffHash;
 		}
 
 		#endregion
