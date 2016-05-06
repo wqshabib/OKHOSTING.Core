@@ -75,7 +75,6 @@
     <Compile Include="Net\Mail\MailNotSentException.cs" />
     <Compile Include="Net\Mail\MailTemplate.cs" />
     <Compile Include="Net\Session.cs" />
-    <Compile Include="Net\StringExtensions.cs" />
     <Compile Include="Net\TelnetConnection.cs" />
     <Compile Include="Net\WebConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

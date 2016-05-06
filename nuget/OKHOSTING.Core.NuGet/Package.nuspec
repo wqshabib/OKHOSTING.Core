@@ -2,7 +2,7 @@
 <package >
 	<metadata>
 		<id>OKHOSTING.Core</id>
-		<version>1.0.20</version>
+		<version>1.0.21</version>
 		<title>OKHOSTING.Core</title>
 		<authors>OK HOSTING</authors>
 		<owners>OK HOSTING</owners>
@@ -11,7 +11,6 @@
 
 			## PCL, usable from any device
 
-			* Base classes for extending Dictionary&lt;,&gt; and List&lt;&gt;
 			* Extension methods for Type, String, Char, DateTime, XmlDocument and some others
 
 			## Net4
@@ -34,7 +33,7 @@
 			Please visit: https://github.com/okhosting/OKHOSTING.Core
 		</description>
 		<releaseNotes>
-			Encription fixed
+			Moved string extensions HtmlToText and TextToHtml to PCL
 		</releaseNotes>
 		<summary>
 			Common base functionality for all your projects.
