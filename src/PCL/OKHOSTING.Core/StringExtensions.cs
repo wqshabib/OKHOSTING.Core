@@ -60,13 +60,12 @@ namespace OKHOSTING.Core
 		/// <returns>String correctly formatted for html presentation</returns>
 		public static string TextToHtml(this string text)
 		{
+			if (string.IsNullOrWhiteSpace(text))
+			{
+				return string.Empty;
+			}
 
-            if (string.IsNullOrWhiteSpace(text))
-            {
-                return string.Empty;
-            }
-
-            string html;
+			string html;
 
 			html = System.Net.WebUtility.HtmlEncode(text);
 			html = html.Replace("\n", "<br />");
@@ -81,12 +80,12 @@ namespace OKHOSTING.Core
 		/// <returns>Text version of the html string</returns>
 		public static string HtmlToText(this string html)
 		{
-            if (string.IsNullOrWhiteSpace(html))
-            {
-                return string.Empty;
-            }
+			if (string.IsNullOrWhiteSpace(html))
+			{
+				return string.Empty;
+			}
 
-            Regex regex;
+			Regex regex;
 			string text = html;
 
 			//decode
