@@ -2,13 +2,19 @@
 
 namespace OKHOSTING.Core
 {
-	/// <summary>
-	/// Extension methods for System.Char
-	/// </summary>
-	public static class CharExtensions
+    /// <summary>
+    /// Extension methods for System.Char
+    /// <para xml:lang="es">
+    /// Los métodos de extensión para System.Char
+    /// </para>
+    /// </summary>
+    public static class CharExtensions
 	{
-		/// <summary>
-		/// Defines categories for Chars
+        /// <summary>
+        /// Defines categories for Chars
+        /// <para xml:lang="es">
+        /// Define las categorías de Caracteres
+        /// </para>
 		/// </summary>
 		public enum CharCategory
 		{
@@ -24,10 +30,25 @@ namespace OKHOSTING.Core
 			Unknown
 		}
 
-		/// <summary>
-		/// Returns the category of a Char
-		/// </summary>
-		public static CharCategory Category(this char c)
+        /// <summary>
+        /// Returns the category of a Char
+        /// <para xml:lang="es">
+        /// Devuelve la categoría de un Char
+        /// </para>
+        /// </summary>
+        /// <param name="c">
+        /// Which returns the character category
+        /// <para xml:lang="es">
+        /// Carácter del cual devuelve la categoría
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// category of a Char
+        /// <para xml:lang="es">
+        /// categoria del caracter
+        /// </para>
+        /// </returns>
+        public static CharCategory Category(this char c)
 		{
 			//Local vars
 			CharCategory category = CharCategory.Unknown;
