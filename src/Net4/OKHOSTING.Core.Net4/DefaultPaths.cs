@@ -28,7 +28,7 @@ namespace OKHOSTING.Core.Net4
 		{
 			get
 			{
-				return DefaultPaths.Base + @"Custom\";
+				return System.IO.Path.Combine(Base, "Custom");
 			}
 		}
 	}
