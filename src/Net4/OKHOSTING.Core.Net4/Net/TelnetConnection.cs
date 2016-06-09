@@ -13,18 +13,39 @@ namespace OKHOSTING.Core.Net4.Net
 {
 	/// <summary>
 	/// Telnet verbs
+    /// <para xml:lang="es">
+    /// Verbos para comandos telnet
+    /// </para>
 	/// </summary>
 	enum Verbs
 	{
+        /// <summary>
+        /// 
+        /// </summary>
 		WILL = 251,
+        /// <summary>
+        /// 
+        /// </summary>
 		WONT = 252,
+        /// <summary>
+        /// 
+        /// </summary>
 		DO = 253,
+        /// <summary>
+        /// 
+        /// </summary>
 		DONT = 254,
+        /// <summary>
+        /// 
+        /// </summary>
 		IAC = 255
 	}
 
 	/// <summary>
 	/// Telnet options
+    /// <para xml:lang="es">
+    /// Opciones para comandos telnet
+    /// </para>
 	/// </summary>
 	enum Options
 	{
@@ -33,20 +54,29 @@ namespace OKHOSTING.Core.Net4.Net
 		
 	/// <summary>
 	/// Implements the funcionality for telnet protocol
+    /// <para xml:lang="es">
+    /// Implementa la funcionalidad para el protocolo telnet
+    /// </para>
 	/// </summary>
 	public class TelnetConnection
 	{
-		#region Fields
+        #region Fields
 
-		/// <summary>
-		/// Private TCP socket used for telnet comunication
-		/// </summary>
-		private TcpClient tcpSocket;
+        /// <summary>
+        /// Private TCP socket used for telnet comunication
+        /// <para xml:lang="es">
+        /// socket TCP privada utilizada para la comunicación telnet
+        /// </para>
+        /// </summary>
+        private TcpClient tcpSocket;
 
-		/// <summary>
-		/// Timeout for telnet commands execution (on milliseconds)
-		/// </summary>
-		public int Timeout;
+        /// <summary>
+        /// Timeout for telnet commands execution (on milliseconds)
+        /// <para xml:lang="es">
+        /// Tiempo de espera para la ejecución de comandos de telnet (en milisegundos)
+        /// </para>
+        /// </summary>
+        public int Timeout;
 
 		#endregion
 
@@ -54,80 +84,133 @@ namespace OKHOSTING.Core.Net4.Net
 
 		/// <summary>
 		/// Class constructor
-		/// </summary>
+        /// <para xml:lang="es">
+        /// Constructor de la clase
+        /// </para>
 		/// <param name="Hostname">
 		/// Host name or address
+        /// <para xml:lang="es">
+        /// Nombre del host o direccion
+        /// </para>
 		/// </param>
 		/// <param name="Port">
 		/// Port for comunication
+        /// <para xml:lang="es">
+        /// Puerto de comunicacion
+        /// </para>
 		/// </param>
 		public TelnetConnection(string Hostname, int Port) : this(Hostname, Port, 1000) { }
 
-		/// <summary>
-		/// Class constructor
-		/// </summary>
-		/// <param name="Hostname">
-		/// Host name or address
-		/// </param>
-		/// <param name="Port">
-		/// Port for comunication
-		/// </param>
-		/// <param name="Timeout">
-		/// Timeout for telnet commands execution (on milliseconds)
-		/// </param>
-		public TelnetConnection(string Hostname, int Port, int Timeout)
+        /// <summary>
+        /// Class constructor
+        /// <para xml:lang="es">
+        /// Constructor de clase
+        /// </para>
+        /// </summary>
+        /// <param name="Hostname">
+        /// Host name or address
+        /// <para xml:lang="es">
+        /// Nombre del host o direccion
+        /// </para>
+        /// </param>
+        /// <param name="Port">
+        /// Port for comunication
+        /// <para xml:lang="es">
+        /// Puerto de comunicacion
+        /// </para>
+        /// </param>
+        /// <param name="Timeout">
+        /// Timeout for telnet commands execution (on milliseconds)
+        /// <para xml:lang="es">
+        /// Tiempo de espera para la ejecución de comandos de telnet (en milisegundos)
+        /// </para>
+        /// </param>
+        public TelnetConnection(string Hostname, int Port, int Timeout)
 		{
 			//Initializing socket and comunications timeout
 			tcpSocket = new TcpClient(Hostname, Port);
 			this.Timeout = Timeout;
 		}
 
-		/// <summary>
-		/// Class destructor
-		/// </summary>
-		~TelnetConnection() { Close(); }
+        /// <summary>
+        /// Class destructor
+        /// <para xml:lang="es">
+        /// Destructor de la clase
+        /// </para>
+        /// </summary>
+        ~TelnetConnection() { Close(); }
 
-		#endregion
+        #endregion
 
-		#region Telnet client implementation
+        #region Telnet client implementation
 
-		/// <summary>
-		/// Return a boolean value that indicates if the connection is currently established
-		/// </summary>
-		public bool IsConnected
+        /// <summary>
+        /// Return a boolean value that indicates if the connection is currently established
+        /// <para xml:lang="es">
+        /// Devolver un valor booleano que indica si se ha establecido la conexión actualmente
+        /// </para>
+        /// </summary>
+        public bool IsConnected
 		{ get { return tcpSocket.Client.Connected; } }
 
-		/// <summary>
-		/// Try to do login on telnet server
-		/// </summary>
-		/// <param name="Username">
-		/// User name for login
-		/// </param>
-		/// <param name="Password">
-		/// Password for login
-		/// </param>
-		/// <returns>
-		/// Output from operation
-		/// </returns>
-		public string Login(string Username, string Password)
+        /// <summary>
+        /// Try to do login on telnet server
+        /// <para xml:lang="es">
+        /// Trata de hacer login en el servidor telnet
+        /// </para>
+        /// </summary>
+        /// <param name="Username">
+        /// User name for login
+        /// <para xml:lang="es">
+        /// Nombre de usuario para el login
+        /// </para>
+        /// </param>
+        /// <param name="Password">
+        /// Password for login
+        /// <para xml:lang="es">
+        /// Password para el login
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// Output from operation
+        /// <para xml:lang="es">
+        /// La salida de operación
+        /// </para>
+        /// </returns>
+        public string Login(string Username, string Password)
 		{ return Login(Username, Password, this.Timeout); }
 
-		/// <summary>
-		/// Try to do login on telnet server
-		/// </summary>
-		/// <param name="Username">
-		/// User name for login
-		/// </param>
-		/// <param name="Password">
-		/// Password for login
-		/// </param>
-		/// <param name="LoginTimeOutMs">
-		/// Timeout for login operation (On milliseconds)
-		/// </param>
-		/// <returns>
-		/// Output from operation
-		/// </returns>
-		public string Login(string Username, string Password, int LoginTimeOutMs)
+        /// <summary>
+        /// Try to do login on telnet server
+        /// <para xml:lang="es">
+        /// Trata de hacer login en el servidor telnet
+        /// </para>
+        /// </summary>
+        /// <param name="Username">
+        /// User name for login
+        /// <para xml:lang="es">
+        /// Nombre de usuario para el login
+        /// </para>
+        /// </param>
+        /// <param name="Password">
+        /// Password for login
+        /// <para xml:lang="es">
+        /// Password para el login
+        /// </para>
+        /// </param>
+        /// <param name="LoginTimeOutMs">
+        /// Timeout for login operation (On milliseconds)
+        /// <para xml:lang="es">
+        /// Tiempo de espera para la ejecución de comandos de telnet (en milisegundos)
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// Output from operation
+        /// <para xml:lang="es">
+        /// Salida de la operacion
+        /// </para>
+        /// </returns>
+        public string Login(string Username, string Password, int LoginTimeOutMs)
 		{
 
 			//Reading input...
@@ -155,22 +238,34 @@ namespace OKHOSTING.Core.Net4.Net
 			return s;
 		}
 
-		/// <summary>
-		/// Write a telnet command on TCP stream (ended with \n)
-		/// </summary>
-		/// <param name="cmd">
-		/// Command to write
-		/// </param>
-		public void WriteLine(string cmd)
+        /// <summary>
+        /// Write a telnet command on TCP stream (ended with \n)
+        /// <para xml:lang="es">
+        /// Escribir un comando telnet en flujo TCP(termina con \n)
+        /// </para>
+        /// </summary>
+        /// <param name="cmd">
+        /// Command to write
+        /// <para xml:lang="es">
+        /// Comando para escribir
+        /// </para>
+        /// </param>
+        public void WriteLine(string cmd)
 		{ Write(cmd + "\n"); }
 
-		/// <summary>
-		/// Write a telnet command on TCP stream
-		/// </summary>
-		/// <param name="cmd">
-		/// Command to write
-		/// </param>
-		public void Write(string cmd)
+        /// <summary>
+        /// Write a telnet command on TCP stream
+        /// <para xml:lang="es">
+        /// Escribir un comando telnet en flujo TCP
+        /// </para>
+        /// </summary>
+        /// <param name="cmd">
+        /// Command to write
+        /// <para xml:lang="es">
+        /// Comando a escribir
+        /// </para>
+        /// </param>
+        public void Write(string cmd)
 		{
 			//Validating if telnet connection is open
 			if (tcpSocket.Client.Connected)
@@ -183,25 +278,40 @@ namespace OKHOSTING.Core.Net4.Net
 			}
 		}
 
-		/// <summary>
-		/// Process the current telnet comunication with default comunication timeout
-		/// </summary>
-		/// <returns>
-		/// Telnet comunication result
-		/// </returns>
-		public string Read()
+        /// <summary>
+        /// Process the current telnet comunication with default comunication timeout
+        /// <para xml:lang="es">
+        /// Procesa la comunicación telnet actual con el tiempo de espera de comunicación predeterminado
+        /// </para>
+        /// </summary>
+        /// <returns>
+        /// Telnet comunication result
+        /// <para xml:lang="es">
+        /// Resultado de la comunicacion telnet
+        /// </para>
+        /// </returns>
+        public string Read()
 		{ return this.Read(this.Timeout); }
-		
-		/// <summary>
-		/// Process the current telnet comunication
-		/// </summary>
-		/// <param name="Timeout">
-		/// Timeout for telnet commands execution (on milliseconds)
-		/// </param>
-		/// <returns>
-		/// Telnet comunication result
-		/// </returns>
-		public string Read(int Timeout)
+
+        /// <summary>
+        /// Process the current telnet comunication
+        /// <para xml:lang="es">
+        /// Procesa la actual comunicacion telnet
+        /// </para>
+        /// </summary>
+        /// <param name="Timeout">
+        /// Timeout for telnet commands execution (on milliseconds)
+        /// <para xml:lang="es">
+        /// Tiempo de espera para la ejecución de comandos de telnet (en milisegundos)
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// Telnet comunication result
+        /// <para xml:lang="es">
+        /// Resultado de la comunicacion Telnet
+        /// </para>
+        /// </returns>
+        public string Read(int Timeout)
 		{
 			//Local vars
 			string result = null;
@@ -230,13 +340,19 @@ namespace OKHOSTING.Core.Net4.Net
 			return result;
 		}
 
-		/// <summary>
-		/// Process the current telnet comunication
-		/// </summary>
-		/// <param name="sb">
-		/// StringBuilder variable for temporaly stores comunication input
-		/// </param>
-		private void ParseTelnet(StringBuilder sb)
+        /// <summary>
+        /// Process the current telnet comunication
+        /// <para xml:lang="es">
+        /// Procesa la actual comunicacion Telnet
+        /// </para>
+        /// </summary>
+        /// <param name="sb">
+        /// StringBuilder variable for temporaly stores comunication input
+        /// <para xml:lang="es">
+        /// StringBuilder variables de entrada almacena temporalmente la comunicación
+        /// </para>
+        /// </param>
+        private void ParseTelnet(StringBuilder sb)
 		{
 			//Reading response...
 			while (tcpSocket.Client.Available > 0)
@@ -297,10 +413,13 @@ namespace OKHOSTING.Core.Net4.Net
 			}
 		}
 
-		/// <summary>
-		/// Closes the current TCP Connection and in error case ignores it
-		/// </summary>
-		public void Close()
+        /// <summary>
+        /// Closes the current TCP Connection and in error case ignores it
+        /// <para xml:lang="es">
+        /// Cierra la conexión TCP actual y en caso de error ignora
+        /// </para>
+        /// </summary>
+        public void Close()
 		{
 			try { tcpSocket.Close(); }
 			catch { /* Ignoring error */ }

@@ -24,39 +24,84 @@ using System.IO;
 
 namespace OKHOSTING.Core.Net4.Net.GeoIp
 {
+    /// <summary>
+    /// It represents the basic data of a country
+    /// <para xml:lang="es">
+    /// Representa los datos basicos de un pais
+    /// </para>
+    /// </summary>
 	public class Country
 	{
-
+        /// <summary>
+        /// It represents the code of a country
+        /// <para xml:lang="es">
+        /// Representa el codigo de un pais
+        /// </para>
+        /// </summary>
 		private String code;
+
+        /// <summary>
+        /// It represents the name of a country
+        /// <para xml:lang="es">
+        /// Representa el nombre de un pais
+        /// </para>
+        /// </summary>
 		private String name;
 
-		/**
-		 * Creates a new Country.
-		 *
-		 * @param code the country code.
-		 * @param name the country name.
-		 */
-		public Country(String code, String name)
+        /// <summary>
+        /// Get the code and name of a country and initializes the class
+        /// <para xml:lang="es">
+        /// Recibe el codigo y nombre de un pais e inicializa la clase
+        /// </para>
+        /// </summary>
+        /// <param name="code">
+        /// Country code
+        /// <para xml:lang="es">
+        /// Codigo del pais
+        /// </para>
+        /// </param>
+        /// <param name="name">
+        /// Country name
+        /// <para xml:lang="es">
+        /// Nombre del pais
+        /// </para>
+        /// </param>
+        public Country(String code, String name)
 		{
 			this.code = code;
 			this.name = name;
 		}
-		/**
-		  * Returns the ISO two-letter country code of this country.
-		  *
-		  * @return the country code.
-		  */
-		public String getCode()
+
+        /// <summary>
+        /// Returns the code of a country
+        /// <para xml:lang="es">
+        /// Devuelve el codigo de un pais
+        /// </para>
+        /// </summary>
+        /// <returns>
+        /// Returns the country code
+        /// <para xml:lang="es">
+        /// Retorna el codigo del pais
+        /// </para>
+        /// </returns>
+        public String getCode()
 		{
 			return code;
 		}
 
-		/**
-		 * Returns the name of this country.
-		 *
-		 * @return the country name.
-		 */
-		public String getName()
+        /// <summary>
+        /// Returns the name of a country
+        /// <para xml:lang="es">
+        /// Devuelve el nombre de un pais
+        /// </para>
+        /// </summary>
+        /// <returns>
+        /// Returns the country name
+        /// <para xml:lang="es">
+        /// Retorna el nombre del pais
+        /// </para>
+        /// </returns>
+        public String getName()
 		{
 			return name;
 		}

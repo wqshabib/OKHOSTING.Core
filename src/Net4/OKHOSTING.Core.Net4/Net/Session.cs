@@ -6,59 +6,89 @@ using System.Threading;
 
 namespace OKHOSTING.Core.Net4.Net
 {
-	/// <summary>
-	/// Represents a user session in an application, that can be used in web and windows environments
-	/// for storing custom session values
-	/// </summary>
-	public class Session: Dictionary<string, object>, IDisposable
+    /// <summary>
+    /// Represents a user session in an application, that can be used in web and windows environments
+    /// for storing custom session values
+    /// <para xml:lang="es">
+    /// Representa una sesión de usuario en una aplicación, que se puede utilizar en la web y entornos
+    /// Windows para almacenar valores de sesión personalizados
+    /// </para>
+    /// </summary>
+    public class Session: Dictionary<string, object>, IDisposable
 	{
-		/// <summary>
-		/// Creates a new session instance and invokes OnSession_Start
-		/// </summary>
-		/// <param name="id">Session ID for the current session</param>
-		private Session(string id)
+        /// <summary>
+        /// Creates a new session instance and invokes OnSession_Start
+        /// <para xml:lang="es">
+        /// Crea una nueva instancia de la sesión e invocar Session_Start
+        /// </para>
+        /// </summary>
+        /// <param name="id">
+        /// Session ID for the current session
+        /// <para xml:lang="es">
+        /// ID de sesión para la sesión actual
+        /// </para>
+        /// </param>
+        private Session(string id)
 		{
 			this.SessionId = id;
 		}
 
-		/// <summary>
-		/// Destroys the current session instance and invokes OnSession_End
-		/// </summary>
-		~Session()
+        /// <summary>
+        /// Destroys the current session instance and invokes OnSession_End
+        /// <para xml:lang="es">
+        /// Destruye la instancia actual período de sesiones e invocar Session_End
+        /// </para>
+        /// </summary>
+        ~Session()
 		{
 			//End();
 		}
 
-		/// <summary>
-		/// Gets the unique identifier for the session.
-		/// </summary>
-		public readonly string SessionId;
+        /// <summary>
+        /// Gets the unique identifier for the session.
+        /// <para xml:lang="es">
+        /// Obtiene el identificador único para la sesión.
+        /// </para>
+        /// </summary>
+        public readonly string SessionId;
 
-		/// <summary>
-		/// Returns the current sesion Id
-		/// </summary>
-		public override string ToString()
+        /// <summary>
+        /// Returns the current sesion Id
+        /// <para xml:lang="es">
+        /// Devuelve el ID de sesión actual
+        /// </para>
+        /// </summary>
+        public override string ToString()
 		{
 			return this.SessionId;
 		}
 
-		/// <summary>
-		/// Ends the current session and clears all session data
-		/// </summary>
-		public void End()
+        /// <summary>
+        /// Ends the current session and clears all session data
+        /// <para xml:lang="es">
+        /// Finaliza la sesión actual y borrar todos los datos de la sesión
+        /// </para>
+        /// </summary>
+        public void End()
 		{
 			OnSession_End();
 		}
 
-		#region Static
+        #region Static
 
-		/// <summary>
-		/// Used internally to create random session ID's
-		/// </summary>
-		private static Random Random = new Random();
-		
-		/// <summary>
-		/// Retrieves the current session's unique ID
+        /// <summary>
+        /// Used internally to create random session ID's
+        /// <para xml:lang="es">
+        /// Se utiliza internamente para crear identificadores de sesión al azar
+        /// </para>
+        /// </summary>
+        private static Random Random = new Random();
+
+        /// <summary>
+        /// Retrieves the current session's unique ID
+        /// <para xml:lang="es">
+        /// Recupera la identificación única del actual período de sesiones
+        /// </para>
 		/// </summary>
 		private static string CurrentSessionID
 		{
@@ -101,28 +131,40 @@ namespace OKHOSTING.Core.Net4.Net
 			}
 		}
 
-		/// <summary>
-		/// Stores the databases objects currently loaded
+        /// <summary>
+        /// Stores the databases objects currently loaded
+        /// <para xml:lang="es">
+        /// Almacena las bases de datos de objetos actualmente cargada
+        /// </para>
 		/// </summary>
 		private static readonly Dictionary<string, Session> Sessions;
 
 		/// <summary>
 		/// Initiates the static session collection
+        /// <para xml:lang="es">
+        /// Inicia la collection de sesiones estatica
+        /// </para>
 		/// </summary>
 		static Session()
 		{
 			Sessions = new Dictionary<string, Session>();
 		}
 
-		/// <summary>
-		/// Used to perform Lock operations
-		/// </summary>
-		public static object Locker = new object();
+        /// <summary>
+        /// Used to perform Lock operations
+        /// <para xml:lang="es">
+        /// Se utiliza para realizar operaciones de bloqueo
+        /// </para>
+        /// </summary>
+        public static object Locker = new object();
 
-		/// <summary>
-		/// Retrieve the Session associated to the current process
-		/// </summary>
-		public static Session Current
+        /// <summary>
+        /// Retrieve the Session associated to the current process
+        /// <para xml:lang="es">
+        /// Recuperar la sesión asociada al proceso actual
+        /// </para>
+        /// </summary>
+        public static Session Current
 		{
 			get
 			{
@@ -155,20 +197,29 @@ namespace OKHOSTING.Core.Net4.Net
 			}
 		}
 
-		/// <summary>
-		/// Raised when a new session is started
-		/// </summary>
-		public static event EventHandler Session_Start;
+        /// <summary>
+        /// Raised when a new session is started
+        /// <para xml:lang="es">
+        /// Se genera cuando se inicia una nueva sesión
+        /// </para>
+        /// </summary>
+        public static event EventHandler Session_Start;
 
 		/// <summary>
 		/// Raised when a session is ended
+        /// <para xml:lang="es">
+        /// Se genera cuando una sesion termina
+        /// </para>
 		/// </summary>
 		public static event EventHandler Session_End;
 
-		/// <summary>
-		/// Invoked when a new session is started. Raises Session_Start event and invokes DataType.OnSessionStart() in all loaded DataTypes
-		/// </summary>
-		private void OnSession_Start()
+        /// <summary>
+        /// Invoked when a new session is started. Raises Session_Start event and invokes DataType.OnSessionStart() in all loaded DataTypes
+        /// <para xml:lang="es">
+        /// Se invoca cuando se inicia una nueva sesión. Eleva caso Session_Start e invoca DataType.OnSessionStart () en todos los tipos de datos cargados
+        /// </para>
+        /// </summary>
+        private void OnSession_Start()
 		{
 			////Run PlugIn_OnSessionStart method for all plugins installed and enabled
 			//foreach (Configuration.PlugIn plugin in Configuration.Current.PlugIns)
@@ -182,10 +233,13 @@ namespace OKHOSTING.Core.Net4.Net
 			if (Session_Start != null) Session_Start(this, new EventArgs());
 		}
 
-		/// <summary>
-		/// Invoked when a session is ended. Raises Session_End event and invokes DataType.OnSessionEnd() in all loaded DataTypes
-		/// </summary>
-		private void OnSession_End()
+        /// <summary>
+        /// Invoked when a session is ended. Raises Session_End event and invokes DataType.OnSessionEnd() in all loaded DataTypes
+        /// <para xml:lang="es">
+        /// Se invoca cuando se termina una sesión. Eleva caso Session_End e invoca datos Type.OnSessionEnd () en todos los DataTypes cargados
+        /// </para>
+        /// </summary>
+        private void OnSession_End()
 		{
 			////Run PlugIn_OnSessionStart method for all plugins installed and enabled
 			//foreach (Configuration.PlugIn plugin in Configuration.Current.PlugIns)
@@ -218,10 +272,15 @@ namespace OKHOSTING.Core.Net4.Net
 			}
 		}
 
-		#endregion
+        #endregion
 
-		#region IDisposable Members
-
+        #region IDisposable Members
+        /// <summary>
+        /// Dispose is implemented to release unmanaged resources that the application uses
+        /// <para xml:lang="es">
+        /// Dispose se implementa para liberar recursos no administrados que la aplicación usa
+        /// </para>
+        /// </summary>
 		void IDisposable.Dispose()
 		{
 			base.Clear();
