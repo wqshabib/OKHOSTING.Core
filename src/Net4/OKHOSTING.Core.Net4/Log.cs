@@ -4,9 +4,11 @@ using System.Diagnostics;
 
 namespace OKHOSTING.Core.Net4
 {
-
 	/// <summary>
 	/// Allows an easy creation and manipulation of log files
+    /// <para xml:lang="es">
+    /// Permite crear y manipular facilmente archivos de log
+    /// </para>
 	/// </summary>
 	public class Log
 	{
@@ -14,44 +16,75 @@ namespace OKHOSTING.Core.Net4
 		
 		/// <summary>
 		/// General, non critical information
+        /// <para xml:lang="es">
+        /// Informacion general no critica
+        /// </para>
 		/// </summary>
 		public const string Information = "Information";
 
-		/// <summary>
-		/// Unhandled exception
-		/// </summary>
-		public const string Exception = "Exception";
+        /// <summary>
+        /// Unhandled exception
+        /// <para xml:lang="es">
+        /// Excepción no controlada
+        /// </para>
+        /// </summary>
+        public const string Exception = "Exception";
 
-		/// <summary>
-		/// Handled exception, that does not cause an application crash
+        /// <summary>
+        /// Handled exception, that does not cause an application crash
+        /// <para xml:lang="es">
+        /// excepción controlada, que no causa una caída de la aplicación
+        /// </para>
 		/// </summary>
 		public const string HandledException = "HandledException";
 
-		/// <summary>
-		/// Security related log
-		/// </summary>
-		public const string Security = "Security";
+        /// <summary>
+        /// Security related log
+        /// <para xml:lang="es">
+        /// relacionada con la seguridad de registro
+        /// </para>
+        /// </summary>
+        public const string Security = "Security";
 
-		/// <summary>
-		/// Debug information
-		/// </summary>
-		public const string Debug = "Debug";
+        /// <summary>
+        /// Debug information
+        /// <para xml:lang="es">
+        /// La información de depuración
+        /// </para>
+        /// </summary>
+        public const string Debug = "Debug";
 
-		#endregion
+        #endregion
 
-		#region Fields and properties
+        #region Fields and properties
 
-		/// <summary>
-		/// The kind of logs that this log contains. This will be the name of the log file
-		/// </summary>
-		/// <example>Information, Exception, Security</example>
-		private string type;
+        /// <summary>
+        /// The kind of logs that this log contains. This will be the name of the log file
+        /// <para xml:lang="es">
+        /// El tipo de registros que contiene este registro.Este será el nombre del archivo de registro
+        /// </para>
+        /// </summary>
+        /// <example>
+        /// Information, Exception, Security
+        /// <para xml:lang="es">
+        /// Informacion, Excepcion, Seguridad
+        /// </para>
+        /// </example>
+        private string type;
 
-		/// <summary>
-		/// The kind of logs that this log contains. This will be the name of the log file
-		/// </summary>
-		/// <example>Information, Exception, Security</example>
-		public string Type
+        /// <summary>
+        /// The kind of logs that this log contains. This will be the name of the log file
+        /// <para xml:lang="es">
+        /// El tipo de registros que contiene este registro.Este será el nombre del archivo de registro
+        /// </para>
+        /// </summary>
+        /// <example>
+        /// Information, Exception, Security
+        /// <para xml:lang="es">
+        /// Informacion, Excepcion, Seguridad
+        /// </para>
+        /// </example>
+        public string Type
 		{
 			get { return this.type; }
 			set
@@ -71,15 +104,21 @@ namespace OKHOSTING.Core.Net4
 			}
 		}
 
-		/// <summary>
-		/// Source (method, class or custom value) that is writing the Log
-		/// </summary>
-		public string Source;
+        /// <summary>
+        /// Source (method, class or custom value) that is writing the Log
+        /// <para xml:lang="es">
+        /// Fuente(Método de la clase o valor personalizado) que se registraron en el log
+        /// </para>
+        /// </summary>
+        public string Source;
 
-		/// <summary>
-		/// Message of the log, the log itself
-		/// </summary>
-		public string Message;
+        /// <summary>
+        /// Message of the log, the log itself
+        /// <para xml:lang="es">
+        /// Mensaje del registro, el propio log
+        /// </para>
+        /// </summary>
+        public string Message;
 
 		#endregion
 
@@ -87,64 +126,103 @@ namespace OKHOSTING.Core.Net4
 
 		/// <summary>
 		/// Creates a new Log
+        /// <para xml:lang="es">
+        /// Crea un nuevo log
+        /// </para>
 		/// </summary>
 		public Log() : this(string.Empty, string.Empty, Log.Information) { }
 
-		/// <summary>
-		/// Creates a new Log
-		/// </summary>
-		/// <param name="message">
-		/// Message of the log, the log itself
-		/// </param>
-		public Log(string message) : this(string.Empty, message, Log.Information) { }
+        /// <summary>
+        /// Creates a new Log
+        /// <para xml:lang="es">
+        /// Crea un nuevo log
+        /// </para>
+        /// </summary>
+        /// <param name="message">
+        /// Message of the log, the log itself
+        /// <para xml:lang="es">
+        /// Mensaje del registro, el propio log
+        /// </para>
+        /// </param>
+        public Log(string message) : this(string.Empty, message, Log.Information) { }
 
-		/// <summary>
-		/// Creates a new Log
-		/// </summary>
-		/// <param name="source">
-		/// Source (method, class or custom value) that is writing the Log
-		/// </param>
-		/// <param name="message">
-		/// Message of the log, the log itself
-		/// </param>
-		public Log(string source, string message) : this(source, message, Log.Information) { }
+        /// <summary>
+        /// Creates a new Log
+        /// <para xml:lang="es">
+        /// Crea un nuevo log
+        /// </para>
+        /// </summary>
+        /// <param name="source">
+        /// Source (method, class or custom value) that is writing the Log
+        /// <para xml:lang="es">
+        /// Fuente(Método de la clase o valor personalizado) que se registraron en el log
+        /// </para>
+        /// </param>
+        /// <param name="message">
+        /// Message of the log, the log itself
+        /// <para xml:lang="es">
+        /// Mensaje del registro, el propio log
+        /// </para>
+        /// </param>
+        public Log(string source, string message) : this(source, message, Log.Information) { }
 
-		/// <summary>
-		/// Creates a new Log
-		/// </summary>
-		/// <param name="source">
-		/// Source (method, class or custom value) that is writing the Log
-		/// </param>
-		/// <param name="message">
-		/// Message of the log, the log itself
-		/// </param>
-		/// <param name="logType">
-		/// The kind of logs that this log contains. This will be the name of the log file
-		/// </param>
-		public Log(string source, string message, string logType)
+        /// <summary>
+        /// Creates a new Log
+        /// <para xml:lang="es">
+        /// Crea un nuevo log
+        /// </para>
+        /// </summary>
+        /// <param name="source">
+        /// Source (method, class or custom value) that is writing the Log
+        /// <para xml:lang="es">
+        /// Fuente(Método de la clase o valor personalizado) que se registraron en el log
+        /// </para>
+        /// </param>
+        /// <param name="message">
+        /// Message of the log, the log itself
+        /// <para xml:lang="es">
+        /// Mensaje del registro, el propio log
+        /// </para>
+        /// </param>
+        /// <param name="logType">
+        /// The kind of logs that this log contains. This will be the name of the log file
+        /// <para xml:lang="es">
+        /// El tipo de registros que contiene este registro. Este será el nombre del archivo de registro
+        /// </para>
+        /// </param>
+        public Log(string source, string message, string logType)
 		{
 			Source = source;
 			Message = message;
 			Type = logType;
 		}
 
-		#endregion
+        #endregion
 
-		#region Methods
+        #region Methods
 
-		/// <summary>
-		/// Gets the path where the log is going to be read/written
-		/// </summary>
-		/// <example>"C:\MyApp\Custom\Logs\Information.log"</example>
-		public string FullPath
+        /// <summary>
+        /// Gets the path where the log is going to be read/written
+        /// <para xml:lang="es">
+        /// Obtiene la ruta en la que se va a leer/escribir el registro
+        /// </para>
+        /// </summary>
+        /// <example>
+        /// "C:\MyApp\Custom\Logs\Information.log"
+        /// <para xml:lang
+        /// </example>
+        public string FullPath
 		{
 			get { return DirectoryPath + Type + ".log"; }
 		}
 
-		/// <summary>
-		/// Writes this log at the end of a log file
-		/// </summary>
-		public void Write()
+        /// <summary>
+        /// Writes this log at the end of a log file
+        /// <para xml:lang="es">
+        /// Escribe este registro al final de un archivo de registro
+        /// </para>
+        /// </summary>
+        public void Write()
 		{
 			//Local vars
 			StreamWriter writer = null;
@@ -194,14 +272,17 @@ namespace OKHOSTING.Core.Net4
 			}
 		}
 
-		#endregion
+        #endregion
 
-		#region Static
+        #region Static
 
-		/// <summary>
-		/// Static constructor for class
-		/// </summary>
-		static Log()
+        /// <summary>
+        /// Static constructor for class
+        /// <para xml:lang="es">
+        /// Constructor estático para la clase
+        /// </para>
+        /// </summary>
+        static Log()
 		{
 			//Ensuring the DirectoryPath exists
 			if (!Directory.Exists(DirectoryPath))
@@ -210,11 +291,16 @@ namespace OKHOSTING.Core.Net4
 			}
 		}
 
-		/// <summary>
-		/// Gets the directory path where the logs are going to be read/written
-		/// </summary>
-		/// <example>C:\MyApp\Custom\Logs\</example>
-		public static string DirectoryPath
+        /// <summary>
+        /// Gets the directory path where the logs are going to be read/written
+        /// <para xml:lang="es">
+        /// Obtiene la ruta del directorio donde se van a leer/escribir los registros
+        /// </para>
+        /// </summary>
+        /// <example>
+        /// C:\MyApp\Custom\Logs\
+        /// </example>
+        public static string DirectoryPath
 		{
 			get
 			{
@@ -222,45 +308,77 @@ namespace OKHOSTING.Core.Net4
 			}
 		}
 
-		/// <summary>
-		/// Writes a log message at the end of a log file
-		/// </summary>
-		/// <param name="message">
-		/// Message of the log, the log itself
-		/// </param>
-		public static Log Write(string message)
+        /// <summary>
+        /// Writes a log message at the end of a log file
+        /// <para xml:lang="es">
+        /// Escribe un mensaje de registro al final de un archivo de registro
+        /// </para>
+        /// </summary>
+        /// <param name="message">
+        /// Message of the log, the log itself
+        /// <para xml:lang="es">
+        /// Mensaje del registro, el propio log
+        /// </para>
+        /// </param>
+        public static Log Write(string message)
 		{
 			return Write(string.Empty, message, Log.Information);
 		}
 
-		/// <summary>
-		/// Writes a log message at the end of a log file
-		/// </summary>
-		/// <param name="source">
-		/// Source (method, class or custom value) that is writing the Log
-		/// </param>
-		/// <param name="message">
-		/// Message of the log, the log itself
-		/// </param>
-		public static Log Write(string source, string message)
+        /// <summary>
+        /// Writes a log message at the end of a log file
+        /// <para xml:lang="es">
+        /// Escribe un mensaje de registro al final de un archivo de registro
+        /// </para>
+        /// </summary>
+        /// <param name="source">
+        /// Source (method, class or custom value) that is writing the Log
+        /// <para xml:lang="es">
+        /// Fuente (Método de la clase o valor personalizado) que se registraron en el log
+        /// </para>
+        /// </param>
+        /// <param name="message">
+        /// Message of the log, the log itself
+        /// <para xml:lang="es">
+        /// Mensaje del registro, el propio log
+        /// </para>
+        /// </param>
+        public static Log Write(string source, string message)
 		{
 			return Write(source, message, Log.Information);
 		}
 
-		/// <summary>
-		/// Writes a log message at the end of a log file
-		/// </summary>
-		/// <param name="source">
-		/// Source (method, class or custom value) that is writing the Log
-		/// </param>
-		/// <param name="message">
-		/// Message of the log, the log itself
-		/// </param>
-		/// <param name="logType">
-		/// The kind of logs that this log contains. This will be the name of the log file
-		/// </param>
-		/// <returns></returns>
-		public static Log Write(string source, string message, string logType)
+        /// <summary>
+        /// Writes a log message at the end of a log file
+        /// <para xml:lang="es">
+        /// Escribe un mensaje de registro al final de un archivo de registro
+        /// </para>
+        /// </summary>
+        /// <param name="source">
+        /// Source (method, class or custom value) that is writing the Log
+        /// <para xml:lang="es">
+        /// Fuente (Método de la clase o valor personalizado) que se registraron en el log
+        /// </para>
+        /// </param>
+        /// <param name="message">
+        /// Message of the log, the log itself
+        /// <para xml:lang="es">
+        /// Mensaje del registro, el propio log
+        /// </para>
+        /// </param>
+        /// <param name="logType">
+        /// The kind of logs that this log contains. This will be the name of the log file
+        /// <para xml:lang="es">
+        /// El tipo de registros que contiene este registro. Este será el nombre del archivo de registro
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// Log file
+        /// <para xml:lang="es">
+        /// Archivo log
+        /// </para>
+        /// </returns>
+        public static Log Write(string source, string message, string logType)
 		{
 			//Creating log...
 			Log log = new Log(source, message, logType);
@@ -272,30 +390,47 @@ namespace OKHOSTING.Core.Net4
 			return log;
 		}
 
-		/// <summary>
-		/// Writes a log message at the end of a log file only 
-		/// if the DEBUG symbol is present at compilation time
-		/// </summary>
-		/// <param name="message">
-		/// Message of the log, the log itself
-		/// </param>
-		[Conditional("DEBUG")]
+        /// <summary>
+        /// Writes a log message at the end of a log file only 
+        /// if the DEBUG symbol is present at compilation time
+        /// <para xml:lang="es">
+        /// Escribe un mensaje de registro al final de un archivo
+        /// de registro sólo si el símbolo DEBUG está presente en tiempo de compilación
+        /// </para>
+        /// </summary>
+        /// <param name="message">
+        /// Message of the log, the log itself
+        /// <para xml:lang="es">
+        /// Mensaje del registro, el propio log
+        /// </para>
+        /// </param>
+        [Conditional("DEBUG")]
 		public static void WriteDebug(string message)
 		{
 			WriteDebug(string.Empty, message);
 		}
 
-		/// <summary>
-		/// Writes a log message at the end of a log file only 
-		/// if the DEBUG symbol is present at compilation time
-		/// </summary>
-		/// <param name="source">
-		/// Source (method, class or custom value) that is writing the Log
-		/// </param>
-		/// <param name="message">
-		/// Message of the log, the log itself
-		/// </param>
-		[Conditional("DEBUG")]
+        /// <summary>
+        /// Writes a log message at the end of a log file only 
+        /// if the DEBUG symbol is present at compilation time
+        /// <para xml:lang="es">
+        /// Escribe un mensaje de registro al final de un archivo
+        /// de registro sólo si el símbolo DEBUG está presente en tiempo de compilación
+        /// </para>
+        /// </summary>
+        /// <param name="source">
+        /// Source (method, class or custom value) that is writing the Log
+        /// <para xml:lang="es">
+        /// Fuente (Método de la clase o valor personalizado) que se registraron en el log
+        /// </para>
+        /// </param>
+        /// <param name="message">
+        /// Message of the log, the log itself
+        /// <para xml:lang="es">
+        /// Mensaje del registro, el propio log
+        /// </para>
+        /// </param>
+        [Conditional("DEBUG")]
 		public static void WriteDebug(string source, string message)
 		{
 			Write(source, message, Debug);

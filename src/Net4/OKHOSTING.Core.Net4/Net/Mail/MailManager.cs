@@ -9,27 +9,47 @@ namespace OKHOSTING.Core.Net4.Net.Mail
 {
 	/// <summary>
 	/// Provides basic email sending functionality
+    /// <para xml:lang="es">
+    /// Prove funcionalidades basicas para envio de correo electronico
+    /// </para>
 	/// </summary>
 	public class MailManager
 	{
-		/// <summary>
-		/// Sends an email
-		/// </summary>
-		/// <param name="message">Email to be sent</param>
-		public static void Send(MailMessage message)
+        /// <summary>
+        /// Sends an email
+        /// <para xml:lang="es">
+        /// Envia un correo
+        /// </para>
+        /// </summary>
+        /// <param name="message">
+        /// Email to be sent
+        /// <para xml:lang="es">
+        /// Correo a enviar
+        /// </para>
+        /// </param>
+        public static void Send(MailMessage message)
 		{ 
 			Send(message, Configuration.Current); 
 		}
 
 		/// <summary>
-		/// Sends an email
-		/// </summary>
-		/// <param name="message">
-		/// Email to be sent
-		/// </param>
-		/// <param name="config">
-		/// Configuration to use
-		/// </param>
+        /// Sends an email
+        /// <para xml:lang="es">
+        /// Envia un email
+        /// </para>
+        /// </summary>
+        /// <param name="message">
+        /// Email to be sent
+        /// <para xml:lang="es">
+        /// Correo a enviar
+        /// </para>
+        /// </param>
+        /// <param name="config">
+        /// Configurate to use
+        /// <para xml:lang="es">
+        /// Configuracion a usar
+        /// </para>
+        /// </param>
 		public static void Send(MailMessage message, Configuration config)
 		{
 			//is mail sending activated?
@@ -94,27 +114,42 @@ namespace OKHOSTING.Core.Net4.Net.Mail
 			}
 		}
 
-		/// <summary>
-		/// Sends a mail template message. Replaces all tags before sending
-		/// </summary>
-		/// <param name="mailTemplate">
-		/// Mail template to be sent
-		/// </param>
-		public static void Send(MailTemplate mailTemplate)
+        /// <summary>
+        /// Sends a mail template message. Replaces all tags before sending
+        /// <para xml:lang="es">
+        /// Envía un mensaje de plantilla de correo.Reemplaza todas las etiquetas antes de enviar
+        /// </para>
+        /// </summary>
+        /// <param name="mailTemplate">
+        /// Mail template to be sent
+        /// <para xml:lang="es">
+        /// Plantilla de correo que se enviará
+        /// </para>
+        /// </param>
+        public static void Send(MailTemplate mailTemplate)
 		{ 
 			Send(mailTemplate, Configuration.Current); 
 		}
 
-		/// <summary>
-		/// Sends a mail template message. Replaces all tags before sending
-		/// </summary>
-		/// <param name="mailTemplate">
-		/// Mail template to be sent
-		/// </param>
-		/// <param name="config">
-		/// Configuration to use
-		/// </param>
-		public static void Send(MailTemplate mailTemplate, Configuration config)
+        /// <summary>
+        /// Sends a mail template message. Replaces all tags before sending
+        /// <para xml:lang="es">
+        /// Envía un mensaje de plantilla de correo.Reemplaza todas las etiquetas antes de enviar
+        /// </para>
+        /// </summary>
+        /// <param name="mailTemplate">
+        /// Mail template to be sent
+        /// <para xml:lang="es">
+        /// Plantilla de correo que se enviará
+        /// </para>
+        /// </param>
+        /// <param name="config">
+        /// Configuration to use
+        /// <para xml:lang="es">
+        /// Configuracion que se usara
+        /// </para>
+        /// </param>
+        public static void Send(MailTemplate mailTemplate, Configuration config)
 		{
 			//Replacing all tags in the subject and body, and prepares the message to be sent
 			mailTemplate.Init();
@@ -123,12 +158,25 @@ namespace OKHOSTING.Core.Net4.Net.Mail
 			Send((MailMessage)mailTemplate, config);
 		}
 
-		/// <summary>
-		/// Splits a comma separated string containing email addresses into individual different addresses
-		/// </summary>
-		/// <param name="addresses">Comma separated string containing email addresses</param>
-		/// <returns>List of individual email addresses</returns>
-		public static string[] SplitAddresses(string addresses)
+        /// <summary>
+        /// Splits a comma separated string containing email addresses into individual different addresses
+        /// <para xml:lang="es">
+        /// Divide una cadena separada por comas que contiene direcciones de correo electrónico a direcciones individuales diferentes
+        /// </para>
+        /// </summary>
+        /// <param name="addresses">
+        /// Comma separated string containing email addresses
+        /// <para xml:lang="es">
+        /// Cadenas separadas por coma que contienen direcciones de correo
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// List of individual email addresses
+        /// <para xml:lang="es">
+        /// Lista de direcciones de correo individuales
+        /// </para>
+        /// </returns>
+        public static string[] SplitAddresses(string addresses)
 		{
 			//Local vars
 			string[] result = new string[0];
@@ -144,17 +192,27 @@ namespace OKHOSTING.Core.Net4.Net.Mail
 			return result;
 		}
 
-		/// <summary>
-		/// Determines wether a string is a valid email address or not
-		/// based on a regular expression pattern
-		/// </summary>
-		/// <param name="emailAddress">
-		/// Adress to validate
-		/// </param>
-		/// <returns>
-		/// true if it's a valid email address, otherwise false
-		/// </returns>
-		public static bool IsValidEmail(string emailAddress)
+        /// <summary>
+        /// Determines wether a string is a valid email address or not
+        /// based on a regular expression pattern
+        /// <para xml:lang="es">
+        /// Determina si una cadena es una dirección de correo electrónico
+        /// válida o no en base a un patrón de expresión regular
+        /// </para>
+        /// </summary>
+        /// <param name="emailAddress">
+        /// Adress to validate
+        /// <para xml:lang="es">
+        /// Direccion a validar
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// true if it's a valid email address, otherwise false
+        /// <para xml:lang="es">
+        /// True si es una direccion de correo valida, de lo contrario false
+        /// </para>
+        /// </returns>
+        public static bool IsValidEmail(string emailAddress)
 		{
 			//Local vars 
 			bool isValidEmail = false;
@@ -167,14 +225,23 @@ namespace OKHOSTING.Core.Net4.Net.Mail
 			return isValidEmail;
 		}
 
-		/// <summary>
-		/// Optimizes an email addresses list, discarding blank and repeated addresses
-		/// </summary>
-		/// <param name="addressList">
-		/// Email addresses list to optimize
-		/// </param>
-		/// <returns>
-		/// string with non repeated and not blank addresses
+        /// <summary>
+        /// Optimizes an email addresses list, discarding blank and repeated addresses
+        /// <para xml:lang="es">
+        /// Optimiza una lista de direcciones de correo, descartando direcciones en blanco y repetidas
+        /// </para>
+        /// </summary>
+        /// <param name="addressList">
+        /// Email addresses list to optimize
+        /// <para xml:lang="es">
+        /// Lista de direcciones de correo a optimizar
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// string with non repeated and not blank addresses
+        /// <para xml:lang="es">
+        /// cadena con direcciones no repetidas y no en blanco
+        /// </para>
 		/// </returns>
 		public static string OptimizeAddressList(string addressList)
 		{
@@ -191,16 +258,25 @@ namespace OKHOSTING.Core.Net4.Net.Mail
 			return list;
 		}
 
-		/// <summary>
-		/// Optimizes an email addresses list, discarding blank and repeated addresses
-		/// </summary>
-		/// <param name="addressList">
-		/// Email addresses list to optimize
-		/// </param>
-		/// <returns>
-		/// Array with non repeated and not blank addresses
-		/// </returns>
-		public static string[] OptimizeAddressList(string[] addressList)
+        /// <summary>
+        /// Optimizes an email addresses list, discarding blank and repeated addresses
+        /// <para xml:lang="es">
+        /// Optimiza una lista de direcciones de correo, descartando direcciones en blanco y repetidas
+        /// </para>
+        /// </summary>
+        /// <param name="addressList">
+        /// Email addresses list to optimize
+        /// <para xml:lang="es">
+        /// Lista de direcciones de correo a optimizar
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// Array with non repeated and not blank addresses
+        /// <para xml:lang="es">
+        /// Arreglo con direcciones no repetidas y no en blanco
+        /// </para>
+        /// </returns>
+        public static string[] OptimizeAddressList(string[] addressList)
 		{
 			//Local vars
 			List<string> tempAddressList = new List<string>();

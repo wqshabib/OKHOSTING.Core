@@ -2,15 +2,21 @@
 
 namespace OKHOSTING.Core.Net4
 {
-	/// <summary>
-	/// Extension methods for System.IO.DirectoryInfo
-	/// </summary>
-	public static class DirectoryInfoExtensions
+    /// <summary>
+    /// Extension methods for System.IO.DirectoryInfo
+    /// <para xml:lang="es">
+    /// Los métodos de extensión para System.IO.DirectoryInfo
+    /// </para>
+    /// </summary>
+    public static class DirectoryInfoExtensions
 	{
-		/// <summary>
-		/// This method extends the DirectoryInfo class to return the size in bytes of the directory represented by the DirectoryInfo instance.  
-		/// </summary>
-		public static long GetSize(this DirectoryInfo dir)
+        /// <summary>
+        /// This method extends the DirectoryInfo class to return the size in bytes of the directory represented by the DirectoryInfo instance.
+        /// <para xml:lang="es">
+        /// Este método extiende la clase DirectoryInfo para devolver el tamaño en bytes del directorio representado por la instancia DirectoryInfo.
+        /// </para>
+        /// </summary>
+        public static long GetSize(this DirectoryInfo dir)
 		{
 			long length = 0;
 

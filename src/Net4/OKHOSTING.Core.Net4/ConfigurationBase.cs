@@ -5,22 +5,34 @@ using System.Reflection;
 
 namespace OKHOSTING.Core.Net4
 {
-	/// <summary>
-	/// Allows to create configuration sub-classes that are serialized 
-	/// as read-write XML files in a "Config" folder at the target 
-	/// Application
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// Allows to create configuration sub-classes that are serialized 
+    /// as read-write XML files in a "Config" folder at the target 
+    /// Application
+    /// <para xml:lang="es">
+    /// Permite la creación de subclases de configuración que son 
+    /// serializados como archivos XML de lectura-escritura en una
+    /// carpeta "config" en la aplicación de destino
+    /// </para>
+    /// </summary>
+    [Serializable]
 	public abstract class ConfigurationBase
 	{
 		/// <summary>
 		/// Indicates if the configuration must be saved
 		/// when the object are destroyed
+        /// <para xml:lang="es">
+        /// Indica si la configuracion puede ser guardada
+        /// cuando el objeto se ha destruido
+        /// </para>
 		/// </summary>
 		private bool autoSave = false;
 
 		/// <summary>
 		/// Destroy the configuration
+        /// <para xml:lang="es">
+        /// Destruye la configuracion
+        /// </para>
 		/// </summary>
 		~ConfigurationBase()
 		{
@@ -28,11 +40,15 @@ namespace OKHOSTING.Core.Net4
 			if (AutoSave) Save();
 		}
 
-		/// <summary>
-		/// Indicates if the configuration must be saved
-		/// when the object are destroyed
-		/// </summary>
-		[XmlIgnoreAttribute]
+        /// <summary>
+        /// Indicates if the configuration must be saved
+        /// when the object are destroyed
+        /// <para xml:lang="es">
+        /// Indica si la configuracion puede ser guardada
+        /// cuando el objeto se ha destruido
+        /// </para>
+        /// </summary>
+        [XmlIgnoreAttribute]
 		public bool AutoSave
 		{
 			get 
@@ -45,10 +61,13 @@ namespace OKHOSTING.Core.Net4
 			}
 		}
 
-		/// <summary>
-		/// Retrieve the path of the xml file for this configuration
-		/// </summary>
-		[XmlIgnoreAttribute]
+        /// <summary>
+        /// Retrieve the path of the xml file for this configuration
+        /// <para xml:lang="es">
+        /// Recuperar la ruta del archivo XML para esta configuración
+        /// </para>
+        /// </summary>
+        [XmlIgnoreAttribute]
 		public string XmlPath
 		{ 
 			get 
@@ -56,9 +75,12 @@ namespace OKHOSTING.Core.Net4
 				return GetXmlPath(this.GetType()); 
 			} 
 		}
-		
-		/// <summary>
-		/// Saves the configuration to his xml file
+
+        /// <summary>
+        /// Saves the configuration to his xml file
+        /// <para xml:lang="es">
+        /// Guarda la configuración de su archivo xml
+        /// </para>
 		/// </summary>
 		public void Save()
 		{
@@ -83,16 +105,25 @@ namespace OKHOSTING.Core.Net4
 			}
 		}
 
-		/// <summary>
-		/// Retrieve the path of the xml file for the specified type
-		/// </summary>
-		/// <param name="type">
-		/// Type that you desires to get his xml path
-		/// </param>
-		/// <returns>
-		/// Path of the xml file for the specified type
-		/// </returns>
-		public static string GetXmlPath(Type type)
+        /// <summary>
+        /// Retrieve the path of the xml file for the specified type
+        /// <para xml:lang="es">
+        /// Recuperar la ruta del archivo XML para el tipo especificado
+        /// </para>
+        /// </summary>
+        /// <param name="type">
+        /// Type that you desires to get his xml path
+        /// <para xml:lang="es">
+        /// Tipo que se desea obtener en su directorio xml
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// Path of the xml file for the specified type
+        /// <para xml:lang="es">
+        /// Ruta del archivo XML para el tipo especificado
+        /// </para>
+        /// </returns>
+        public static string GetXmlPath(Type type)
 		{ 
 			//Validating if the specified type is subclass of ConfiurationBase
 			if (!type.IsSubclassOf(typeof(ConfigurationBase)))
@@ -104,16 +135,25 @@ namespace OKHOSTING.Core.Net4
 			return AppDomain.CurrentDomain.BaseDirectory + @"Config\" + type.FullName + @".config"; 
 		}
 
-		/// <summary>
-		/// Load the configuration file for the specified type
-		/// </summary>
-		/// <param name="type">
-		/// Type that you desire to load his configuration file
-		/// </param>
-		/// <returns>
-		/// Configuration for the specified type
-		/// </returns>
-		public static ConfigurationBase Load(Type type)
+        /// <summary>
+        /// Load the configuration file for the specified type
+        /// <para xml:lang="es">
+        /// Cargar el archivo de configuración para el tipo especificado
+        /// </para>
+        /// </summary>
+        /// <param name="type">
+        /// Type that you desire to load his configuration file
+        /// <para xml:lang="es">
+        /// Tipo que se desea cargar del archivo de configuración
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// Configuration for the specified type
+        /// <para xml:lang="es">
+        /// Configuracion para el tipo especificado
+        /// </para>
+        /// </returns>
+        public static ConfigurationBase Load(Type type)
 		{
 			//Local Vars
 			StreamReader reader = null;
@@ -147,13 +187,19 @@ namespace OKHOSTING.Core.Net4
 			return configuration;
 		}
 
-		/// <summary>
-		/// Initializes the config file for the specified type
-		/// </summary>
-		/// <param name="type">
-		/// Type of subclass of ConfigurationBase used for initialization
-		/// </param>
-		private static void InitializeConfigFile(Type type)
+        /// <summary>
+        /// Initializes the config file for the specified type
+        /// <para xml:lang="es">
+        /// Inicia la configuracion del archivo para el tipo especificado
+        /// </para>
+        /// </summary>
+        /// <param name="type">
+        /// Type of subclass of ConfigurationBase used for initialization
+        /// <para xml:lang="es">
+        /// Tipo de subclase de Configuracion Base usada para la inicializacion
+        /// </para>
+        /// </param>
+        private static void InitializeConfigFile(Type type)
 		{
 			//if configuration file does not exist, create empty configuration file
 			if (!File.Exists(GetXmlPath(type)))
@@ -222,9 +268,24 @@ namespace OKHOSTING.Core.Net4
 			}
 		}
 
-		/// <summary>
-		/// Loads and return the current configuration
-		/// </summary>
+        /// <summary>
+        /// Loads and return the current configuration
+        /// <para xml:lang="es">
+        /// Carga y devuelve la actual configuracion
+        /// </para>
+        /// </summary>
+        /// <typeparam name="ConfigurationClassType">
+        /// TypeConfiguration
+        /// <para xml:lang="es">
+        /// Tipo de configuracion
+        /// </para>
+        /// </typeparam>
+        /// <returns>
+        /// return the current configuration
+        /// <para xml:lang="es">
+        /// Devuelve la actual configuracion
+        /// </para>
+        /// </returns>
 		protected static ConfigurationClassType Current<ConfigurationClassType>() where ConfigurationClassType: ConfigurationBase
 		{
 			return (ConfigurationClassType) ConfigurationBase.Load(typeof(ConfigurationClassType));
