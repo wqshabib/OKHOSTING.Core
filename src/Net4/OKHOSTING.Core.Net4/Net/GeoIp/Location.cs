@@ -88,6 +88,7 @@ namespace OKHOSTING.Core.Net4.Net.GeoIp
         /// </para>
         /// </summary>
 		public int dma_code;
+        
         /// <summary>
         /// Represents the area code
         /// <para xml:lang="es">

@@ -179,10 +179,13 @@ namespace OKHOSTING.Core.Net4
 			ConfigurationManager.RefreshSection(sectionName);
 		}
 
-		/// <summary>
-		/// Saves the content of the Content XmlDocument into the app configuration file
-		/// </summary>
-		public void Save()
+        /// <summary>
+        /// Saves the content of the Content XmlDocument into the app configuration file
+        /// <para xml:lang="es">
+        /// Guarda el contenido del documento XML contenido en el fichero de configuración de aplicaciones
+        /// </para>
+        /// </summary>
+        public void Save()
 		{
 			//save to file
 			XmlTextWriter writer = new XmlTextWriter(FileName, null);

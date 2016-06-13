@@ -3,6 +3,12 @@ using System.Linq;
 
 namespace OKHOSTING.Core
 {
+    /// <summary>
+    /// It represents an extension of dictionaries
+    /// <para xml:lang="es">
+    /// Representa una extension de diccionarios
+    /// </para>
+    /// </summary>
 	public static class DiccionaryExtentions
 	{
 		/// <summary>

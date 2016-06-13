@@ -5,18 +5,34 @@ using System.Text;
 
 namespace OKHOSTING.Core.Cryptography
 {
-	/// <summary>
-	/// Allows very simple encription of string values using Rijndael mechanism
-	/// </summary>
-	public static class SimpleEncryption
+    /// <summary>
+    /// Allows very simple encription of string values using Rijndael mechanism
+    /// <para xml:lang="es">
+    /// Permite el cifrado muy simple de valores de cadena usando el mecanismo de Rijndael
+    /// </para>
+    /// </summary>
+    public static class SimpleEncryption
 	{
-		/// <summary>
-		/// Encrypts a string a returns the result
-		/// </summary>
-		/// <param name="unencrypted">Value that will be encrypted</param>
-		/// <param name="password">Password used to encrypt the value</param>
-		/// <returns>A encrypted string</returns>
-		public static byte[] Encrypt(byte[] unencrypted, string password)
+        /// <summary>
+        /// Encrypts a string a returns the result
+        /// <para xml:lang="es">
+        /// Devuelve el resultado de una cadena encriptada
+        /// </para>
+        /// </summary>
+        /// <param name="unencrypted">
+        /// Value that will be encrypted
+        /// <para xml:lang="es">
+        /// Valor que sera encriptado
+        /// </para>
+        /// </param>
+        /// <param name="password">
+        /// Password used to encrypt the value
+        /// <para xml:lang="es">
+        /// Contraseña utilizada para cifrar el valor
+        /// </para>
+        /// </param>
+        /// <returns>A encrypted string</returns>
+        public static byte[] Encrypt(byte[] unencrypted, string password)
 		{
 			// Get the MD5 key hash (you can as well use the binary of the key string)
 			var keyHash = GetMD5Hash(password);
@@ -34,13 +50,26 @@ namespace OKHOSTING.Core.Cryptography
 			return WinRTCrypto.CryptographicEngine.Encrypt(symetricKey, unencrypted, null);
 		}
 
-		/// <summary>
-		/// Decrypts a string a returns the result
-		/// </summary>
-		/// <param name="encrypted">Encrypted value that will be decrypted</param>
-		/// <param name="password">Password used to decrypt the value</param>
-		/// <returns>A decrypted string</returns>
-		public static byte[] Decrypt(byte[] encrypted, string password)
+        /// <summary>
+        /// Decrypts a string a returns the result
+        /// <para xml:lang="es">
+        /// Devuelve el resultado de una cadena descifrada
+        /// </para>
+        /// </summary>
+        /// <param name="encrypted">
+        /// Encrypted value that will be decrypted
+        /// <paraxml:lang="es">
+        /// valor cifrado que va a ser descifrado
+        /// </lang>
+        /// </param>
+        /// <param name="password">
+        /// Password used to decrypt the value
+        /// <para xml:lang="es">
+        /// Contraseña utilizada para descifrar el valor
+        /// </para>
+        /// </param>
+        /// <returns>A decrypted string</returns>
+        public static byte[] Decrypt(byte[] encrypted, string password)
 		{
 			// Get the MD5 key hash (you can as well use the binary of the key string)
 			var keyHash = GetMD5Hash(password);
@@ -58,10 +87,28 @@ namespace OKHOSTING.Core.Cryptography
 
 		/// <summary>
 		/// Encrypts a string a returns the result
+        /// <para xml:lang="es">
+        /// Devuelve el resultado de una cadena cifrada
+        /// </para>
 		/// </summary>
-		/// <param name="strToEncrypt">Value that will be encrypted</param>
-		/// <param name="password">Password used to encrypt the value</param>
-		/// <returns>A encrypted string</returns>
+		/// <param name="strToEncrypt">
+        /// Value that will be encrypted
+        /// <para xml:lang="es">
+        /// Valor que sera cifrado
+        /// </para>
+        /// </param>
+		/// <param name="password">
+        /// Password used to encrypt the value
+        /// <para xml:lang="es">
+        /// Contraseña usada para cifrar el valor
+        /// </para>
+        /// </param>
+		/// <returns>
+        /// A encrypted string
+        /// <para xml:lang="es">
+        /// Una cadena cifrada
+        /// </para>
+        /// </returns>
 		public static string Encrypt(string strToEncrypt, string password)
 		{
 			byte[] buffer = WinRTCrypto.CryptographicBuffer.ConvertStringToBinary(strToEncrypt, Encoding.UTF8);
@@ -75,10 +122,28 @@ namespace OKHOSTING.Core.Cryptography
 
 		/// <summary>
 		/// Decrypts a string a returns the result
+        /// <para xml:lang="es">
+        /// Devuelve el resultado de una cadena descifrada
+        /// </para>
 		/// </summary>
-		/// <param name="strEncrypted">Encrypted value that will be decrypted</param>
-		/// <param name="password">Password used to decrypt the value</param>
-		/// <returns>A decrypted string</returns>
+		/// <param name="strEncrypted">
+        /// Encrypted value that will be decrypted
+        /// <para xml:lang="es">
+        /// Valor cifrado que sera descifrado
+        /// </para>
+        /// </param>
+		/// <param name="password">
+        /// Password used to decrypt the value
+        /// <para xml:lang="es">
+        /// Contraseña que sera usada para descifrar el valor
+        /// </para>
+        /// </param>
+		/// <returns>
+        /// A decrypted string
+        /// <para xml:lang="es">
+        /// Cadena descifrada
+        /// </para>
+        /// </returns>
 		public static string Decrypt(string strEncrypted, string password)
 		{
 			// Create a buffer that contains the encoded message to be decrypted.
@@ -90,12 +155,54 @@ namespace OKHOSTING.Core.Cryptography
 
 		/// <summary>
 		/// Creates a random number
+        /// <para xml:lang="es">
+        /// Crea un numero aleatorio
+        /// </para>
 		/// </summary>
 		public static uint CreateRandomKey()
 		{
 			return WinRTCrypto.CryptographicBuffer.GenerateRandomNumber();
-		}
+        }
 
+        /// <summary>
+        /// Create a random password, indicating if it contains numbers, uppercase and lowercase letters and / or symbols
+        /// <para xml:lang="es">
+        /// Crea una contraseña aleatoria, indicando si contiene numeros, letras mayusculas, minusculas y/o simbolos
+        /// </para>
+        /// </summary>
+        /// <param name="lenght">
+        /// password length
+        /// <para xml:lang="es">
+        /// longitud de la contraseña
+        /// </para>
+        /// </param>
+        /// <param name="useNumbers">
+        /// true if the password will use numbers otherwise false
+        /// <para xml:lang="es">
+        /// true si la contraseña usara numeros de lo contrario false
+        /// </para>
+        /// </param>
+        /// <param name="useUpperCase">
+        /// true if the password will use capital letters otherwise false
+        /// </param>
+        /// <param name="useLowerCase">
+        /// true if the password will use lowercase letters otherwise false
+        /// <para xml:lang="es">
+        /// true si la contraseña usara letras minusculas de lo contrario false
+        /// </para>
+        /// </param>
+        /// <param name="useSymbols">
+        /// true if the password will use symbols otherwise false
+        /// <para xml:lang="es">
+        /// true si la contraseña usara simbolos de lo contrario false
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// random generated password
+        /// <para xml:lang="es">
+        /// Contraseña generada al azar
+        /// </para>
+        /// </returns>
 		public static string CreateRandomPassword(int lenght, bool useNumbers, bool useUpperCase, bool useLowerCase, bool useSymbols)
 		{
 			var upperCase = new char[]
@@ -137,12 +244,20 @@ namespace OKHOSTING.Core.Cryptography
 
 		/// <summary>
 		/// Creates an array of bytes with random numbers
+        /// <para xml:lang="es">
+        /// Crea un array de bytes con numeros al azar
+        /// </para>
 		/// </summary>
 		public static byte[] CreateRandomKey(uint length)
 		{
 			return WinRTCrypto.CryptographicBuffer.GenerateRandom((int) length);
 		}
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
 		private static byte[] GetMD5Hash(string key)
 		{
 			// Convert the message string to binary data.

@@ -5,24 +5,36 @@ using System.IO;
 
 namespace OKHOSTING.Core.Net4
 {
-	/// <summary>
-	/// This class publish several extension methods for convert between 
-	/// XElement to XmlElement and viceversa, and from XDocument to XmlDocument
-	/// and viceversa. The idea is interact simply between the xml object versions 
-	/// that supports LINQ and the basic xml objects
-	/// </summary>
-	/// <remarks>
-	/// Downloaded from http://codepaste.net/jkujfk
-	/// </remarks>
-	public static class XmlExtensions
+    /// <summary>
+    /// This class publish several extension methods for convert between 
+    /// XElement to XmlElement and viceversa, and from XDocument to XmlDocument
+    /// and viceversa. The idea is interact simply between the xml object versions 
+    /// that supports LINQ and the basic xml objects
+    /// <para xml:lang="es">
+    /// Esta clase publicar varios métodos de extensión para convertir entre XElement
+    /// a XmlElement y viceversa, y desde XDocument a XmlDocument y viceversa. La idea
+    /// es simplemente interactuar entre las versiones objeto XML que soporta LINQ y
+    /// los objetos XML básicos
+    /// </para>
+    /// </summary>
+    /// <remarks>
+    /// Downloaded from http://codepaste.net/jkujfk
+    /// <para xml:lang="es">
+    /// Descargado desde http://codepaste.net/jkujfk
+    /// </para>
+    /// </remarks>
+    public static class XmlExtensions
 	{
 
-		#region XmlTranslator Class (For Internal Use)
+        #region XmlTranslator Class (For Internal Use)
 
-		/// <summary>
-		/// Utility class that performs the conversions between xml objects
-		/// </summary>
-		private class XmlTranslator
+        /// <summary>
+        /// Utility class that performs the conversions between xml objects
+        /// <para xml:lang="es">
+        /// clase de utilidad que realiza las conversiones entre los objetos XML
+        /// </para>
+        /// </summary>
+        private class XmlTranslator
 		{
 
 			#region Private Fields
@@ -126,54 +138,90 @@ namespace OKHOSTING.Core.Net4
 
 		}
 
-		#endregion
+        #endregion
 
-		/// <summary>
-		/// Converts the specified XElement to XmlElement
-		/// </summary>
-		/// <param name="xElement">
-		/// XElement instance to convert
-		/// </param>
-		/// <returns>
-		/// XmlElement representation of XElement
-		/// </returns>
-		public static XmlElement ToXmlElement(this XElement xElement)
+        /// <summary>
+        /// Converts the specified XElement to XmlElement
+        /// <para xml:lang="es">
+        /// Convierte el XElement especificada para XmlElement
+        /// </para>
+        /// </summary>
+        /// <param name="xElement">
+        /// XElement instance to convert
+        /// <para xml:lang="es">
+        /// XElement ejemplo para convertir
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// XmlElement representation of XElement
+        /// <para xml:lang="es">
+        /// XmlElement representación de XElement
+        /// </para>
+        /// </returns>
+        public static XmlElement ToXmlElement(this XElement xElement)
 		{ return new XmlTranslator(xElement).CreateXmlElement(); }
 
-		/// <summary>
-		/// Converts the specified XDocument to XmlDocument
-		/// </summary>
-		/// <param name="xDocument">
-		/// XDocument instance to convert
-		/// </param>
-		/// <returns>
-		/// XmlDocument representation of XDocument
-		/// </returns>
-		public static XmlDocument ToXmlDocument(this XDocument xDocument)
+        /// <summary>
+        /// Converts the specified XDocument to XmlDocument
+        /// <para xml:lang="es">
+        /// Convierte el XDocument especificada a XmlDocument
+        /// </para>
+        /// </summary>
+        /// <param name="xDocument">
+        /// XDocument instance to convert
+        /// <para xml:lang="es">
+        /// XDocument ejemplo para convertir
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// XmlDocument representation of XDocument
+        /// <para xml:lang="es">
+        /// Xml representación Documento de XDocument
+        /// </para>
+        /// </returns>
+        public static XmlDocument ToXmlDocument(this XDocument xDocument)
 		{ return new XmlTranslator(xDocument).CreateXmlDocument(); }
 
-		/// <summary>
-		/// Converts the specified XmlElement to XElement
-		/// </summary>
-		/// <param name="xmlElement">
-		/// XmlElement instance to convert
-		/// </param>
-		/// <returns>
-		/// XElement representation of XmlElement
-		/// </returns>
-		public static XElement ToXElement(this XmlElement xmlElement)
+        /// <summary>
+        /// Converts the specified XmlElement to XElement
+        /// <para xml:lang="es">
+        /// Convierte el XmlElement especificada para XElement
+        /// </para>
+        /// </summary>
+        /// <param name="xmlElement">
+        /// XmlElement instance to convert
+        /// <para xml:lang="es">
+        /// Instancia XmlElement a convertir
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// XElement representation of XmlElement
+        /// <para xml:lang="es">
+        /// Representacion XElement de XmlElement
+        /// </para>
+        /// </returns>
+        public static XElement ToXElement(this XmlElement xmlElement)
 		{ return new XmlTranslator(xmlElement).CreateXElement(); }
 
-		/// <summary>
-		/// Converts the specified XmlDocument to XDocument
-		/// </summary>
-		/// <param name="xmlDocument">
-		/// XmlDocument instance to convert
-		/// </param>
-		/// <returns>
-		/// XDocument representation of XmlDocument
-		/// </returns>
-		public static XDocument ToXDocument(this XmlDocument xmlDocument)
+        /// <summary>
+        /// Converts the specified XmlDocument to XDocument
+        /// <para xml:lang="es">
+        /// Convierte el XmlDocument especificada para XDocument
+        /// </para>
+        /// </summary>
+        /// <param name="xmlDocument">
+        /// XmlDocument instance to convert
+        /// <para xml:lang="es">
+        /// Instancia XmlDocument a convertir
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// XDocument representation of XmlDocument
+        /// <para xml:lang="es">
+        /// Representacion XDocument de XmlDocument
+        /// </para>
+        /// </returns>
+        public static XDocument ToXDocument(this XmlDocument xmlDocument)
 		{ return new XmlTranslator(xmlDocument).CreateXDocument(); }
 
 	}

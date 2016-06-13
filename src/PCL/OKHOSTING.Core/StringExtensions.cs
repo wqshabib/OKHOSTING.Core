@@ -2,17 +2,33 @@
 
 namespace OKHOSTING.Core
 {
-	/// <summary>
-	/// Extension methods for System.String
-	/// </summary>
-	public static class StringExtensions
+    /// <summary>
+    /// Extension methods for System.String
+    /// <para xml:lang="es">
+    /// Los métodos de extensión para System.String
+    /// </para>
+    /// </summary>
+    public static class StringExtensions
 	{
-		/// <summary>
-		/// Count all words in a given string
-		/// </summary>
-		/// <param name="input">string to begin with</param>
-		/// <returns>int</returns>
-		public static int WordCount(this string input)
+        /// <summary>
+        /// Count all words in a given string
+        /// <para xml:lang="es">
+        /// Contar todas las palabras de una cadena dada
+        /// </para>
+        /// </summary>
+        /// <param name="input">
+        /// string to begin with
+        /// <para xml:lang="es">
+        /// cadena para empezar
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// int
+        /// <para xml:lang="es">
+        /// entero
+        /// </para>
+        /// </returns>
+        public static int WordCount(this string input)
 		{
 			var count = 0;
 			try
@@ -28,13 +44,23 @@ namespace OKHOSTING.Core
 			return count;
 		}
 
-		/// <summary>
-		/// Truncates the string to a specified length and replace the truncated to a ...
-		/// </summary>
-		/// <param name="text">string that will be truncated</param>
-		/// <param name="maxLength">total length of characters to maintain before the truncate happens</param>
-		/// <returns>truncated string</returns>
-		public static string Truncate(this string text, int maxLength)
+        /// <summary>
+        /// Truncates the string to a specified length and replace the truncated to a ...
+        /// <para xml:lang="es">
+        /// Trunca la cadena en una longitud especificada y vuelva a colocar el truncado a un ...
+        /// </para>
+        /// </summary>
+        /// <param name="text">
+        /// string that will be truncated
+        /// <para xml:lang="es">
+        /// Cadena que sera truncada
+        /// </para>
+        /// </param>
+        /// <param name="maxLength">
+        /// total length of characters to maintain before the truncate happens
+        /// </param>
+        /// <returns>truncated string</returns>
+        public static string Truncate(this string text, int maxLength)
 		{
 			// replaces the truncated string to a ...
 			const string suffix = "...";

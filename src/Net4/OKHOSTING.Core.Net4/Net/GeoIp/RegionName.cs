@@ -5,11 +5,46 @@ using System.Collections;
 
 namespace OKHOSTING.Core.Net4.Net.GeoIp
 {
+    /// <summary>
+    /// It represents the name of a region
+    /// <para xml:lang="es">
+    /// Representa el nombre de una region
+    /// </para>
+    /// </summary>
 	public static class RegionName
 	{
-
+        /// <summary>
+        /// indicates the name of the region
+        /// <para xml:lang="es">
+        /// indica el nombre de la region
+        /// </para>
+        /// </summary>
 		private static Hashtable GEOIP_REGION_NAME;
 
+        /// <summary>
+        /// Get the code and the region and returns the name of the region
+        /// <para xml:lang="es">
+        /// Recibe el codigo y la region y devuelve el nombre de la region
+        /// </para>
+        /// </summary>
+        /// <param name="ccode">
+        /// country code
+        /// <para xml:lang="es">
+        /// codigo del pais
+        /// </para>
+        /// </param>
+        /// <param name="region">
+        /// Region of country
+        /// <para xml:lang="es">
+        /// Region del pais
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// Region name
+        /// <para xml.lang="es">
+        /// Nombre de la region
+        /// </para>
+        /// </returns>
 		public static String getRegionName(String ccode, String region)
 		{
 			if (GEOIP_REGION_NAME == null)
@@ -30,6 +65,12 @@ namespace OKHOSTING.Core.Net4.Net.GeoIp
 			return (String)((Hashtable)GEOIP_REGION_NAME[ccode])[region];
 		}
 
+        /// <summary>
+        /// Initializes the names of each region by country
+        /// <para xml:lang="es">
+        /// Inicializa los nombres de cada region por pais 
+        /// </para>
+        /// </summary>
 		private static void init_region_names()
 		{
 

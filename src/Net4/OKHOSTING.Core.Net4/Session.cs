@@ -194,11 +194,13 @@ namespace OKHOSTING.Core.Net4
 			if (Session_Start != null) Session_Start(this, new EventArgs());
 		}
 
-		/// <summary>
-		/// Invoked when a session is ended. Raises Session_End event and invokes DataType.OnSessionEnd() in all loaded DataTypes
-		/// <para xml:lang=""
+        /// <summary>
+        /// Invoked when a session is ended. Raises Session_End event and invokes DataType.OnSessionEnd() in all loaded DataTypes
+        /// <para xml:lang="es">
+        /// Se invoca cuando se termina una sesión. Eleva caso Session_End e invoca DataType.OnSessionEnd () en todos los DataTypes cargados
+        /// </para>
         /// </summary>
-		private void OnSession_End()
+        private void OnSession_End()
 		{
 			////Run PlugIn_OnSessionStart method for all plugins installed and enabled
 			//foreach (Configuration.PlugIn plugin in Configuration.Current.PlugIns)
@@ -219,11 +221,16 @@ namespace OKHOSTING.Core.Net4
 			Sessions.Remove(this.SessionId);
 		}
 
-		#endregion
+        #endregion
 
-		#region IDisposable Members
-
-		void IDisposable.Dispose()
+        #region IDisposable Members
+        /// <summary>
+        /// Dispose is implemented to release unmanaged resources that the application uses
+        /// <para xml:lang="es">
+        /// Dispose se implementa para liberar recursos no administrados que la aplicación usa
+        /// </para>
+        /// </summary>
+        void IDisposable.Dispose()
 		{
 			base.Clear();
 		}

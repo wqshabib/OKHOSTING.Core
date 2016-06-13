@@ -18,15 +18,42 @@ namespace OKHOSTING.Core
 		/// </summary>
 		public enum CharCategory
 		{
+            /// <summary>
+            /// 
+            /// </summary>
 			Control,
+            /// <summary>
+            /// 
+            /// </summary>
 			Digit,
+            /// <summary>
+            /// 
+            /// </summary>
 			Letter,
+            /// <summary>
+            /// 
+            /// </summary>
 			Number,
 			Punctuation,
+            /// <summary>
+            /// 
+            /// </summary>
 			Separator,
+            /// <summary>
+            /// 
+            /// </summary>
 			Surrogate,
+            /// <summary>
+            /// 
+            /// </summary>
 			Symbol,
+            /// <summary>
+            /// 
+            /// </summary>
 			Whitespace,
+            /// <summary>
+            /// 
+            /// </summary>
 			Unknown
 		}
 

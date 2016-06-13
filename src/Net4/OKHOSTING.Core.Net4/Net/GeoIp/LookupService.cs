@@ -26,45 +26,177 @@ using System.Runtime.CompilerServices;
 
 namespace OKHOSTING.Core.Net4.Net.GeoIp
 {
-	/// <summary>
-	/// Provides IP addresses location information, including city, region and country
+    /// <summary>
+    /// Provides IP addresses location information, including city, region and country
+    /// <para xml:lang="es">
+    /// Proporciona direcciones IP información de ubicación, incluyendo ciudad, región y país
+    /// </para>
 	/// </summary>
 	public class LookupService
 	{
+        /// <summary>
+        /// It represents the file
+        /// <para xml:lang="es">
+        /// Representa el archivo
+        /// </para>
+        /// </summary>
 		private FileStream file = null;
+
+        /// <summary>
+        /// It represents the information database
+        /// <para xml:lang="es">
+        /// Representa la informacion de la base de datos
+        /// </para>
+        /// </summary>
 		private DatabaseInfo databaseInfo = null;
+
+        /// <summary>
+        /// In bytes it represents the type of database according to the country indicated
+        /// <para xml:lang="es">
+        /// Representa en bytes el tipo de base de datos de acuerdo al pais indicado
+        /// </para>
+        /// </summary>
 		byte databaseType = Convert.ToByte(DatabaseInfo.COUNTRY_EDITION);
+
+        /// <summary>
+        /// It represents a segment of the database
+        /// <para xml:lang="es">
+        /// Representa un segmento de la base de datos
+        /// </para>
+        /// </summary>
 		int[] databaseSegments;
+
+        /// <summary>
+        /// record lenght
+        /// <para xml:lang="es">
+        /// longitud de registro
+        /// </para>
+        /// </summary>
 		int recordLength;
+
+        /// <summary>
+        /// Indicates the number of option
+        /// <para xml:lang="es">
+        /// Indica el numero de opcion
+        /// </para>
+        /// </summary>
 		int dboptions;
+
+        /// <summary>
+        /// database buffer
+        /// <para xml:lang="es">
+        /// búfer de base de datos
+        /// </para>
+        /// </summary>
 		byte[] dbbuffer;
 
+        /// <summary>
+        /// 
+        /// </summary>
 		String licenseKey;
+        /// <summary>
+        /// 
+        /// </summary>
 		int dnsService = 0;
+        /// <summary>
+        /// 
+        /// </summary>
 		private static Country UNKNOWN_COUNTRY = new Country("--", "N/A");
+        /// <summary>
+        /// 
+        /// </summary>
 		private static int COUNTRY_BEGIN = 16776960;
+        /// <summary>
+        /// 
+        /// </summary>
 		private static int STATE_BEGIN = 16700000;
+        /// <summary>
+        /// 
+        /// </summary>
 		private static int STRUCTURE_INFO_MAX_SIZE = 20;
+        /// <summary>
+        /// 
+        /// </summary>
 		private static int DATABASE_INFO_MAX_SIZE = 100;
+        /// <summary>
+        /// 
+        /// </summary>
 		private static int FULL_RECORD_LENGTH = 100;//???
+        /// <summary>
+        /// 
+        /// </summary>
 		private static int SEGMENT_RECORD_LENGTH = 3;
+        /// <summary>
+        /// 
+        /// </summary>
 		private static int STANDARD_RECORD_LENGTH = 3;
+        /// <summary>
+        /// 
+        /// </summary>
 		private static int ORG_RECORD_LENGTH = 4;
+        /// <summary>
+        /// 
+        /// </summary>
 		private static int MAX_RECORD_LENGTH = 4;
+        /// <summary>
+        /// 
+        /// </summary>
 		private static int MAX_ORG_RECORD_LENGTH = 1000;//???
+        /// <summary>
+        /// 
+        /// </summary>
 		private static int FIPS_RANGE = 360;
+        /// <summary>
+        /// 
+        /// </summary>
 		private static int STATE_BEGIN_REV0 = 16700000;
+        /// <summary>
+        /// 
+        /// </summary>
 		private static int STATE_BEGIN_REV1 = 16000000;
+        /// <summary>
+        /// 
+        /// </summary>
 		private static int US_OFFSET = 1;
+        /// <summary>
+        /// 
+        /// </summary>
 		private static int CANADA_OFFSET = 677;
+        /// <summary>
+        /// 
+        /// </summary>
 		private static int WORLD_OFFSET = 1353;
+        /// <summary>
+        /// 
+        /// </summary>
 		public static int GEOIP_STANDARD = 0;
+        /// <summary>
+        /// 
+        /// </summary>
 		public static int GEOIP_MEMORY_CACHE = 1;
+        /// <summary>
+        /// 
+        /// </summary>
 		public static int GEOIP_UNKNOWN_SPEED = 0;
+        /// <summary>
+        /// 
+        /// </summary>
 		public static int GEOIP_DIALUP_SPEED = 1;
+        /// <summary>
+        /// 
+        /// </summary>
 		public static int GEOIP_CABLEDSL_SPEED = 2;
+        /// <summary>
+        /// 
+        /// </summary>
 		public static int GEOIP_CORPORATE_SPEED = 3;
 
+        /// <summary>
+        /// Indicates country codes
+        /// <para xml:lang="es">
+        /// Indica los códigos de los países
+        /// </para>
+        /// </summary>
 		private static String[] countryCode = {
 		"--","AP","EU","AD","AE","AF","AG","AI","AL","AM","AN","AO","AQ","AR",
 		"AS","AT","AU","AW","AZ","BA","BB","BD","BE","BF","BG","BH","BI","BJ",
@@ -86,6 +218,12 @@ namespace OKHOSTING.Core.Net4.Net.GeoIp
 		"YT","RS","ZA","ZM","ME","ZW","A1","A2","O1","AX","GG","IM","JE","BL",
 	"MF"};
 
+        /// <summary>
+        /// Indicates country names
+        /// <para xml:lang="es">
+        /// Indica los nombres de paises
+        /// </para>
+        /// </summary>
 		private static String[] countryName = {
 			"N/A","Asia/Pacific Region","Europe","Andorra","United Arab Emirates",
 			"Afghanistan","Antigua and Barbuda","Anguilla","Albania","Armenia",
@@ -140,6 +278,18 @@ namespace OKHOSTING.Core.Net4.Net.GeoIp
 		"Aland Islands","Guernsey","Isle of Man","Jersey","Saint Barthelemy",
 		"Saint Martin"};
 
+        /// <summary>
+        /// Instance of class
+        /// <para xml:lang="es">
+        /// Instancia de clase
+        /// </para>
+        /// </summary>
+        /// <param name="options">
+        /// service option
+        /// <para xml:lang="es">
+        /// opcion del servicio
+        /// </para>
+        /// </param>
 		public LookupService(int options)
 		{
 			string databaseFile = AppDomain.CurrentDomain.BaseDirectory + @"Custom\GeoIp\GeoLiteCity.dat";
@@ -156,11 +306,23 @@ namespace OKHOSTING.Core.Net4.Net.GeoIp
 			}
 		}
 
+        /// <summary>
+        /// Instance of class
+        /// <para xml:lang="es">
+        /// Instancia de clase
+        /// </para>
+        /// </summary>
 		public LookupService()
 			: this(GEOIP_STANDARD)
 		{
 		}
 
+        /// <summary>
+        /// Starts services
+        /// <para xml:lang="es">
+        /// Inicia los servicios
+        /// </para>
+        /// </summary>
 		private void init()
 		{
 			int i, j;
@@ -242,7 +404,14 @@ namespace OKHOSTING.Core.Net4.Net.GeoIp
 				file.Read(dbbuffer, 0, l);
 			}
 		}
-		public void close()
+
+        /// <summary>
+        /// Close services
+        /// <para xml:lang="es">
+        /// Cierra los servicios
+        /// </para>
+        /// </summary>
+        public void close()
 		{
 			try
 			{
@@ -251,11 +420,48 @@ namespace OKHOSTING.Core.Net4.Net.GeoIp
 			}
 			catch (Exception) { }
 		}
-		public Country getCountry(IPAddress ipAddress)
+        
+        /// <summary>
+        /// Returns the country indicating the IP address
+        /// <para xml:lang="es">
+        /// Retorna el país indicando la direccion IP
+        /// </para>
+        /// </summary>
+        /// <param name="ipAddress">
+        /// IP address
+        /// <para xml:lang="es">
+        /// Direccion IP
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// Return the country
+        /// <para xml:lang="es">
+        /// Retorna el país
+        /// </para>
+        /// </returns>
+        public Country getCountry(IPAddress ipAddress)
 		{
 			return getCountry(bytestoLong(ipAddress.GetAddressBytes()));
 		}
-		public Country getCountry(String ipAddress)
+
+        /// <summary>
+        /// Returns the country indicating the IP address
+        /// <para xml:lang="es">
+        /// Retorna el país indicando la direccion IP
+        /// </summary>
+        /// <param name="ipAddress">
+        /// IP address
+        /// <para xml:lang="es">
+        /// Direccion IP
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// Return the country
+        /// <para xml:lang="es">
+        /// Retorna el país
+        /// </para>
+        /// </returns>
+        public Country getCountry(String ipAddress)
 		{
 			IPAddress addr;
 			try
@@ -271,7 +477,25 @@ namespace OKHOSTING.Core.Net4.Net.GeoIp
 			//  return getCountry(bytestoLong(addr.GetAddressBytes()));
 			return getCountry(bytestoLong(addr.GetAddressBytes()));
 		}
-		public Country getCountry(long ipAddress)
+
+        /// <summary>
+        /// Returns the country indicating the IP address
+        /// <para xml:lang="es">
+        /// Retorna el país indicando la direccion IP
+        /// </summary>
+        /// <param name="ipAddress">
+        /// IP address
+        /// <para xml:lang="es">
+        /// Direccion IP
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// Return the country
+        /// <para xml:lang="es">
+        /// Retorna el país
+        /// </para>
+        /// </returns>
+        public Country getCountry(long ipAddress)
 		{
 			if (file == null)
 			{
@@ -305,6 +529,24 @@ namespace OKHOSTING.Core.Net4.Net.GeoIp
 			}
 		}
 
+        /// <summary>
+        /// Returns id indicating the IP address
+        /// <para xml:lang="es">
+        /// Retorna el id indicando la direccion IP
+        /// </para>
+        /// </summary>
+        /// <param name="ipAddress">
+        /// IP address
+        /// <para xml:lang="es">
+        /// Direccion IP
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// Return ID
+        /// <para xml:lang="es">
+        /// Retorna el ID
+        /// </para>
+        /// </returns>
 		public int getID(String ipAddress)
 		{
 			IPAddress addr;
@@ -320,12 +562,48 @@ namespace OKHOSTING.Core.Net4.Net.GeoIp
 			return getID(bytestoLong(addr.GetAddressBytes()));
 		}
 
+        /// <summary>
+        /// Returns id indicating the IP address
+        /// <para xml:lang="es">
+        /// Retorna el id indicando la direccion IP
+        /// </para>
+        /// </summary>
+        /// <param name="ipAddress">
+        /// IP address
+        /// <para xml:lang="es">
+        /// Direccion IP
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// Return ID
+        /// <para xml:lang="es">
+        /// Retorna el ID
+        /// </para>
+        /// </returns>
 		public int getID(IPAddress ipAddress)
 		{
 
 			return getID(bytestoLong(ipAddress.GetAddressBytes()));
 		}
 
+        /// <summary>
+        /// Returns id indicating the IP address
+        /// <para xml:lang="es">
+        /// Retorna el id indicando la direccion IP
+        /// </para>
+        /// </summary>
+        /// <param name="ipAddress">
+        /// IP address
+        /// <para xml:lang="es">
+        /// Direccion IP
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// Return ID
+        /// <para xml:lang="es">
+        /// Retorna el ID
+        /// </para>
+        /// </returns>
 		public int getID(long ipAddress)
 		{
 			if (file == null)
@@ -335,7 +613,20 @@ namespace OKHOSTING.Core.Net4.Net.GeoIp
 			int ret = SeekCountry(ipAddress) - databaseSegments[0];
 			return ret;
 		}
-		public DatabaseInfo getDatabaseInfo()
+
+        /// <summary>
+        /// Returns the information database
+        /// <para xml:lang="es">
+        /// Retorna la informacion de la base de datos
+        /// </para>
+        /// </summary>
+        /// <returns>
+        /// DataBase Information
+        /// <para xml:lang="es">
+        /// Informacion de la base de datos
+        /// </para>
+        /// </returns>
+        public DatabaseInfo getDatabaseInfo()
 		{
 			if (databaseInfo != null)
 			{
@@ -396,10 +687,48 @@ namespace OKHOSTING.Core.Net4.Net.GeoIp
 			}
 			return new DatabaseInfo("");
 		}
-		public Region getRegion(IPAddress ipAddress)
+
+        /// <summary>
+        /// Returns region indicating the IP address
+        /// <para xml:lang="es">
+        /// Retorna la región indicando la dirección IP
+        /// </para>
+        /// </summary>
+        /// <param name="ipAddress">
+        /// IP address
+        /// <para xml:lang="es">
+        /// Direccion IP
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// Returns region
+        /// <para xml:lang="es">
+        /// Retorna la regíon
+        /// </para>
+        /// </returns>
+        public Region getRegion(IPAddress ipAddress)
 		{
 			return getRegion(bytestoLong(ipAddress.GetAddressBytes()));
 		}
+
+        /// <summary>
+        /// Returns region indicating the IP address
+        /// <para xml:lang="es">
+        /// Retorna la región indicando la dirección IP
+        /// </para>
+        /// </summary>
+        /// <param name="str">
+        /// IP address
+        /// <para xml:lang="es">
+        /// Direccion IP
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// Returns region
+        /// <para xml:lang="es">
+        /// Retorna la regíon
+        /// </para>
+        /// </returns>
 		public Region getRegion(String str)
 		{
 			IPAddress addr;
@@ -416,6 +745,24 @@ namespace OKHOSTING.Core.Net4.Net.GeoIp
 			return getRegion(bytestoLong(addr.GetAddressBytes()));
 		}
 
+        /// <summary>
+        /// Returns region indicating the IP address
+        /// <para xml:lang="es">
+        /// Retorna la región indicando la dirección IP
+        /// </para>
+        /// </summary>
+        /// <param name="ipnum">
+        /// Number IP
+        /// <para xml:lang="es">
+        /// Numero de IP
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// Returns region
+        /// <para xml:lang="es">
+        /// Retorna la regíon
+        /// </para>
+        /// </returns>
 		[MethodImpl(MethodImplOptions.Synchronized)]
 		public Region getRegion(long ipnum)
 		{
@@ -475,11 +822,49 @@ namespace OKHOSTING.Core.Net4.Net.GeoIp
 			}
 			return record;
 		}
-		public Location getLocation(IPAddress addr)
+
+        /// <summary>
+        /// Returns location indicating the IP address
+        /// <para xml:lang="es">
+        /// Retorna la ubicación indicando la dirección IP
+        /// </para>
+        /// </summary>
+        /// <param name="addr">
+        /// IP Address
+        /// <para xml:lang="es">
+        /// Dirección IP
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// Returns location
+        /// <para xml:lang="es">
+        /// Retorna la ubicación
+        /// </para>
+        /// </returns>
+        public Location getLocation(IPAddress addr)
 		{
 			return getLocation(bytestoLong(addr.GetAddressBytes()));
 		}
-		public Location getLocation(String str)
+
+        /// <summary>
+        /// Returns location indicating the IP address
+        /// <para xml:lang="es">
+        /// Retorna la ubicación indicando la dirección IP
+        /// </para>
+        /// </summary>
+        /// <param name="str">
+        /// IP Address
+        /// <para xml:lang="es">
+        /// Dirección IP
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// Returns location
+        /// <para xml:lang="es">
+        /// Retorna la ubicación
+        /// </para>
+        /// </returns>
+        public Location getLocation(String str)
 		{
 			IPAddress addr;
 			try
@@ -495,6 +880,24 @@ namespace OKHOSTING.Core.Net4.Net.GeoIp
 			return getLocation(bytestoLong(addr.GetAddressBytes()));
 		}
 
+        /// <summary>
+        /// Returns region indicating the IP address
+        /// <para xml:lang="es">
+        /// Retorna la región indicando la dirección IP
+        /// </para>
+        /// </summary>
+        /// <param name="ipnum">
+        /// Number IP
+        /// <para xml:lang="es">
+        /// Numero de IP
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// Returns region
+        /// <para xml:lang="es">
+        /// Retorna la regíon
+        /// </para>
+        /// </returns>
 		[MethodImpl(MethodImplOptions.Synchronized)]
 		public Location getLocation(long ipnum)
 		{
@@ -598,11 +1001,49 @@ namespace OKHOSTING.Core.Net4.Net.GeoIp
 			}
 			return record;
 		}
-		public String getOrg(IPAddress addr)
+
+        /// <summary>
+        /// 
+        /// <para xml:lang="es">
+        /// 
+        /// </para>
+        /// </summary>
+        /// <param name="addr">
+        /// 
+        /// <para xml:lang="es">
+        /// 
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// 
+        /// <para xml:lang="es">
+        /// 
+        /// </para>
+        /// </returns>
+        public String getOrg(IPAddress addr)
 		{
 			return getOrg(bytestoLong(addr.GetAddressBytes()));
 		}
-		public String getOrg(String str)
+
+        /// <summary>
+        /// 
+        /// <para xml:lang="es">
+        /// 
+        /// </para>
+        /// </summary>
+        /// <param name="str">
+        /// 
+        /// <para xml:lang="es">
+        /// 
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// 
+        /// <para xml:lang="es">
+        /// 
+        /// </para>
+        /// </returns>
+        public String getOrg(String str)
 		{
 			IPAddress addr;
 			try
@@ -618,6 +1059,24 @@ namespace OKHOSTING.Core.Net4.Net.GeoIp
 			return getOrg(bytestoLong(addr.GetAddressBytes()));
 		}
 
+        /// <summary>
+        /// 
+        /// <para xml:lang="es">
+        /// 
+        /// </para>
+        /// </summary>
+        /// <param name="ipnum">
+        /// 
+        /// <para xml:lang="es">
+        /// 
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// 
+        /// <para xml:lang="es">
+        /// 
+        /// </para>
+        /// </returns>
 		[MethodImpl(MethodImplOptions.Synchronized)]
 		public String getOrg(long ipnum)
 		{
@@ -662,6 +1121,24 @@ namespace OKHOSTING.Core.Net4.Net.GeoIp
 			}
 		}
 
+        /// <summary>
+        /// 
+        /// <para xml:lang="es">
+        /// 
+        /// </para>
+        /// </summary>
+        /// <param name="ipAddress">
+        /// 
+        /// <para xml:lang="es">
+        /// 
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// 
+        /// <para xml:lang="es">
+        /// 
+        /// </para>
+        /// </returns>
 		[MethodImpl(MethodImplOptions.Synchronized)]
 		private int SeekCountry(long ipAddress)
 		{
@@ -726,12 +1203,50 @@ namespace OKHOSTING.Core.Net4.Net.GeoIp
 			return 0;
 
 		}
-		private static long swapbytes(long ipAddress)
+
+        /// <summary>
+        /// 
+        /// <para xml:lang="es">
+        /// 
+        /// </para>
+        /// </summary>
+        /// <param name="ipAddress">
+        /// 
+        /// <para xml:lang="es">
+        /// 
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// 
+        /// <para xml:lang="es">
+        /// 
+        /// </para>
+        /// </returns>
+        private static long swapbytes(long ipAddress)
 		{
 			return (((ipAddress >> 0) & 255) << 24) | (((ipAddress >> 8) & 255) << 16)
 		  | (((ipAddress >> 16) & 255) << 8) | (((ipAddress >> 24) & 255) << 0);
 		}
-		private static long bytestoLong(byte[] address)
+
+        /// <summary>
+        /// 
+        /// <para xml:lang="es">
+        /// 
+        /// </para>
+        /// </summary>
+        /// <param name="address">
+        /// 
+        /// <para xml:lang="es">
+        /// 
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// 
+        /// <para xml:lang="es">
+        /// 
+        /// </para>
+        /// </returns>
+        private static long bytestoLong(byte[] address)
 		{
 			long ipnum = 0;
 			for (int i = 0; i < 4; ++i)
@@ -745,7 +1260,21 @@ namespace OKHOSTING.Core.Net4.Net.GeoIp
 			}
 			return ipnum;
 		}
-		private static int unsignedByteToInt(byte b)
+
+        /// <summary>
+        /// 
+        /// <para xml:lang="es">
+        /// 
+        /// </para>
+        /// </summary>
+        /// <param name="b">
+        /// 
+        /// <para xml:lang="es">
+        /// 
+        /// </para>
+        /// </param>
+        /// <returns></returns>
+        private static int unsignedByteToInt(byte b)
 		{
 			return (int)b & 0xFF;
 		}
