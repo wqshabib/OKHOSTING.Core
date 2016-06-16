@@ -255,9 +255,22 @@ namespace OKHOSTING.Core.Cryptography
 
         /// <summary>
         /// 
+        /// <para xml:lang="es">
+        /// 
+        /// </para>
         /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
+        /// <param name="key">
+        /// 
+        /// <para xml:lang="es">
+        /// 
+        /// </para>
+        /// </param>
+        /// <returns>
+        /// 
+        /// <para xml:lang="es">
+        /// 
+        /// </para>
+        /// </returns>
 		private static byte[] GetMD5Hash(string key)
 		{
 			// Convert the message string to binary data.

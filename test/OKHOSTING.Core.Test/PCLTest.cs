@@ -36,6 +36,8 @@ namespace OKHOSTING.Core.Test
 			string decrypted = Cryptography.SimpleEncryption.Decrypt(encrypted, password);
 
 			Assert.AreEqual(message, decrypted);
-		}
+            StringExtensions.WordCount("hola mundo cruel");
+
+        }
 	}
 }
